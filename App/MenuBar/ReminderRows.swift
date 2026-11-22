@@ -71,6 +71,7 @@ struct HydrationRow: View {
                 }
                 ProgressView(value: hydration.progress(at: model.now))
                     .tint(.cyan)
+                    .accessibilityLabel(Text("Water goal"))
             }
 
             HStack(spacing: 2) {

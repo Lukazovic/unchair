@@ -5,6 +5,8 @@ struct BreakOverlayView: View {
     let model: AppModel
     let onHide: () -> Void
 
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
     var body: some View {
         let pomodoro = model.engine.pomodoro
 
@@ -21,7 +23,9 @@ struct BreakOverlayView: View {
                     Text(Format.countdown(remaining))
                         .font(.system(size: 96, weight: .light, design: .rounded))
                         .monospacedDigit()
-                        .contentTransition(.numericText(countsDown: true))
+                        .contentTransition(reduceMotion ? .identity : .numericText(countsDown: true))
+                        .accessibilityLabel(Text("Time remaining"))
+                        .accessibilityValue(Text(Format.minutes(remaining)))
                 }
 
                 if let stretch = model.currentStretch {

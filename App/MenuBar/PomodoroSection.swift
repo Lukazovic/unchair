@@ -4,6 +4,8 @@ import UnchairCore
 struct PomodoroSection: View {
     let model: AppModel
 
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
     private var pomodoro: PomodoroTimer {
         model.engine.pomodoro
     }
@@ -21,11 +23,14 @@ struct PomodoroSection: View {
                 .font(.system(size: 44, weight: .light, design: .rounded))
                 .monospacedDigit()
                 .foregroundStyle(pomodoro.isRunning ? .primary : .secondary)
-                .contentTransition(.numericText(countsDown: true))
+                .contentTransition(reduceMotion ? .identity : .numericText(countsDown: true))
                 .frame(maxWidth: .infinity)
+                .accessibilityLabel(Text("Time remaining"))
+                .accessibilityValue(Text(Format.minutes(displayedTime)))
 
             ProgressView(value: pomodoro.progress(at: model.now) ?? 0)
                 .tint(pomodoro.phase?.isBreak == true ? .green : .accentColor)
+                .accessibilityLabel(Text("Phase progress"))
 
             controls
 
