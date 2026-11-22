@@ -7,6 +7,7 @@ struct SettingsStore {
         static let settings = "settings.v1"
         static let hydrationLog = "hydrationLog.v1"
         static let showsTimerInMenuBar = "showsTimerInMenuBar"
+        static let quietUntil = "quietUntil"
     }
 
     private let defaults: UserDefaults
@@ -25,6 +26,12 @@ struct SettingsStore {
     var hydrationLog: HydrationLog? {
         get { decode(HydrationLog.self, forKey: Key.hydrationLog) }
         nonmutating set { encode(newValue, forKey: Key.hydrationLog) }
+    }
+
+    /// End of the user's "pause reminders" period.
+    var quietUntil: Date? {
+        get { defaults.object(forKey: Key.quietUntil) as? Date }
+        nonmutating set { defaults.set(newValue, forKey: Key.quietUntil) }
     }
 
     var showsTimerInMenuBar: Bool {
