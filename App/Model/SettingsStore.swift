@@ -6,7 +6,9 @@ struct SettingsStore {
     private enum Key {
         static let settings = "settings.v1"
         static let hydrationLog = "hydrationLog.v1"
-        static let showsTimerInMenuBar = "showsTimerInMenuBar"
+        static let legacyShowsTimerInMenuBar = "showsTimerInMenuBar"
+        static let menuBarTimer = "menuBarTimer"
+        static let menuBarIcon = "menuBarIcon"
         static let quietUntil = "quietUntil"
         static let notificationSound = "notificationSound"
         static let hasCompletedOnboarding = "hasCompletedOnboarding"
@@ -65,9 +67,21 @@ struct SettingsStore {
         nonmutating set { defaults.set(newValue, forKey: Key.hasCompletedOnboarding) }
     }
 
-    var showsTimerInMenuBar: Bool {
-        get { defaults.object(forKey: Key.showsTimerInMenuBar) as? Bool ?? true }
-        nonmutating set { defaults.set(newValue, forKey: Key.showsTimerInMenuBar) }
+    var menuBarTimer: MenuBarTimerStyle {
+        get {
+            if let style = defaults.string(forKey: Key.menuBarTimer).flatMap(MenuBarTimerStyle.init) {
+                return style
+            }
+            // Before the style choice, the timer was either off or a live countdown.
+            let showedTimer = defaults.object(forKey: Key.legacyShowsTimerInMenuBar) as? Bool
+            return showedTimer == false ? .hidden : .minutesAndSeconds
+        }
+        nonmutating set { defaults.set(newValue.rawValue, forKey: Key.menuBarTimer) }
+    }
+
+    var menuBarIcon: MenuBarIconStyle {
+        get { defaults.string(forKey: Key.menuBarIcon).flatMap(MenuBarIconStyle.init) ?? .figure }
+        nonmutating set { defaults.set(newValue.rawValue, forKey: Key.menuBarIcon) }
     }
 
     private func decode<Value: Decodable>(_ type: Value.Type, forKey key: String) -> Value? {

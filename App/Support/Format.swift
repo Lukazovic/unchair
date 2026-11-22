@@ -15,6 +15,13 @@ enum Format {
         return Duration.seconds(minutes * 60).formatted(.units(allowed: [.hours, .minutes], width: .abbreviated))
     }
 
+    /// Rounded-up minutes for the menu bar, such as "25m" or "1h 30m".
+    static func roundedMinutes(_ seconds: TimeInterval) -> String {
+        let minutes = max(1, Int((seconds / 60).rounded(.up)))
+        let allowed: Set<Duration.UnitsFormatStyle.Unit> = minutes >= 60 ? [.hours, .minutes] : [.minutes]
+        return Duration.seconds(minutes * 60).formatted(.units(allowed: allowed, width: .narrow))
+    }
+
     /// A total such as "0 min", "45 min", or "2 hr, 5 min", rounded down to the minute.
     static func total(_ seconds: TimeInterval) -> String {
         let minutes = max(0, Int(seconds / 60))

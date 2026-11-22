@@ -30,8 +30,12 @@ final class AppModel {
         }
     }
 
-    var showsTimerInMenuBar: Bool {
-        didSet { store.showsTimerInMenuBar = showsTimerInMenuBar }
+    var menuBarTimer: MenuBarTimerStyle {
+        didSet { store.menuBarTimer = menuBarTimer }
+    }
+
+    var menuBarIcon: MenuBarIconStyle {
+        didSet { store.menuBarIcon = menuBarIcon }
     }
 
     var notificationSound: NotificationSoundOption {
@@ -115,7 +119,8 @@ final class AppModel {
         let settings = store.settings
         self.now = now
         self.settings = settings
-        showsTimerInMenuBar = store.showsTimerInMenuBar
+        menuBarTimer = store.menuBarTimer
+        menuBarIcon = store.menuBarIcon
         hasCompletedOnboarding = store.hasCompletedOnboarding
         notificationSound = store.notificationSound
         globalShortcut = store.globalShortcut
@@ -150,15 +155,7 @@ final class AppModel {
             }
         }
         stateDidChange()
-        #if DEBUG
-            // Pass `-UnchairDemoFullScreen` to see a full-screen reminder at launch.
-            if CommandLine.arguments.contains("-UnchairDemoFullScreen") {
-                Task {
-                    try? await clock.sleep(for: 1)
-                    presentFullScreen([.posture, .hydration], postureTarget: .standing)
-                }
-            }
-        #endif
+        showLaunchDemoIfRequested()
     }
 
     // MARK: - Onboarding

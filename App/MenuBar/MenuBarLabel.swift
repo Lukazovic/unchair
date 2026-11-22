@@ -1,4 +1,5 @@
 import SwiftUI
+import UnchairCore
 
 /// The menu bar item: an icon, plus the remaining time while a phase is active.
 struct MenuBarLabel: View {
@@ -19,21 +20,37 @@ struct MenuBarLabel: View {
     @ViewBuilder
     private var content: some View {
         let pomodoro = model.engine.pomodoro
-        let symbol = pomodoro.phase?.symbolName ?? "figure.stand"
 
-        if model.showsTimerInMenuBar, let remaining = pomodoro.remaining(at: model.now) {
+        if let remaining = pomodoro.remaining(at: model.now) {
             HStack(spacing: 4) {
-                Image(systemName: pomodoro.isRunning ? symbol : "pause.fill")
-                Text(Format.countdown(remaining))
-                    .monospacedDigit()
+                icon
+                if let text = model.menuBarTimer.text(remaining: remaining) {
+                    Text(text)
+                        .monospacedDigit()
+                }
             }
             .accessibilityElement(children: .ignore)
             .accessibilityLabel(Text("Unchair"))
             .accessibilityValue(Text(accessibilityValue(remaining: remaining)))
         } else {
-            Image(systemName: symbol)
+            icon
                 .accessibilityLabel(Text("Unchair"))
         }
+    }
+
+    /// Breaks and pauses keep their symbols, so the state is clear at a glance.
+    private var icon: Image {
+        let pomodoro = model.engine.pomodoro
+        if pomodoro.phase != nil, !pomodoro.isRunning {
+            return Image(systemName: "pause.fill")
+        }
+        if let phase = pomodoro.phase, phase.isBreak {
+            return Image(systemName: phase.symbolName)
+        }
+        if pomodoro.phase == .focus, model.menuBarIcon == .figure {
+            return Image(systemName: PomodoroPhase.focus.symbolName)
+        }
+        return model.menuBarIcon.image
     }
 
     private func accessibilityValue(remaining: TimeInterval) -> String {

@@ -1280,6 +1280,22 @@
         }
       }
     },
+    "Figure": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Figura"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bonequinho"
+          }
+        }
+      }
+    },
     "Find Unchair in the menu bar, next to the clock.": {
       "localizations": {
         "es": {
@@ -1648,6 +1664,22 @@
         }
       }
     },
+    "Hidden": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oculto"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oculto"
+          }
+        }
+      }
+    },
     "Hide": {
       "localizations": {
         "es": {
@@ -1980,6 +2012,54 @@
           "stringUnit": {
             "state": "translated",
             "value": "Olhe para algo a cerca de 6 metros por 20 segundos."
+          }
+        }
+      }
+    },
+    "Menu bar icon": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Icono en la barra de menús"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ícone na barra de menu"
+          }
+        }
+      }
+    },
+    "Minutes": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Minutos"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Minutos"
+          }
+        }
+      }
+    },
+    "Minutes and Seconds": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Minutos y segundos"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Minutos e segundos"
           }
         }
       }
@@ -2656,6 +2736,22 @@
         }
       }
     },
+    "Red Tomato": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tomate rojo"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tomate vermelho"
+          }
+        }
+      }
+    },
     "Relax your shoulders, sit back, and keep your screen at eye level.": {
       "localizations": {
         "es": {
@@ -3100,22 +3196,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mostrar um exemplo deste aviso"
-          }
-        }
-      }
-    },
-    "Show timer in menu bar": {
-      "localizations": {
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mostrar temporizador en la barra de menús"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mostrar temporizador na barra de menus"
           }
         }
       }
@@ -3872,6 +3952,22 @@
         }
       }
     },
+    "Timer in menu bar": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Temporizador en la barra de menús"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Timer na barra de menu"
+          }
+        }
+      }
+    },
     "To hold reminders during a Focus, open a Focus in System Settings, choose Add Filter, and pick Unchair.": {
       "localizations": {
         "es": {
@@ -3916,6 +4012,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Estatísticas de hoje"
+          }
+        }
+      }
+    },
+    "Tomato": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tomate"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tomate"
           }
         }
       }

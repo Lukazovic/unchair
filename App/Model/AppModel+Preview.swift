@@ -59,6 +59,17 @@ extension AppModel {
         }
     }
 
+    /// Pass `-UnchairDemoFullScreen` (Debug builds) to see a full-screen reminder at launch.
+    func showLaunchDemoIfRequested() {
+        #if DEBUG
+            guard CommandLine.arguments.contains("-UnchairDemoFullScreen") else { return }
+            Task {
+                try? await clock.sleep(for: 1)
+                presentFullScreen([.posture, .hydration], postureTarget: .standing)
+            }
+        #endif
+    }
+
     /// Asks for permission if the user was never asked, so the sample can appear.
     private func ensureNotificationPermission() async {
         await refreshNotificationStatus()

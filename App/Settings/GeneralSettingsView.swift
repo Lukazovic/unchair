@@ -22,7 +22,21 @@ struct GeneralSettingsView: View {
                         .font(.caption)
                         .foregroundStyle(.red)
                 }
-                Toggle("Show timer in menu bar", isOn: $model.showsTimerInMenuBar)
+                Picker("Menu bar icon", selection: $model.menuBarIcon) {
+                    ForEach(MenuBarIconStyle.allCases) { style in
+                        Label {
+                            Text(style.title)
+                        } icon: {
+                            style.image
+                        }
+                        .tag(style)
+                    }
+                }
+                Picker("Timer in menu bar", selection: $model.menuBarTimer) {
+                    ForEach(MenuBarTimerStyle.allCases) { style in
+                        Text(style.title).tag(style)
+                    }
+                }
                 LabeledContent("Start or pause focus from anywhere") {
                     ShortcutRecorder(shortcut: $model.globalShortcut, onRecordingChange: model.setRecordingShortcut)
                 }
