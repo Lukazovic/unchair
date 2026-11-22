@@ -10,6 +10,7 @@ public struct UnchairSettings: Codable, Equatable, Sendable {
     public var postureCheck: PostureCheckSettings
     public var breaks: BreakSettings
     public var summary: DailySummarySettings
+    public var alerts: AlertSettings
 
     public init(
         pomodoro: PomodoroSettings = PomodoroSettings(),
@@ -19,7 +20,8 @@ public struct UnchairSettings: Codable, Equatable, Sendable {
         eyes: EyeBreakSettings = EyeBreakSettings(),
         postureCheck: PostureCheckSettings = PostureCheckSettings(),
         breaks: BreakSettings = BreakSettings(),
-        summary: DailySummarySettings = DailySummarySettings()
+        summary: DailySummarySettings = DailySummarySettings(),
+        alerts: AlertSettings = AlertSettings()
     ) {
         self.pomodoro = pomodoro
         self.posture = posture
@@ -29,10 +31,11 @@ public struct UnchairSettings: Codable, Equatable, Sendable {
         self.postureCheck = postureCheck
         self.breaks = breaks
         self.summary = summary
+        self.alerts = alerts
     }
 
     private enum CodingKeys: String, CodingKey {
-        case pomodoro, posture, hydration, interruptions, eyes, postureCheck, breaks, summary
+        case pomodoro, posture, hydration, interruptions, eyes, postureCheck, breaks, summary, alerts
     }
 
     /// Missing sections fall back to defaults, so adding settings never discards saved ones.
@@ -48,5 +51,6 @@ public struct UnchairSettings: Codable, Equatable, Sendable {
             ?? PostureCheckSettings()
         breaks = try container.decodeIfPresent(BreakSettings.self, forKey: .breaks) ?? BreakSettings()
         summary = try container.decodeIfPresent(DailySummarySettings.self, forKey: .summary) ?? DailySummarySettings()
+        alerts = try container.decodeIfPresent(AlertSettings.self, forKey: .alerts) ?? AlertSettings()
     }
 }
