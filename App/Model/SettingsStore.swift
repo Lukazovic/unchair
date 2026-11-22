@@ -9,7 +9,8 @@ struct SettingsStore {
         static let showsTimerInMenuBar = "showsTimerInMenuBar"
         static let quietUntil = "quietUntil"
         static let notificationSound = "notificationSound"
-        static let globalShortcut = "globalShortcut"
+        static let legacyGlobalShortcut = "globalShortcut"
+        static let globalShortcut = "globalShortcut.v2"
     }
 
     private let defaults: UserDefaults
@@ -41,9 +42,21 @@ struct SettingsStore {
         nonmutating set { defaults.set(newValue.rawValue, forKey: Key.notificationSound) }
     }
 
-    var globalShortcut: GlobalShortcut {
-        get { defaults.string(forKey: Key.globalShortcut).flatMap(GlobalShortcut.init) ?? .controlOptionCommandP }
-        nonmutating set { defaults.set(newValue.rawValue, forKey: Key.globalShortcut) }
+    /// The global shortcut, or `nil` when the user turned it off.
+    var globalShortcut: GlobalShortcut? {
+        get {
+            if let data = defaults.data(forKey: Key.globalShortcut) {
+                return try? decoder.decode(GlobalShortcut?.self, from: data)
+            }
+            if let legacy = defaults.string(forKey: Key.legacyGlobalShortcut) {
+                return GlobalShortcut(legacyValue: legacy)
+            }
+            return .default
+        }
+        nonmutating set {
+            // `null` is stored for "off", so it isn't mistaken for "never set".
+            defaults.set(try? encoder.encode(newValue), forKey: Key.globalShortcut)
+        }
     }
 
     var showsTimerInMenuBar: Bool {

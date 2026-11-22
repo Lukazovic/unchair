@@ -1,4 +1,5 @@
 import AppKit
+import Carbon.HIToolbox
 import Foundation
 import Observation
 import UnchairCore
@@ -39,12 +40,15 @@ final class AppModel {
         }
     }
 
-    var globalShortcut: GlobalShortcut {
+    var globalShortcut: GlobalShortcut? {
         didSet {
             store.globalShortcut = globalShortcut
             registerGlobalShortcut()
         }
     }
+
+    /// Set when the global shortcut couldn't be registered.
+    private(set) var globalShortcutError: String?
 
     /// The time the UI renders against. Refreshed every second while the
     /// Pomodoro runs, and less often otherwise.
@@ -241,9 +245,24 @@ final class AppModel {
         }
     }
 
+    /// Turns the global shortcut off while the user records a new one, so
+    /// pressing the current combination records it instead of triggering it.
+    func setRecordingShortcut(_ isRecording: Bool) {
+        if isRecording {
+            hotKey.unregister()
+        } else {
+            registerGlobalShortcut()
+        }
+    }
+
     private func registerGlobalShortcut() {
-        hotKey.register(globalShortcut) { [weak self] in
+        let status = hotKey.register(globalShortcut) { [weak self] in
             self?.toggleFocus()
+        }
+        globalShortcutError = switch status {
+        case noErr: nil
+        case OSStatus(eventHotKeyExistsErr): String(localized: "Another app already uses this shortcut.")
+        default: String(localized: "This shortcut can't be used. Try another one.")
         }
     }
 

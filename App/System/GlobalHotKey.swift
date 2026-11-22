@@ -7,15 +7,20 @@ final class GlobalHotKey {
     private var hotKey: EventHotKeyRef?
     private var handler: EventHandlerRef?
 
-    func register(_ shortcut: GlobalShortcut, action: @escaping () -> Void) {
+    /// Registers `shortcut`, replacing any previous one. Passing `nil` turns it off.
+    ///
+    /// - Returns: `noErr`, or the Carbon error (for example
+    ///   `eventHotKeyExistsErr` when another app already uses the combination).
+    @discardableResult
+    func register(_ shortcut: GlobalShortcut?, action: @escaping () -> Void) -> OSStatus {
         unregister()
-        guard let keyCode = shortcut.keyCode else { return }
+        guard let shortcut else { return noErr }
         Self.action = action
         installHandlerIfNeeded()
         let identifier = EventHotKeyID(signature: OSType(0x554E_4348), id: 1) // "UNCH"
         let status = RegisterEventHotKey(
-            keyCode,
-            shortcut.carbonModifiers,
+            shortcut.keyCode,
+            shortcut.modifiers,
             identifier,
             GetApplicationEventTarget(),
             0,
@@ -24,6 +29,7 @@ final class GlobalHotKey {
         if status != noErr {
             Log.signals.error("Couldn't register global shortcut: \(status, privacy: .public)")
         }
+        return status
     }
 
     func unregister() {

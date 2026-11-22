@@ -24,14 +24,13 @@ struct GeneralSettingsView: View {
                         .foregroundStyle(.red)
                 }
                 Toggle("Show timer in menu bar", isOn: $model.showsTimerInMenuBar)
-                Picker("Start or pause focus from anywhere", selection: $model.globalShortcut) {
-                    ForEach(GlobalShortcut.allCases) { shortcut in
-                        if let symbols = shortcut.symbols {
-                            Text(verbatim: symbols).tag(shortcut)
-                        } else {
-                            Text("Off").tag(shortcut)
-                        }
-                    }
+                LabeledContent("Start or pause focus from anywhere") {
+                    ShortcutRecorder(shortcut: $model.globalShortcut, onRecordingChange: model.setRecordingShortcut)
+                }
+                if let error = model.globalShortcutError {
+                    Text(error)
+                        .font(.caption)
+                        .foregroundStyle(.red)
                 }
             }
 
