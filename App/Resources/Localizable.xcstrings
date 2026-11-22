@@ -275,6 +275,38 @@
         }
       }
     },
+    "Away": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ausencia"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ausência"
+          }
+        }
+      }
+    },
+    "Away after": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ausente después de"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ausente após"
+          }
+        }
+      }
+    },
     "Break's over": {
       "localizations": {
         "es": {
@@ -307,6 +339,22 @@
         }
       }
     },
+    "Combine reminders due within": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Combinar recordatorios en un margen de"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Combinar lembretes num intervalo de"
+          }
+        }
+      }
+    },
     "Custom": {
       "localizations": {
         "es": {
@@ -335,6 +383,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Meta diária"
+          }
+        }
+      }
+    },
+    "Days": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Días"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dias"
           }
         }
       }
@@ -387,6 +451,22 @@
         }
       }
     },
+    "End": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fin"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fim"
+          }
+        }
+      }
+    },
     "Extended (50/10)": {
       "localizations": {
         "es": {
@@ -435,6 +515,38 @@
         }
       }
     },
+    "For 1 Hour": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Durante 1 hora"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Por 1 hora"
+          }
+        }
+      }
+    },
+    "For 30 Minutes": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Durante 30 minutos"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Por 30 minutos"
+          }
+        }
+      }
+    },
     "General": {
       "localizations": {
         "es": {
@@ -467,6 +579,166 @@
         }
       }
     },
+    "Held during your Focus": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En espera durante tu modo de concentración"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Em espera durante o seu Foco"
+          }
+        }
+      }
+    },
+    "Held outside working hours": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En espera fuera del horario laboral"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Em espera fora do horário de trabalho"
+          }
+        }
+      }
+    },
+    "Held reminders are delivered as soon as the call ends or you leave full screen. Pomodoro notifications still arrive, silently.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los recordatorios en espera llegan en cuanto termina la llamada o sales de la pantalla completa. Las notificaciones del Pomodoro siguen llegando, en silencio."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Os lembretes em espera chegam assim que a chamada termina ou você sai da tela cheia. As notificações do Pomodoro continuam chegando, em silêncio."
+          }
+        }
+      }
+    },
+    "Held while an app is full screen": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En espera mientras una app está en pantalla completa"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Em espera enquanto um app está em tela cheia"
+          }
+        }
+      }
+    },
+    "Held while you're away": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En espera mientras no estás"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Em espera enquanto você está ausente"
+          }
+        }
+      }
+    },
+    "Held while you're in a call": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En espera mientras estás en una llamada"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Em espera enquanto você está em uma chamada"
+          }
+        }
+      }
+    },
+    "Hold Unchair's posture and water reminders while this Focus is on.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pon en espera los recordatorios de postura y agua de Unchair mientras este modo de concentración esté activo."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coloque em espera os lembretes de postura e água do Unchair enquanto este Foco estiver ativo."
+          }
+        }
+      }
+    },
+    "Hold reminders": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Poner recordatorios en espera"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Colocar lembretes em espera"
+          }
+        }
+      }
+    },
+    "Hold reminders during calls": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Poner recordatorios en espera durante llamadas"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Colocar lembretes em espera durante chamadas"
+          }
+        }
+      }
+    },
+    "Hold reminders when an app is full screen": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Poner recordatorios en espera con apps en pantalla completa"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Colocar lembretes em espera com apps em tela cheia"
+          }
+        }
+      }
+    },
     "Hydration": {
       "localizations": {
         "es": {
@@ -495,6 +767,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bebi um copo"
+          }
+        }
+      }
+    },
+    "Interruptions": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Interrupciones"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Interrupções"
           }
         }
       }
@@ -611,6 +899,38 @@
         }
       }
     },
+    "Only remind me during working hours": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recordarme solo en horario laboral"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lembrar apenas no horário de trabalho"
+          }
+        }
+      }
+    },
+    "Open Focus Settings…": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abrir ajustes de concentración…"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abrir ajustes de Foco…"
+          }
+        }
+      }
+    },
     "Open Notification Settings…": {
       "localizations": {
         "es": {
@@ -643,6 +963,38 @@
         }
       }
     },
+    "Pause Reminders": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pausar recordatorios"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pausar lembretes"
+          }
+        }
+      }
+    },
+    "Pause focus when I'm away": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pausar la concentración cuando no esté"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pausar o foco quando eu estiver ausente"
+          }
+        }
+      }
+    },
     "Paused": {
       "localizations": {
         "es": {
@@ -655,6 +1007,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pausado"
+          }
+        }
+      }
+    },
+    "Paused until %@": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En pausa hasta las %@"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pausado até %@"
+          }
+        }
+      }
+    },
+    "Paused until tomorrow": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En pausa hasta mañana"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pausado até amanhã"
           }
         }
       }
@@ -803,6 +1187,54 @@
         }
       }
     },
+    "Reminders": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recordatorios"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lembretes"
+          }
+        }
+      }
+    },
+    "Reminders held": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recordatorios en espera"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lembretes em espera"
+          }
+        }
+      }
+    },
+    "Reminders on": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recordatorios activos"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lembretes ativos"
+          }
+        }
+      }
+    },
     "Remove a Glass": {
       "localizations": {
         "es": {
@@ -847,6 +1279,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Retomar"
+          }
+        }
+      }
+    },
+    "Set Unchair Reminders": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Configurar recordatorios de Unchair"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Configurar lembretes do Unchair"
           }
         }
       }
@@ -1123,6 +1571,22 @@
         }
       }
     },
+    "Start": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inicio"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Início"
+          }
+        }
+      }
+    },
     "Start Break": {
       "localizations": {
         "es": {
@@ -1283,6 +1747,22 @@
         }
       }
     },
+    "Time to sit down and drink water": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hora de sentarte y beber agua"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hora de sentar e beber água"
+          }
+        }
+      }
+    },
     "Time to stand up": {
       "localizations": {
         "es": {
@@ -1295,6 +1775,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hora de levantar"
+          }
+        }
+      }
+    },
+    "Time to stand up and drink water": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hora de ponerte de pie y beber agua"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hora de levantar e beber água"
+          }
+        }
+      }
+    },
+    "To hold reminders during a Focus, open a Focus in System Settings, choose Add Filter, and pick Unchair.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para poner los recordatorios en espera durante un modo de concentración, abre uno en Ajustes del Sistema, elige Añadir filtro y selecciona Unchair."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para colocar os lembretes em espera durante um Foco, abra um Foco nos Ajustes do Sistema, escolha Adicionar Filtro e selecione Unchair."
           }
         }
       }
@@ -1318,6 +1830,22 @@
     "Unchair": {
       "shouldTranslate": false
     },
+    "Unchair notices when you stop using the computer, it goes to sleep, or the screen locks. Time away counts as a break: your sitting time starts over when you're back.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unchair detecta cuando dejas de usar la computadora, entra en reposo o se bloquea la pantalla. El tiempo fuera cuenta como descanso: tu tiempo sentado empieza de nuevo al volver."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Unchair percebe quando você para de usar o computador, ele entra em repouso ou a tela é bloqueada. O tempo fora conta como pausa: seu tempo sentado recomeça quando você volta."
+          }
+        }
+      }
+    },
     "Unknown": {
       "localizations": {
         "es": {
@@ -1330,6 +1858,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Desconhecido"
+          }
+        }
+      }
+    },
+    "Until Tomorrow": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hasta mañana"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Até amanhã"
           }
         }
       }
@@ -1442,6 +1986,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Quando uma sessão de foco está em andamento, o Unchair segura o lembrete até a próxima pausa para não interromper você."
+          }
+        }
+      }
+    },
+    "Working Hours": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Horario laboral"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Horário de trabalho"
           }
         }
       }
