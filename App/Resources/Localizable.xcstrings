@@ -480,6 +480,22 @@
         }
       }
     },
+    "Alert": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aviso"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aviso"
+          }
+        }
+      }
+    },
     "Allow Notifications": {
       "localizations": {
         "es": {
@@ -492,6 +508,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Permitir notificações"
+          }
+        }
+      }
+    },
+    "Allow Notifications…": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permitir notificaciones…"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permitir notificações…"
           }
         }
       }
@@ -652,6 +684,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pausa"
+          }
+        }
+      }
+    },
+    "Break alert": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aviso de descanso"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aviso de pausa"
           }
         }
       }
@@ -860,38 +908,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Continuar"
-          }
-        }
-      }
-    },
-    "Cover the screen during breaks": {
-      "localizations": {
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cubrir la pantalla durante los descansos"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cobrir a tela durante as pausas"
-          }
-        }
-      }
-    },
-    "Covers your screens with the break timer so you actually step away. You can always skip it or press Escape.": {
-      "localizations": {
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cubre tus pantallas con el temporizador del descanso para que realmente te alejes. Siempre puedes omitirlo o pulsar Escape."
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cobre suas telas com o temporizador da pausa para você realmente se afastar. Você sempre pode pular ou pressionar Esc."
           }
         }
       }
@@ -1420,6 +1436,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Por 30 minutos"
+          }
+        }
+      }
+    },
+    "Full Screen": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pantalla completa"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tela cheia"
+          }
+        }
+      }
+    },
+    "Full screen covers your screens with the break timer so you actually step away. You can always skip it or press Escape.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pantalla completa cubre tus pantallas con el temporizador del descanso para que realmente te alejes. Siempre puedes omitirlo o pulsar Escape."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tela cheia cobre suas telas com o timer da pausa para você realmente se afastar. Você sempre pode pular ou apertar Esc."
           }
         }
       }
@@ -2048,6 +2096,22 @@
         }
       }
     },
+    "Notification": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notificación"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notificação"
+          }
+        }
+      }
+    },
     "Notifications": {
       "localizations": {
         "es": {
@@ -2060,6 +2124,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Notificações"
+          }
+        }
+      }
+    },
+    "Notifications are off": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las notificaciones están desactivadas"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As notificações estão desativadas"
           }
         }
       }
@@ -3520,6 +3600,22 @@
         }
       }
     },
+    "Step away from the screen for a few minutes.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aléjate de la pantalla unos minutos."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Afaste-se da tela por alguns minutos."
+          }
+        }
+      }
+    },
     "Stood %@ · Drank %@": {
       "localizations": {
         "es": {
@@ -3839,6 +3935,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Site do Unchair"
+          }
+        }
+      }
+    },
+    "Unchair can't remind you until you allow them.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unchair no puede recordarte nada hasta que las permitas."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Unchair não consegue te lembrar até você permitir."
           }
         }
       }

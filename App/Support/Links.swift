@@ -1,4 +1,4 @@
-import Foundation
+import AppKit
 
 // Literal URLs that are known to be valid.
 // swiftlint:disable force_unwrapping
@@ -22,5 +22,14 @@ enum Links {
             URLQueryItem(name: "macos", value: ProcessInfo.processInfo.operatingSystemVersionString),
         ]
         return components.url ?? feedback
+    }
+}
+
+/// The Notifications pane of System Settings.
+enum NotificationSettings {
+    static func open() {
+        if let url = URL(string: "x-apple.systempreferences:com.apple.Notifications-Settings.extension") {
+            NSWorkspace.shared.open(url)
+        }
     }
 }

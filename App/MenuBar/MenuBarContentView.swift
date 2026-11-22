@@ -9,6 +9,10 @@ struct MenuBarContentView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
+            if model.needsNotificationPermission {
+                NotificationBanner(model: model)
+            }
+
             PomodoroSection(model: model)
 
             if hasReminders {
@@ -72,6 +76,9 @@ struct MenuBarContentView: View {
         }
         .padding(16)
         .frame(width: 300)
+        .task {
+            await model.refreshNotificationStatus()
+        }
     }
 }
 

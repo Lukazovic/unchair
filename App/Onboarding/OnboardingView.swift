@@ -107,13 +107,7 @@ struct OnboardingView: View {
                 VStack(spacing: 8) {
                     Text("Notifications are turned off for Unchair.")
                         .foregroundStyle(.secondary)
-                    Button("Open Notification Settings…") {
-                        if let url =
-                            URL(string: "x-apple.systempreferences:com.apple.Notifications-Settings.extension")
-                        {
-                            NSWorkspace.shared.open(url)
-                        }
-                    }
+                    Button("Open Notification Settings…", action: NotificationSettings.open)
                 }
             default:
                 Button("Allow Notifications") {
