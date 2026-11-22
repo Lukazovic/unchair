@@ -1,18 +1,19 @@
 import SwiftUI
-import UnchairCore
 
 @main
 struct UnchairApp: App {
-    private let clock: any WallClock = SystemClock()
+    @State private var model = AppModel()
 
     var body: some Scene {
-        MenuBarExtra("Unchair", systemImage: "figure.stand") {
-            MenuBarContentView(clock: clock)
+        MenuBarExtra {
+            MenuBarContentView(model: model)
+        } label: {
+            MenuBarLabel(model: model)
         }
         .menuBarExtraStyle(.window)
 
         Settings {
-            SettingsView()
+            SettingsView(model: model)
         }
     }
 }
