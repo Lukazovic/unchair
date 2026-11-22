@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Sparkle: where to look for updates. -->
+	<key>SUFeedURL</key>
+	<string>https://lukazovic.github.io/unchair/appcast.xml</string>
+	<!-- Sparkle: public EdDSA key that verifies updates. Empty disables updates;
+	     run scripts/generate-update-keys.sh to create a key pair. -->
+	<key>SUPublicEDKey</key>
+	<string></string>
+	<!-- Sparkle: required for sandboxed apps. -->
+	<key>SUEnableInstallerLauncherService</key>
+	<true/>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+</dict>
+</plist>

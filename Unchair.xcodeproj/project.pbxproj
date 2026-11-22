@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AA0000000000000000000101 /* UnchairCore in Frameworks */ = {isa = PBXBuildFile; productRef = AA0000000000000000000301 /* UnchairCore */; };
+		CC0000000000000000000003 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = CC0000000000000000000002 /* Sparkle */; };
 		BB0000000000000000000001 /* UnchairWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000010 /* UnchairWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BB0000000000000000000002 /* UnchairCore in Frameworks */ = {isa = PBXBuildFile; productRef = BB0000000000000000000030 /* UnchairCore */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA0000000000000000000101 /* UnchairCore in Frameworks */,
+				CC0000000000000000000003 /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +133,7 @@
 			name = Unchair;
 			packageProductDependencies = (
 				AA0000000000000000000301 /* UnchairCore */,
+				CC0000000000000000000002 /* Sparkle */,
 			);
 			productName = Unchair;
 			productReference = AA0000000000000000000201 /* Unchair.app */;
@@ -190,6 +193,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				AA0000000000000000000C01 /* XCLocalSwiftPackageReference "Packages/UnchairCore" */,
+				CC0000000000000000000001 /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = AA0000000000000000000602 /* Products */;
@@ -379,8 +383,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_RESOURCE_ACCESS_CAMERA = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/Unchair-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Unchair;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_LSUIElement = YES;
@@ -416,8 +422,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_RESOURCE_ACCESS_CAMERA = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/Unchair-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Unchair;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_LSUIElement = YES;
@@ -534,6 +542,17 @@
 		};
 /* End XCLocalSwiftPackageReference section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		CC0000000000000000000001 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		AA0000000000000000000301 /* UnchairCore */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -542,6 +561,11 @@
 		BB0000000000000000000030 /* UnchairCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = UnchairCore;
+		};
+		CC0000000000000000000002 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC0000000000000000000001 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

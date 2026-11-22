@@ -72,6 +72,7 @@ final class AppModel {
     }
 
     @ObservationIgnored let history: HistoryStore
+    @ObservationIgnored let updates = UpdateController()
     @ObservationIgnored let clock: any WallClock
     @ObservationIgnored private let store: SettingsStore
     @ObservationIgnored private let notifications: NotificationService
