@@ -20,6 +20,38 @@
         }
       }
     },
+    "%@ paused, %@ left": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ en pausa, quedan %@"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ pausado, faltam %@"
+          }
+        }
+      }
+    },
+    "%@, %@ left": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@, quedan %@"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@, faltam %@"
+          }
+        }
+      }
+    },
     "%lld days": {
       "localizations": {
         "en": {
@@ -240,6 +272,22 @@
         }
       }
     },
+    "25-minute sessions, eye breaks, and frequent water.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sesiones de 25 minutos, descansos visuales y agua frecuente."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sessões de 25 minutos, pausas para os olhos e água com frequência."
+          }
+        }
+      }
+    },
     "30 Days": {
       "localizations": {
         "es": {
@@ -288,6 +336,22 @@
         }
       }
     },
+    "50-minute sessions on weekdays from 9 to 6, with posture checks.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sesiones de 50 minutos entre semana de 9 a 18, con revisiones de postura."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sessões de 50 minutos em dias úteis, das 9h às 18h, com checagens de postura."
+          }
+        }
+      }
+    },
     "7 Days": {
       "localizations": {
         "es": {
@@ -304,6 +368,22 @@
         }
       }
     },
+    "90-minute sessions and fewer, combined interruptions.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sesiones de 90 minutos y menos interrupciones, agrupadas."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sessões de 90 minutos e menos interrupções, agrupadas."
+          }
+        }
+      }
+    },
     "A common reference is about 2 to 2.5 liters of water a day, including water from food. Adjust it to your body, activity, and climate.": {
       "localizations": {
         "es": {
@@ -316,6 +396,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Uma referência comum é de cerca de 2 a 2,5 litros de água por dia, incluindo a água dos alimentos. Ajuste ao seu corpo, nível de atividade e clima."
+          }
+        }
+      }
+    },
+    "A gentle companion for long days at the computer. It lives in your menu bar.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un compañero amable para largas jornadas frente a la computadora. Vive en tu barra de menús."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Um companheiro gentil para longos dias no computador. Ele fica na sua barra de menus."
           }
         }
       }
@@ -380,6 +476,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Adicionar um copo"
+          }
+        }
+      }
+    },
+    "Allow Notifications": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permitir notificaciones"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permitir notificações"
+          }
+        }
+      }
+    },
+    "Allow notifications": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permite las notificaciones"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permita as notificações"
           }
         }
       }
@@ -496,6 +624,22 @@
         }
       }
     },
+    "Back": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atrás"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Voltar"
+          }
+        }
+      }
+    },
     "Break": {
       "localizations": {
         "es": {
@@ -572,6 +716,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Elevação de panturrilha"
+          }
+        }
+      }
+    },
+    "Check for Updates…": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buscar actualizaciones…"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buscar atualizações…"
+          }
+        }
+      }
+    },
+    "Check for updates automatically": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buscar actualizaciones automáticamente"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buscar atualizações automaticamente"
           }
         }
       }
@@ -668,6 +844,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Combinar lembretes num intervalo de"
+          }
+        }
+      }
+    },
+    "Continue": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuar"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuar"
           }
         }
       }
@@ -800,6 +992,22 @@
         }
       }
     },
+    "Deep Work": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trabajo profundo"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trabalho profundo"
+          }
+        }
+      }
+    },
     "Deep Work (90/20)": {
       "localizations": {
         "es": {
@@ -812,6 +1020,54 @@
           "stringUnit": {
             "state": "translated",
             "value": "Trabalho profundo (90/20)"
+          }
+        }
+      }
+    },
+    "Delete History": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Borrar historial"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apagar histórico"
+          }
+        }
+      }
+    },
+    "Delete all history?": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿Borrar todo el historial?"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apagar todo o histórico?"
+          }
+        }
+      }
+    },
+    "Delete…": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Borrar…"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apagar…"
           }
         }
       }
@@ -1008,6 +1264,22 @@
         }
       }
     },
+    "Find Unchair in the menu bar, next to the clock.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Encontrarás Unchair en la barra de menús, junto al reloj."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Você encontra o Unchair na barra de menus, perto do relógio."
+          }
+        }
+      }
+    },
     "Focus": {
       "localizations": {
         "es": {
@@ -1068,6 +1340,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sessão de foco iniciada."
+          }
+        }
+      }
+    },
+    "Focus sessions": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sesiones de concentración"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sessões de foco"
           }
         }
       }
@@ -1408,6 +1696,22 @@
         }
       }
     },
+    "How do you work?": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿Cómo trabajas?"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Como você trabalha?"
+          }
+        }
+      }
+    },
     "Hydration": {
       "localizations": {
         "es": {
@@ -1420,6 +1724,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hidratação"
+          }
+        }
+      }
+    },
+    "Hydration goal and 20-20-20 eye breaks.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Objetivo de hidratación y descansos visuales 20-20-20."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meta de hidratação e pausas 20-20-20 para os olhos."
           }
         }
       }
@@ -1484,6 +1804,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Interrupções"
+          }
+        }
+      }
+    },
+    "Launch Unchair at login": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abrir Unchair al iniciar sesión"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abrir o Unchair ao iniciar sessão"
           }
         }
       }
@@ -1600,6 +1936,22 @@
         }
       }
     },
+    "More": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Más"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mais"
+          }
+        }
+      }
+    },
     "Neck tilt": {
       "localizations": {
         "es": {
@@ -1612,6 +1964,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Inclinação do pescoço"
+          }
+        }
+      }
+    },
+    "Never during calls": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nunca durante llamadas"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nunca durante chamadas"
           }
         }
       }
@@ -1692,6 +2060,54 @@
           "stringUnit": {
             "state": "translated",
             "value": "Notificações"
+          }
+        }
+      }
+    },
+    "Notifications are on": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las notificaciones están activadas"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As notificações estão ativadas"
+          }
+        }
+      }
+    },
+    "Notifications are turned off for Unchair.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las notificaciones de Unchair están desactivadas."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As notificações do Unchair estão desativadas."
+          }
+        }
+      }
+    },
+    "Office": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oficina"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escritório"
           }
         }
       }
@@ -1888,6 +2304,38 @@
         }
       }
     },
+    "Phase progress": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Progreso de la fase"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Progresso da fase"
+          }
+        }
+      }
+    },
+    "Pick a starting point. You can fine-tune everything later in Settings.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elige un punto de partida. Puedes ajustarlo todo después en Ajustes."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escolha um ponto de partida. Você pode ajustar tudo depois nos Ajustes."
+          }
+        }
+      }
+    },
     "Play": {
       "localizations": {
         "es": {
@@ -1916,6 +2364,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pausas do Pomodoro"
+          }
+        }
+      }
+    },
+    "Pomodoro timer with breaks that fit you.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Temporizador Pomodoro con descansos a tu medida."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Timer Pomodoro com pausas do seu jeito."
           }
         }
       }
@@ -2012,6 +2476,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pressione um atalho…"
+          }
+        }
+      }
+    },
+    "Privacy Policy": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Política de privacidad"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Política de privacidade"
           }
         }
       }
@@ -2256,6 +2736,38 @@
         }
       }
     },
+    "Reminders to alternate, timed with your breaks.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recordatorios para alternar, sincronizados con tus descansos."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lembretes para alternar, sincronizados com suas pausas."
+          }
+        }
+      }
+    },
+    "Reminders wait while you're in a call or presenting.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los recordatorios esperan si estás en una llamada o presentando."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Os lembretes esperam enquanto você está em chamada ou apresentando."
+          }
+        }
+      }
+    },
     "Remove a Glass": {
       "localizations": {
         "es": {
@@ -2268,6 +2780,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Remover um copo"
+          }
+        }
+      }
+    },
+    "Report a Problem…": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Informar de un problema…"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Relatar um problema…"
           }
         }
       }
@@ -2384,6 +2912,22 @@
         }
       }
     },
+    "Send Feedback…": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enviar comentarios…"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enviar feedback…"
+          }
+        }
+      }
+    },
     "Set Unchair Reminders": {
       "localizations": {
         "es": {
@@ -2492,6 +3036,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sentar"
+          }
+        }
+      }
+    },
+    "Sit and stand": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sentado y de pie"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sentar e levantar"
           }
         }
       }
@@ -2832,6 +3392,22 @@
         }
       }
     },
+    "Start Using Unchair": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Empezar a usar Unchair"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Começar a usar o Unchair"
+          }
+        }
+      }
+    },
     "Start breaks automatically": {
       "localizations": {
         "es": {
@@ -2928,6 +3504,22 @@
         }
       }
     },
+    "Step %lld of %lld": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paso %1$lld de %2$lld"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Etapa %1$lld de %2$lld"
+          }
+        }
+      }
+    },
     "Stood %@ · Drank %@": {
       "localizations": {
         "es": {
@@ -2940,6 +3532,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Em pé: %@ · Água: %@"
+          }
+        }
+      }
+    },
+    "Student": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estudiante"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estudante"
           }
         }
       }
@@ -3052,6 +3660,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hora de uma pausa curta."
+          }
+        }
+      }
+    },
+    "Time remaining": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tiempo restante"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tempo restante"
           }
         }
       }
@@ -3203,6 +3827,22 @@
     "Unchair": {
       "shouldTranslate": false
     },
+    "Unchair Website": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sitio web de Unchair"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Site do Unchair"
+          }
+        }
+      }
+    },
     "Unchair isn't ready yet. Try again in a moment.": {
       "localizations": {
         "es": {
@@ -3231,6 +3871,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "O Unchair percebe quando você para de usar o computador, ele entra em repouso ou a tela é bloqueada. O tempo fora conta como pausa: seu tempo sentado recomeça quando você volta."
+          }
+        }
+      }
+    },
+    "Unchair uses notifications to tell you when to take a break, stand up, or drink water. You can reply right from them: Done, Snooze, or Start Break.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unchair usa notificaciones para avisarte cuándo descansar, ponerte de pie o beber agua. Puedes responder desde ellas: Hecho, Posponer o Iniciar descanso."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Unchair usa notificações para avisar quando fazer uma pausa, levantar ou beber água. Você pode responder direto nelas: Feito, Adiar ou Iniciar pausa."
           }
         }
       }
@@ -3411,6 +4067,54 @@
         }
       }
     },
+    "Water and eyes": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agua y vista"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Água e olhos"
+          }
+        }
+      }
+    },
+    "Water goal": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Objetivo de agua"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meta de água"
+          }
+        }
+      }
+    },
+    "Welcome to Unchair": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Te damos la bienvenida a Unchair"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Boas-vindas ao Unchair"
+          }
+        }
+      }
+    },
     "When a focus session is running, Unchair holds the reminder until your next break so it doesn't interrupt you.": {
       "localizations": {
         "es": {
@@ -3459,6 +4163,22 @@
         }
       }
     },
+    "You're all set": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Todo listo"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tudo pronto"
+          }
+        }
+      }
+    },
     "Your day with Unchair": {
       "localizations": {
         "es": {
@@ -3471,6 +4191,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Seu dia com o Unchair"
+          }
+        }
+      }
+    },
+    "Your focus sessions, sitting and standing time, water, and reminder history will be removed from this Mac. This can't be undone.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tus sesiones de concentración, tiempo sentado y de pie, agua e historial de recordatorios se eliminarán de esta Mac. No se puede deshacer."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Suas sessões de foco, tempo sentado e em pé, água e histórico de lembretes serão removidos deste Mac. Não é possível desfazer."
           }
         }
       }
