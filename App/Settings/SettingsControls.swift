@@ -1,4 +1,5 @@
 import SwiftUI
+import UnchairCore
 
 /// A row with a title, a formatted duration, and a stepper that edits it in minutes.
 struct DurationStepper: View {
@@ -94,6 +95,44 @@ struct TimeOfDayPicker: View {
         } set: { date in
             let components = calendar.dateComponents([.hour, .minute], from: date)
             minutes = (components.hour ?? 0) * 60 + (components.minute ?? 0)
+        }
+    }
+}
+
+/// Chooses between a notification and a full-screen alert.
+struct AlertStylePicker: View {
+    let title: LocalizedStringKey
+    @Binding var style: AlertStyle
+
+    init(_ title: LocalizedStringKey = "Alert", style: Binding<AlertStyle>) {
+        self.title = title
+        _style = style
+    }
+
+    var body: some View {
+        Picker(title, selection: $style) {
+            Text("Notification").tag(AlertStyle.notification)
+            Text("Full Screen").tag(AlertStyle.fullScreen)
+        }
+    }
+}
+
+extension AppModel {
+    /// The alert style of a reminder, for settings controls.
+    func alertStyle(for kind: ReminderKind) -> Binding<AlertStyle> {
+        Binding {
+            self.settings.alerts.style(for: kind)
+        } set: {
+            self.settings.alerts.setStyle($0, for: kind)
+        }
+    }
+
+    /// The Pomodoro break alert: a notification, or the full-screen break timer.
+    var breakAlertStyle: Binding<AlertStyle> {
+        Binding {
+            self.settings.breaks.showsOverlay ? .fullScreen : .notification
+        } set: {
+            self.settings.breaks.showsOverlay = $0 == .fullScreen
         }
     }
 }

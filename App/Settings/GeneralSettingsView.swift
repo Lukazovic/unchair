@@ -1,13 +1,11 @@
 import SwiftUI
 import UnchairCore
-import UserNotifications
 
 struct GeneralSettingsView: View {
     @Bindable var model: AppModel
 
     @State private var launchAtLogin = LaunchAtLogin.isEnabled
     @State private var launchAtLoginError: String?
-    @State private var notificationStatus: UNAuthorizationStatus?
     @State private var exportDocument: HistoryDocument?
     @State private var exportError: String?
     @State private var confirmsDeletingHistory = false
@@ -58,10 +56,12 @@ struct GeneralSettingsView: View {
                         .disabled(model.notificationSound == .none)
                     }
                 }
-                Button("Open Notification Settings…") {
-                    if let url = URL(string: "x-apple.systempreferences:com.apple.Notifications-Settings.extension") {
-                        NSWorkspace.shared.open(url)
+                if model.notificationStatus == .notDetermined {
+                    Button("Allow Notifications…") {
+                        Task { await model.requestNotificationPermission() }
                     }
+                } else {
+                    Button("Open Notification Settings…", action: NotificationSettings.open)
                 }
             }
 
@@ -122,7 +122,7 @@ struct GeneralSettingsView: View {
             Text(Copy.deleteHistoryMessage)
         }
         .task {
-            notificationStatus = await UNUserNotificationCenter.current().notificationSettings().authorizationStatus
+            await model.refreshNotificationStatus()
         }
     }
 
@@ -135,7 +135,7 @@ struct GeneralSettingsView: View {
     }
 
     private var notificationStatusText: LocalizedStringKey {
-        switch notificationStatus {
+        switch model.notificationStatus {
         case .authorized, .provisional, .ephemeral: "Allowed"
         case .denied: "Turned off"
         case .notDetermined: "Not set up"

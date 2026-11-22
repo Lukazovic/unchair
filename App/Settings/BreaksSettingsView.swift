@@ -10,6 +10,7 @@ struct BreaksSettingsView: View {
                 Group {
                     DurationStepper("Every", value: $model.settings.eyes.interval, minutes: 10 ... 60, step: 5)
                     Toggle("Fold into Pomodoro breaks", isOn: $model.settings.eyes.mergeWithPomodoro)
+                    AlertStylePicker(style: model.alertStyle(for: .eyes))
                 }
                 .disabled(!model.settings.eyes.isEnabled)
             } header: {
@@ -18,13 +19,8 @@ struct BreaksSettingsView: View {
                 Text(Copy.eyesFooter)
             }
 
-            Section {
+            Section("Pomodoro Breaks") {
                 Toggle("Suggest a stretch during breaks", isOn: $model.settings.breaks.suggestsStretches)
-                Toggle("Cover the screen during breaks", isOn: $model.settings.breaks.showsOverlay)
-            } header: {
-                Text("Pomodoro Breaks")
-            } footer: {
-                Text(Copy.overlayFooter)
             }
         }
         .formStyle(.grouped)

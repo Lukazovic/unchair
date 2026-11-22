@@ -1,21 +1,21 @@
 import AppKit
 import SwiftUI
 
-/// Covers every screen during a break, for users who want to be made to stop.
-/// Always skippable: a button, or Escape.
-final class BreakOverlayController {
+/// Covers every screen, for users who want to be made to stop: breaks and
+/// full-screen reminders. Always dismissible: a button, or Escape.
+final class FullScreenOverlay {
     private var panels: [OverlayPanel] = []
 
     var isVisible: Bool {
         !panels.isEmpty
     }
 
-    func show(model: AppModel, onHide: @escaping () -> Void) {
+    func show(onCancel: @escaping () -> Void, @ViewBuilder content: () -> some View) {
         guard panels.isEmpty else { return }
         for screen in NSScreen.screens {
             let panel = OverlayPanel(
                 contentRect: screen.frame,
-                styleMask: [.borderless, .fullSizeContentView],
+                styleMask: [.borderless, .nonactivatingPanel, .fullSizeContentView],
                 backing: .buffered,
                 defer: false
             )
@@ -24,13 +24,16 @@ final class BreakOverlayController {
             panel.isOpaque = false
             panel.backgroundColor = .clear
             panel.hasShadow = false
-            panel.onCancel = onHide
-            panel.contentView = NSHostingView(rootView: BreakOverlayView(model: model, onHide: onHide))
+            // Alerts fire while another app is active; panels hide on deactivate by default.
+            panel.hidesOnDeactivate = false
+            panel.onCancel = onCancel
+            panel.contentView = NSHostingView(rootView: content())
             panel.setFrame(screen.frame, display: true)
             panel.orderFrontRegardless()
             panels.append(panel)
         }
-        NSApplication.shared.activate()
+        // Non-activating panels take keyboard focus (Escape, Return) without
+        // needing the app to be active, which macOS may refuse for background apps.
         panels.first?.makeKey()
     }
 

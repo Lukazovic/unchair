@@ -20,6 +20,7 @@ struct PostureSettingsView: View {
                     step: 5
                 )
                 Toggle("Wait for a break to switch", isOn: $model.settings.posture.syncWithPomodoro)
+                AlertStylePicker(style: model.alertStyle(for: .posture))
             } footer: {
                 Text(Copy.postureSyncFooter)
             }
@@ -27,12 +28,15 @@ struct PostureSettingsView: View {
 
             Section {
                 Toggle("Remind me to check my posture", isOn: $model.settings.postureCheck.isEnabled)
-                DurationStepper(
-                    "Every",
-                    value: $model.settings.postureCheck.interval,
-                    minutes: 30 ... 240,
-                    step: 15
-                )
+                Group {
+                    DurationStepper(
+                        "Every",
+                        value: $model.settings.postureCheck.interval,
+                        minutes: 30 ... 240,
+                        step: 15
+                    )
+                    AlertStylePicker(style: model.alertStyle(for: .postureCheck))
+                }
                 .disabled(!model.settings.postureCheck.isEnabled)
             } header: {
                 Text("Posture Check")

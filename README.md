@@ -28,7 +28,7 @@ The project signs to run locally by default. To run with your own Apple Develope
 
 Run Unchair from Xcode or from `/Applications`. macOS refuses notification permission for apps launched from temporary folders.
 
-To explore the app with a month of in-memory sample history (Debug builds only, never touches your data), add `-UnchairSampleData` to the scheme's launch arguments.
+To explore the app with a month of in-memory sample history (Debug builds only, never touches your data), add `-UnchairSampleData` to the scheme's launch arguments. To see a full-screen reminder right away, add `-UnchairDemoFullScreen`.
 
 ## Project structure
 
@@ -37,7 +37,7 @@ App/                      macOS app target (SwiftUI)
 ├── MenuBar/              Menu bar extra UI
 ├── Settings/             Settings window
 ├── Statistics/           Statistics window (Swift Charts)
-├── BreakOverlay/         Optional full-screen break overlay
+├── FullScreen/           Optional full-screen breaks and reminders
 ├── History/              SwiftData history and export
 ├── Notifications/        Actionable notifications
 ├── SystemSignals/        Idle, sleep, lock, meetings, full screen

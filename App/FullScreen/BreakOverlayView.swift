@@ -7,6 +7,13 @@ struct BreakOverlayView: View {
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
+    private var isAwaiting: Bool {
+        if case .awaiting = model.engine.pomodoro.state {
+            return true
+        }
+        return false
+    }
+
     var body: some View {
         let pomodoro = model.engine.pomodoro
 
@@ -19,7 +26,11 @@ struct BreakOverlayView: View {
                 Text(pomodoro.phase?.title ?? "Break")
                     .font(.largeTitle.weight(.semibold))
 
-                if let remaining = pomodoro.remaining(at: model.now) {
+                if isAwaiting {
+                    Text("Step away from the screen for a few minutes.")
+                        .font(.title3)
+                        .foregroundStyle(.secondary)
+                } else if let remaining = pomodoro.remaining(at: model.now) {
                     Text(Format.countdown(remaining))
                         .font(.system(size: 96, weight: .light, design: .rounded))
                         .monospacedDigit()
@@ -41,9 +52,18 @@ struct BreakOverlayView: View {
                 HStack(spacing: 12) {
                     Button("Skip Break", action: model.skipPomodoroPhase)
                         .secondaryActionStyle()
-                    Button("Hide", action: onHide)
-                        .keyboardShortcut(.cancelAction)
-                        .prominentActionStyle()
+                    if isAwaiting {
+                        Button("Hide", action: onHide)
+                            .keyboardShortcut(.cancelAction)
+                            .secondaryActionStyle()
+                        Button("Start Break", action: model.startPomodoro)
+                            .keyboardShortcut(.defaultAction)
+                            .prominentActionStyle()
+                    } else {
+                        Button("Hide", action: onHide)
+                            .keyboardShortcut(.cancelAction)
+                            .prominentActionStyle()
+                    }
                 }
                 .controlSize(.large)
             }

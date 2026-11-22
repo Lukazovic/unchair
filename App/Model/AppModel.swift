@@ -3,6 +3,7 @@ import Carbon.HIToolbox
 import Foundation
 import Observation
 import UnchairCore
+import UserNotifications
 
 /// The app's single source of truth. Owns the ``UnchairEngine``, feeds it
 /// system signals, wakes it up at its next deadline, records history, and
@@ -49,6 +50,12 @@ final class AppModel {
 
     private(set) var hasCompletedOnboarding: Bool
 
+    /// Whether Unchair may post notifications. `nil` until first checked.
+    internal(set) var notificationStatus: UNAuthorizationStatus?
+
+    /// The reminders currently covering the screen.
+    internal(set) var fullScreenReminder: FullScreenReminder?
+
     /// Set when the global shortcut couldn't be registered.
     private(set) var globalShortcutError: String?
 
@@ -75,18 +82,19 @@ final class AppModel {
     @ObservationIgnored let updates = UpdateController()
     @ObservationIgnored let clock: any WallClock
     @ObservationIgnored private let store: SettingsStore
-    @ObservationIgnored private let notifications: NotificationService
+    @ObservationIgnored let notifications: NotificationService
     @ObservationIgnored private let presence = PresenceMonitor()
     @ObservationIgnored private let contextMonitor = ContextMonitor()
     @ObservationIgnored private let focusFilter = FocusFilterBridge.shared
-    @ObservationIgnored private let overlay = BreakOverlayController()
+    @ObservationIgnored let breakOverlay = FullScreenOverlay()
+    @ObservationIgnored let reminderOverlay = FullScreenOverlay()
     @ObservationIgnored private let hotKey = GlobalHotKey()
     @ObservationIgnored private let widgets = WidgetPublisher()
     @ObservationIgnored private var deadlineTask: Task<Void, Never>?
     @ObservationIgnored private var displayTask: Task<Void, Never>?
     @ObservationIgnored private var lastPresence: PresenceState?
-    /// The break whose overlay the user hid, identified by its end date.
-    @ObservationIgnored private var hiddenOverlayBreakEnd: Date?
+    /// The break whose overlay the user hid.
+    @ObservationIgnored var hiddenBreakOverlay: BreakOverlayKey?
 
     static let snoozeInterval: TimeInterval = 10 * 60
     static let focusExtension: TimeInterval = 5 * 60
@@ -123,8 +131,11 @@ final class AppModel {
             self?.perform(action, kinds: kinds)
         }
         notifications.activate()
-        if hasCompletedOnboarding {
-            Task { await notifications.requestAuthorization() }
+        Task {
+            if hasCompletedOnboarding {
+                await notifications.requestAuthorization()
+            }
+            await refreshNotificationStatus()
         }
         startMonitoring()
         registerGlobalShortcut()
@@ -138,13 +149,18 @@ final class AppModel {
             }
         }
         stateDidChange()
+        #if DEBUG
+            // Pass `-UnchairDemoFullScreen` to see a full-screen reminder at launch.
+            if CommandLine.arguments.contains("-UnchairDemoFullScreen") {
+                Task {
+                    try? await clock.sleep(for: 1)
+                    presentFullScreen([.posture, .hydration], postureTarget: .standing)
+                }
+            }
+        #endif
     }
 
     // MARK: - Onboarding
-
-    func requestNotificationPermission() async -> Bool {
-        await notifications.requestAuthorization()
-    }
 
     func completeOnboarding(profile: UsageProfile) {
         var newSettings = settings
@@ -188,12 +204,14 @@ final class AppModel {
 
     func confirmPostureSwitch() {
         record(.posture, .completed)
+        clearFullScreen(.posture)
         handle(engine.confirmPostureSwitch(now: clock.now))
         notifications.removeDelivered(.reminders)
     }
 
     func logWater() {
         let before = engine.hydration.intake(at: clock.now)
+        clearFullScreen(.hydration)
         handle(engine.logWater(now: clock.now))
         history.recordWater(engine.hydration.intake(at: clock.now) - before, at: clock.now)
         notifications.removeDelivered(.reminders)
@@ -207,12 +225,14 @@ final class AppModel {
 
     func completeEyeBreak() {
         record(.eyes, .completed)
+        clearFullScreen(.eyes)
         handle(engine.completeEyeBreak(now: clock.now))
         notifications.removeDelivered(.reminders)
     }
 
     func completePostureCheck() {
         record(.postureCheck, .completed)
+        clearFullScreen(.postureCheck)
         handle(engine.completePostureCheck(now: clock.now))
         notifications.removeDelivered(.reminders)
     }
@@ -298,7 +318,7 @@ final class AppModel {
         handle(engine.update(context, now: clock.now))
     }
 
-    private func perform(_ action: NotificationAction, kinds: Set<ReminderKind>) {
+    func perform(_ action: NotificationAction, kinds: Set<ReminderKind>) {
         switch action {
         case .startBreak, .startFocus: startPomodoro()
         case .skipBreak: skipPomodoroPhase()
@@ -327,6 +347,7 @@ final class AppModel {
         var events: [UnchairEvent] = []
         for kind in kinds {
             record(kind, .snoozed)
+            clearFullScreen(kind)
             switch kind {
             case .posture: events += engine.snoozePosture(by: Self.snoozeInterval, now: now)
             case .hydration: events += engine.snoozeHydration(by: Self.snoozeInterval, now: now)
@@ -353,7 +374,14 @@ final class AppModel {
         if events.contains(.dayEnded) {
             extras.summary = todaySummary()
         }
-        notifications.post(events, extras: extras, quietly: isQuiet)
+        // Full screen never interrupts calls, presentations, or quiet time.
+        let fullScreenKinds = isQuiet ? [] : events.compactMap(ReminderKind.init)
+            .filter { settings.alerts.style(for: $0) == .fullScreen }
+        let notified = events.filter { event in
+            ReminderKind(event).map { !fullScreenKinds.contains($0) } ?? true
+        }
+        notifications.post(notified, extras: extras, quietly: isQuiet)
+        presentFullScreen(fullScreenKinds, postureTarget: postureTarget(in: events))
         stateDidChange()
     }
 
@@ -400,21 +428,6 @@ final class AppModel {
         widgets.publish(WidgetSnapshot(engine: engine, today: todayStats(), now: now))
         scheduleNextDeadline()
         restartDisplayUpdates()
-    }
-
-    private func updateOverlay() {
-        guard settings.breaks.showsOverlay,
-              case let .running(phase, endsAt, _) = engine.pomodoro.state,
-              phase.isBreak,
-              hiddenOverlayBreakEnd != endsAt
-        else {
-            overlay.hide()
-            return
-        }
-        overlay.show(model: self) { [weak self] in
-            self?.hiddenOverlayBreakEnd = endsAt
-            self?.overlay.hide()
-        }
     }
 
     /// Sleeps until the engine's next deadline, then ticks it.
