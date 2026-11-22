@@ -26,6 +26,8 @@ public struct PomodoroTimer: Equatable, Sendable {
     /// sessions don't count.
     public private(set) var completedFocusSessions = 0
     public private(set) var lastCompletedPhase: PomodoroPhase?
+    /// How long the last completed phase lasted, for history.
+    public private(set) var lastCompletedPhaseDuration: TimeInterval?
     private var currentPhaseCounts = true
 
     public init(settings: PomodoroSettings = PomodoroSettings()) {
@@ -177,12 +179,13 @@ public struct PomodoroTimer: Equatable, Sendable {
 
     /// Completes the running phase if its deadline has passed.
     public mutating func tick(now: Date) -> PomodoroEvent? {
-        guard case let .running(phase, endsAt, _) = state, now >= endsAt else { return nil }
+        guard case let .running(phase, endsAt, duration) = state, now >= endsAt else { return nil }
 
         if phase == .focus, currentPhaseCounts {
             completedFocusSessions += 1
         }
         lastCompletedPhase = phase
+        lastCompletedPhaseDuration = duration
 
         let next = phaseAfter(phase)
         let autoStart = next.isBreak ? settings.autoStartBreaks : settings.autoStartFocus

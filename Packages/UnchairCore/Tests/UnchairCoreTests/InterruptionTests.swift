@@ -145,7 +145,9 @@ struct EngineInterruptionTests {
 
     @Test("meetings hold reminders until they end")
     func meetingHoldsReminders() {
-        var engine = makeEngine()
+        var settings = UnchairSettings()
+        settings.summary.isEnabled = false
+        var engine = makeEngine(settings)
         _ = engine.update(ReminderContext(isInMeeting: true), now: at(30))
 
         #expect(engine.tick(now: at(45)).isEmpty)

@@ -15,7 +15,14 @@ struct UnchairEngineTests {
         start.addingTimeInterval(value * 60)
     }
 
-    func makeEngine(_ settings: UnchairSettings = UnchairSettings()) -> UnchairEngine {
+    /// Default settings without the daily summary, so deadlines only reflect reminders.
+    static var defaults: UnchairSettings {
+        var settings = UnchairSettings()
+        settings.summary.isEnabled = false
+        return settings
+    }
+
+    func makeEngine(_ settings: UnchairSettings = Self.defaults) -> UnchairEngine {
         UnchairEngine(settings: settings, calendar: calendar, now: start)
     }
 
@@ -30,10 +37,9 @@ struct UnchairEngineTests {
 
     @Test("disabled reminders don't start")
     func disabledReminders() {
-        let settings = UnchairSettings(
-            posture: PostureSettings(isEnabled: false),
-            hydration: HydrationSettings(isEnabled: false)
-        )
+        var settings = Self.defaults
+        settings.posture.isEnabled = false
+        settings.hydration.isEnabled = false
 
         let engine = makeEngine(settings)
 
