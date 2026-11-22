@@ -55,7 +55,7 @@ struct StatsTests {
         let stats = history.stats(for: monday, now: hours(11))
 
         #expect(stats.standingTime == 0.75 * 3600)
-        #expect(stats.sittingTime == (1 + 1 + 0.75) * 3600)
+        #expect(stats.sittingTime == TimeInterval(2.75 * 3600))
     }
 
     @Test("a state without a following record is cut off")
