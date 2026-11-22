@@ -86,6 +86,7 @@ struct FocusTimerView: View {
 
             timer
                 .font(.system(size: 34, weight: .light, design: .rounded))
+                .widgetAccentable()
                 .monospacedDigit()
                 .minimumScaleFactor(0.6)
                 .lineLimit(1)
@@ -164,6 +165,7 @@ struct TodayView: View {
     let snapshot: WidgetSnapshot
 
     @Environment(\.widgetFamily) private var family
+    @Environment(\.widgetRenderingMode) private var renderingMode
 
     var body: some View {
         let water = Measurement(value: Double(snapshot.waterToday), unit: UnitVolume.milliliters)
@@ -189,7 +191,8 @@ struct TodayView: View {
             Spacer(minLength: 0)
 
             ProgressView(value: progress)
-                .tint(.cyan)
+                .tint(renderingMode == .fullColor ? .cyan : nil)
+                .widgetAccentable()
                 .accessibilityLabel(Text("Water goal"))
         }
     }
@@ -201,6 +204,7 @@ struct TodayView: View {
                 .foregroundStyle(.secondary)
             Text(value)
                 .font(.title3.weight(.semibold))
+                .widgetAccentable()
                 .monospacedDigit()
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
