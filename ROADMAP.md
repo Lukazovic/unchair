@@ -149,16 +149,19 @@ Goal: the app knows when *not* to bother you. This is the main differentiator.
 - [x] Eye break and posture check rows in the menu bar panel
 - Interactive widget buttons and end-to-end widget testing moved to *Needs an Apple Developer account* below
 
-### Phase 5 — Launch (v1.0)
+### Phase 5 — Launch (v1.0) ✅ *(free beta; App Store and notarization need an account)*
 
-- [ ] **Onboarding:** 3–4 screens: what Unchair does, notification permission, pick a preset (Student / Office / Deep work), launch at login
-- [ ] **Full localization:** review every string in `es` and `pt-BR` with native speakers; check truncation in all three languages; localize App Store metadata and screenshots
-- [ ] **Accessibility:** VoiceOver labels, Dynamic Type where applicable, Reduce Motion, sufficient contrast, full keyboard navigation
-- [ ] **Distribution decision** (see open questions): App Store (sandboxed) and/or Developer ID + notarization + Sparkle updates
-- [ ] Privacy policy (data stays on device), App Store privacy labels
-- [ ] Landing page (EN/ES/PT), support email, feedback channel
-- [ ] Crash reporting (opt-in or Xcode Organizer only)
-- [ ] TestFlight beta → feedback round → 1.0 release
+- [x] **Onboarding:** welcome, notification permission in context, a starting profile (Student / Office / Deep Work), launch at login
+- [x] **Localization pass:** every string in `es` and `pt-BR`; truncation checked in Spanish (the longest) on onboarding, the menu bar panel, and all settings tabs
+- [ ] Native speaker review of `es` and `pt-BR` (ask beta testers)
+- [x] **Accessibility:** VoiceOver labels and values for the timer, progress, and icon buttons; Reduce Motion respected; keyboard-driven onboarding
+- [x] **Distribution decision:** free beta as a DMG on GitHub Releases with Sparkle updates (`docs/RELEASING.md`); Developer ID, notarization, and App Store after getting an account
+- [x] Privacy policy (`PRIVACY.md`, website) and in-app history export and deletion
+- [x] Website in English, Spanish, and Portuguese (`docs/`, GitHub Pages); feedback and problem reports through GitHub issue forms, linked from **More** in the panel
+- [x] Crash reporting: no third-party SDK. *Report a Problem* pre-fills versions and asks for the Console crash report; Xcode Organizer once on the App Store
+- [ ] Beta round with friends → feedback → 1.0 release (TestFlight replaced by GitHub pre-releases)
+
+**Before the first beta:** run `scripts/generate-update-keys.sh`, add the `SPARKLE_PRIVATE_KEY` secret, turn on GitHub Pages, then push a `v0.1.0` tag.
 
 ### Phase 6 — Beyond macOS (exploratory)
 
