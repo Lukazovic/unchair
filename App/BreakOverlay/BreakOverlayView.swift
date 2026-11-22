@@ -40,8 +40,10 @@ struct BreakOverlayView: View {
 
                 HStack(spacing: 12) {
                     Button("Skip Break", action: model.skipPomodoroPhase)
+                        .secondaryActionStyle()
                     Button("Hide", action: onHide)
                         .keyboardShortcut(.cancelAction)
+                        .prominentActionStyle()
                 }
                 .controlSize(.large)
             }

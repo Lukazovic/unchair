@@ -42,10 +42,11 @@ struct OnboardingView: View {
                 Spacer()
                 if step != .welcome {
                     Button("Back") { go(to: step.rawValue - 1) }
+                        .secondaryActionStyle()
                 }
                 Button(step == .finish ? "Start Using Unchair" : "Continue", action: advance)
                     .keyboardShortcut(.defaultAction)
-                    .buttonStyle(.borderedProminent)
+                    .prominentActionStyle()
             }
             .padding(16)
         }

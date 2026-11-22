@@ -73,14 +73,14 @@ struct PomodoroSection: View {
                     Label("Start Focus", systemImage: "play.fill")
                         .frame(maxWidth: .infinity)
                 }
-                .buttonStyle(.borderedProminent)
+                .prominentActionStyle()
 
             case let .awaiting(next):
                 Button(action: model.startPomodoro) {
                     Label(next.isBreak ? "Start Break" : "Start Focus", systemImage: "play.fill")
                         .frame(maxWidth: .infinity)
                 }
-                .buttonStyle(.borderedProminent)
+                .prominentActionStyle()
                 if next.isBreak {
                     skipButton
                 }
@@ -91,6 +91,7 @@ struct PomodoroSection: View {
                     Label("Pause", systemImage: "pause.fill")
                         .frame(maxWidth: .infinity)
                 }
+                .secondaryActionStyle()
                 skipButton
                 resetButton
 
@@ -99,7 +100,7 @@ struct PomodoroSection: View {
                     Label("Resume", systemImage: "play.fill")
                         .frame(maxWidth: .infinity)
                 }
-                .buttonStyle(.borderedProminent)
+                .prominentActionStyle()
                 skipButton
                 resetButton
             }
@@ -112,6 +113,7 @@ struct PomodoroSection: View {
             Label("Skip", systemImage: "forward.end.fill")
                 .labelStyle(.iconOnly)
         }
+        .secondaryActionStyle()
         .help(Text("Skip"))
     }
 
@@ -120,6 +122,7 @@ struct PomodoroSection: View {
             Label("Reset", systemImage: "arrow.counterclockwise")
                 .labelStyle(.iconOnly)
         }
+        .secondaryActionStyle()
         .help(Text("Reset"))
     }
 }

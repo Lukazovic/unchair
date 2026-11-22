@@ -97,7 +97,6 @@ struct HydrationRow: View {
 /// A reminder row with an icon, a title, a status line, and a "Done" button.
 private struct SimpleReminderRow: View {
     let symbol: String
-    let tint: Color
     let title: LocalizedStringKey
     let status: String
     let isDone: Bool
@@ -107,7 +106,7 @@ private struct SimpleReminderRow: View {
         HStack(spacing: 10) {
             Image(systemName: symbol)
                 .font(.title3)
-                .foregroundStyle(tint)
+                .foregroundStyle(.tint)
                 .frame(width: 24)
                 .accessibilityHidden(true)
 
@@ -142,7 +141,6 @@ struct EyeBreakRow: View {
 
         SimpleReminderRow(
             symbol: "eye",
-            tint: .indigo,
             title: "Eyes",
             status: status,
             isDone: engine.eyesMergedIntoPomodoro,
@@ -163,7 +161,6 @@ struct PostureCheckRow: View {
 
         SimpleReminderRow(
             symbol: "figure.seated.side.right",
-            tint: .mint,
             title: "Posture check",
             status: status,
             isDone: false,
