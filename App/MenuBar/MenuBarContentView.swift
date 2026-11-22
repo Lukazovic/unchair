@@ -5,6 +5,8 @@ import UnchairCore
 struct MenuBarContentView: View {
     let model: AppModel
 
+    @Environment(\.openWindow) private var openWindow
+
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             PomodoroSection(model: model)
@@ -31,6 +33,10 @@ struct MenuBarContentView: View {
                 .simultaneousGesture(TapGesture().onEnded {
                     NSApplication.shared.activate()
                 })
+                Button("Statistics") {
+                    openWindow(id: "statistics")
+                    NSApplication.shared.activate()
+                }
                 Spacer()
                 Button("Quit Unchair") {
                     NSApplication.shared.terminate(nil)

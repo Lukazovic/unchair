@@ -15,5 +15,10 @@ struct UnchairApp: App {
         Settings {
             SettingsView(model: model)
         }
+
+        Window("Statistics", id: "statistics") {
+            StatsView(model: model)
+        }
+        .defaultSize(width: 620, height: 760)
     }
 }

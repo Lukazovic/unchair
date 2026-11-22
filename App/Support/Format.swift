@@ -15,6 +15,13 @@ enum Format {
         return Duration.seconds(minutes * 60).formatted(.units(allowed: [.hours, .minutes], width: .abbreviated))
     }
 
+    /// A total such as "0 min", "45 min", or "2 hr, 5 min", rounded down to the minute.
+    static func total(_ seconds: TimeInterval) -> String {
+        let minutes = max(0, Int(seconds / 60))
+        let allowed: Set<Duration.UnitsFormatStyle.Unit> = minutes >= 60 ? [.hours, .minutes] : [.minutes]
+        return Duration.seconds(minutes * 60).formatted(.units(allowed: allowed, width: .abbreviated))
+    }
+
     /// A volume such as "250 mL".
     static func volume(_ milliliters: Int) -> String {
         Measurement(value: Double(milliliters), unit: UnitVolume.milliliters)
