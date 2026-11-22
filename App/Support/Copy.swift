@@ -18,6 +18,12 @@ enum Copy {
     static let awayFooter: LocalizedStringResource = "Unchair notices when you stop using the computer, it goes to sleep, or the screen locks. Time away counts as a break: your sitting time starts over when you're back."
 
     static let focusFilterFooter: LocalizedStringResource = "To hold reminders during a Focus, open a Focus in System Settings, choose Add Filter, and pick Unchair."
+
+    static let eyesFooter: LocalizedStringResource = "Every 20 minutes, look at something about 6 meters (20 feet) away for 20 seconds. Evidence is mixed, but it's an easy habit that many people find relieving."
+
+    static let overlayFooter: LocalizedStringResource = "Covers your screens with the break timer so you actually step away. You can always skip it or press Escape."
+
+    static let summaryFooter: LocalizedStringResource = "A quiet notification with today's focus time, standing time, and water. With working hours on, it arrives when your workday ends."
 }
 
 // swiftlint:enable line_length

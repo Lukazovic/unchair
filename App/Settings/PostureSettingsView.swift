@@ -24,6 +24,21 @@ struct PostureSettingsView: View {
                 Text(Copy.postureSyncFooter)
             }
             .disabled(!model.settings.posture.isEnabled)
+
+            Section {
+                Toggle("Remind me to check my posture", isOn: $model.settings.postureCheck.isEnabled)
+                DurationStepper(
+                    "Every",
+                    value: $model.settings.postureCheck.interval,
+                    minutes: 30 ... 240,
+                    step: 15
+                )
+                .disabled(!model.settings.postureCheck.isEnabled)
+            } header: {
+                Text("Posture Check")
+            } footer: {
+                Text("A quiet nudge, without sound, to relax your shoulders and sit back.")
+            }
         }
         .formStyle(.grouped)
         .fixedSize(horizontal: false, vertical: true)

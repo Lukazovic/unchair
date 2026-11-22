@@ -13,6 +13,8 @@ struct SettingsView: View {
                 .tabItem { Label("Posture", systemImage: "figure.stand") }
             HydrationSettingsView(model: model)
                 .tabItem { Label("Hydration", systemImage: "drop") }
+            BreaksSettingsView(model: model)
+                .tabItem { Label("Breaks", systemImage: "eye") }
             InterruptionSettingsView(model: model)
                 .tabItem { Label("Interruptions", systemImage: "bell.badge") }
         }

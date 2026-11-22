@@ -59,3 +59,41 @@ struct VolumeStepper: View {
         }
     }
 }
+
+/// A time picker bound to minutes after midnight.
+struct TimeOfDayPicker: View {
+    let title: LocalizedStringKey
+    @Binding var minutes: Int
+    let range: ClosedRange<Int>
+
+    init(_ title: LocalizedStringKey, minutes: Binding<Int>, range: ClosedRange<Int>) {
+        self.title = title
+        _minutes = minutes
+        self.range = range
+    }
+
+    var body: some View {
+        DatePicker(title, selection: date, in: dateRange, displayedComponents: .hourAndMinute)
+    }
+
+    private var calendar: Calendar {
+        Calendar.current
+    }
+
+    private func toDate(_ minutes: Int) -> Date {
+        calendar.date(bySettingHour: minutes / 60, minute: minutes % 60, second: 0, of: Date()) ?? Date()
+    }
+
+    private var dateRange: ClosedRange<Date> {
+        toDate(range.lowerBound) ... toDate(range.upperBound)
+    }
+
+    private var date: Binding<Date> {
+        Binding {
+            toDate(minutes)
+        } set: { date in
+            let components = calendar.dateComponents([.hour, .minute], from: date)
+            minutes = (components.hour ?? 0) * 60 + (components.minute ?? 0)
+        }
+    }
+}
