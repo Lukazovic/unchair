@@ -65,6 +65,10 @@ Unchair.xcodeproj/
 | Apply formatting | `swiftformat .` |
 | Lint | `swiftlint --strict` |
 
+## App icon
+
+The icon is a layered Icon Composer file (`App/Resources/AppIcon.icon`), so macOS 26 can render it in the Default, Dark, Clear, and Tinted styles. Open it in Icon Composer to edit; the layers are plain SVGs in `Assets/`. Older macOS versions get a generated `.icns`.
+
 ## Localization
 
 Unchair ships in **English** (source), **Spanish** (`es`), and **Brazilian Portuguese** (`pt-BR`).
