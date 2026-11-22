@@ -2,7 +2,11 @@ import SwiftUI
 
 @main
 struct UnchairApp: App {
-    @State private var model = AppModel()
+    #if DEBUG
+        @State private var model = AppModel(history: .forLaunch())
+    #else
+        @State private var model = AppModel()
+    #endif
 
     var body: some Scene {
         MenuBarExtra {
