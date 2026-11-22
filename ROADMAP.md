@@ -26,7 +26,7 @@ Unchair helps you keep a healthy rhythm at the desk. It lives in the menu bar, f
 | Minimum OS | macOS 14 Sonoma (adopt macOS 26 Liquid Glass behind availability checks) |
 | Menu bar | `MenuBarExtra` (window style) |
 | Notifications | `UserNotifications` with actionable categories |
-| Persistence | `UserDefaults` / `@AppStorage` for settings, SwiftData for history |
+| Persistence | `UserDefaults` for settings, SwiftData for history |
 | Charts | Swift Charts |
 | System integration | App Intents (Shortcuts, Focus filters), WidgetKit, `SMAppService` (launch at login) |
 | Localization | String Catalogs (`.xcstrings`): `en` (source), `es`, `pt-BR` |
@@ -88,19 +88,19 @@ Goal: a skeleton that builds, tests, and localizes from day one.
 
 **Done when:** an empty menu bar item appears, the core package has a passing test, and CI is green.
 
-### Phase 1 — MVP: Focus + Posture + Water
+### Phase 1 — MVP: Focus + Posture + Water ✅ *(pending: full-workday dogfooding)*
 
 Goal: something you can use every day yourself.
 
-- [ ] **Pomodoro engine** in `UnchairCore`: states (idle, focus, short break, long break, paused), cycle counting, presets, custom durations
-- [ ] **Menu bar UI:** remaining time in the menu bar (optional), start/pause/skip/reset, current phase
-- [ ] **Notifications:** request permission, phase-change notifications with actions (*Start break*, *Skip*, *+5 min*)
-- [ ] **Sit/stand reminders:** configurable sit and stand durations, sync-with-Pomodoro option, *Done* / *Snooze* actions
-- [ ] **Water reminders:** interval, daily goal, *I drank* action logs a glass (configurable glass size)
-- [ ] **Settings window** (`Settings` scene): General, Focus, Posture, Hydration tabs
-- [ ] **Launch at login** via `SMAppService`
-- [ ] Persist settings with `@AppStorage`
-- [ ] Unit tests for all state machines (transitions, pause/resume, skips, day rollover)
+- [x] **Pomodoro engine** in `UnchairCore`: states (idle, focus, short break, long break, paused), cycle counting, presets, custom durations
+- [x] **Menu bar UI:** remaining time in the menu bar (optional), start/pause/skip/reset, current phase
+- [x] **Notifications:** request permission, phase-change notifications with actions (*Start break*, *Skip*, *+5 min*)
+- [x] **Sit/stand reminders:** configurable sit and stand durations, sync-with-Pomodoro option, *Done* / *Snooze* actions
+- [x] **Water reminders:** interval, daily goal, *I drank* action logs a glass (configurable glass size)
+- [x] **Settings window** (`Settings` scene): General, Focus, Posture, Hydration tabs
+- [x] **Launch at login** via `SMAppService`
+- [x] Persist settings and today's water log in `UserDefaults` (JSON-encoded `UnchairSettings`)
+- [x] Unit tests for all state machines (transitions, pause/resume, skips, day rollover)
 
 **Done when:** you run Unchair for a full workday without needing to touch the code.
 
