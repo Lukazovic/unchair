@@ -416,6 +416,22 @@
         }
       }
     },
+    "Another app already uses this shortcut.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otra app ya usa este atajo."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Outro app já usa este atalho."
+          }
+        }
+      }
+    },
     "At": {
       "localizations": {
         "es": {
@@ -620,6 +636,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Clássico (25/5)"
+          }
+        }
+      }
+    },
+    "Clear Shortcut": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Borrar atajo"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Limpar atalho"
           }
         }
       }
@@ -1408,6 +1440,22 @@
         }
       }
     },
+    "Include ⌘, ⌃, or ⌥, or use a function key.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Incluye ⌘, ⌃ u ⌥, o usa una tecla de función."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inclua ⌘, ⌃ ou ⌥, ou use uma tecla de função."
+          }
+        }
+      }
+    },
     "Interlace your fingers in front of you, round your upper back, and push your hands away for 20 seconds.": {
       "localizations": {
         "es": {
@@ -1568,6 +1616,22 @@
         }
       }
     },
+    "Next in %@": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Próximo en %@"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Próximo em %@"
+          }
+        }
+      }
+    },
     "Nice work. Take a seat and keep going.": {
       "localizations": {
         "es": {
@@ -1632,22 +1696,6 @@
         }
       }
     },
-    "Off": {
-      "localizations": {
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Desactivado"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Desativado"
-          }
-        }
-      }
-    },
     "Only remind me during working hours": {
       "localizations": {
         "es": {
@@ -1692,6 +1740,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Abrir ajustes de notificações…"
+          }
+        }
+      }
+    },
+    "Part of your Pomodoro breaks": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Incluido en los descansos del Pomodoro"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Incluído nas pausas do Pomodoro"
           }
         }
       }
@@ -1916,6 +1980,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Predefinição"
+          }
+        }
+      }
+    },
+    "Press a key combination to set the shortcut": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pulsa una combinación de teclas para definir el atajo"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pressione uma combinação de teclas para definir o atalho"
+          }
+        }
+      }
+    },
+    "Press a shortcut…": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pulsa un atajo…"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pressione um atalho…"
           }
         }
       }
@@ -2908,6 +3004,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Não há nada de mágico nos 25 minutos. Escolha o ritmo que mantém você focado sem se desgastar."
+          }
+        }
+      }
+    },
+    "This shortcut can't be used. Try another one.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Este atajo no se puede usar. Prueba otro."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Este atalho não pode ser usado. Tente outro."
           }
         }
       }
