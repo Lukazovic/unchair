@@ -1,6 +1,9 @@
 {
   "sourceLanguage": "en",
   "strings": {
+    "%@": {
+      "shouldTranslate": false
+    },
     "%@ of %@ today.": {
       "localizations": {
         "es": {
@@ -13,6 +16,64 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@ de %@ hoje."
+          }
+        }
+      }
+    },
+    "%lld days": {
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld day"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld days"
+                }
+              }
+            }
+          }
+        },
+        "es": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld día"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld días"
+                }
+              }
+            }
+          }
+        },
+        "pt-BR": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld dia"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld dias"
+                }
+              }
+            }
           }
         }
       }
@@ -163,6 +224,54 @@
         }
       }
     },
+    "1 Hour": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 hora"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 hora"
+          }
+        }
+      }
+    },
+    "30 Days": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 días"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 dias"
+          }
+        }
+      }
+    },
+    "30 Minutes": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 minutos"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 minutos"
+          }
+        }
+      }
+    },
     "5 More Minutes": {
       "localizations": {
         "es": {
@@ -175,6 +284,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mais 5 minutos"
+          }
+        }
+      }
+    },
+    "7 Days": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7 días"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7 dias"
           }
         }
       }
@@ -207,6 +332,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Uma nova sessão de foco começou."
+          }
+        }
+      }
+    },
+    "A quiet notification with today's focus time, standing time, and water. With working hours on, it arrives when your workday ends.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Una notificación silenciosa con tu tiempo de concentración, tiempo de pie y agua de hoy. Con el horario laboral activado, llega al terminar tu jornada."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uma notificação silenciosa com seu tempo de foco, tempo em pé e água de hoje. Com o horário de trabalho ativado, ela chega quando seu expediente termina."
+          }
+        }
+      }
+    },
+    "A quiet nudge, without sound, to relax your shoulders and sit back.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un aviso discreto, sin sonido, para relajar los hombros y apoyar la espalda."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Um lembrete discreto, sem som, para relaxar os ombros e encostar as costas."
           }
         }
       }
@@ -259,6 +416,22 @@
         }
       }
     },
+    "At": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A las"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Às"
+          }
+        }
+      }
+    },
     "Automation": {
       "localizations": {
         "es": {
@@ -307,6 +480,38 @@
         }
       }
     },
+    "Break": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Descanso"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pausa"
+          }
+        }
+      }
+    },
+    "Break started.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Descanso iniciado."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pausa iniciada."
+          }
+        }
+      }
+    },
     "Break's over": {
       "localizations": {
         "es": {
@@ -319,6 +524,86 @@
           "stringUnit": {
             "state": "translated",
             "value": "Fim da pausa"
+          }
+        }
+      }
+    },
+    "Breaks": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Descansos"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pausas"
+          }
+        }
+      }
+    },
+    "Calf raises": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elevación de talones"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elevação de panturrilha"
+          }
+        }
+      }
+    },
+    "Chest opener": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apertura de pecho"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abertura de peito"
+          }
+        }
+      }
+    },
+    "Chime": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Campanilla"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sininho"
+          }
+        }
+      }
+    },
+    "Clasp your hands behind your back, straighten your arms, and gently lift your chest for 20 seconds.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entrelaza las manos detrás de la espalda, estira los brazos y eleva suavemente el pecho durante 20 segundos."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entrelace as mãos atrás das costas, estique os braços e eleve suavemente o peito por 20 segundos."
           }
         }
       }
@@ -355,6 +640,38 @@
         }
       }
     },
+    "Cover the screen during breaks": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cubrir la pantalla durante los descansos"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cobrir a tela durante as pausas"
+          }
+        }
+      }
+    },
+    "Covers your screens with the break timer so you actually step away. You can always skip it or press Escape.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cubre tus pantallas con el temporizador del descanso para que realmente te alejes. Siempre puedes omitirlo o pulsar Escape."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cobre suas telas com o temporizador da pausa para você realmente se afastar. Você sempre pode pular ou pressionar Esc."
+          }
+        }
+      }
+    },
     "Custom": {
       "localizations": {
         "es": {
@@ -371,6 +688,38 @@
         }
       }
     },
+    "Daily Summary": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resumen diario"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resumo diário"
+          }
+        }
+      }
+    },
+    "Daily average: %@": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Promedio diario: %@"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Média diária: %@"
+          }
+        }
+      }
+    },
     "Daily goal": {
       "localizations": {
         "es": {
@@ -383,6 +732,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Meta diária"
+          }
+        }
+      }
+    },
+    "Day": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Día"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dia"
           }
         }
       }
@@ -435,6 +800,38 @@
         }
       }
     },
+    "Droplet": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gota"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gota"
+          }
+        }
+      }
+    },
+    "Duration": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duración"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duração"
+          }
+        }
+      }
+    },
     "Durations": {
       "localizations": {
         "es": {
@@ -467,6 +864,86 @@
         }
       }
     },
+    "Ends the current focus session and starts a break.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Termina la sesión de concentración actual e inicia un descanso."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Encerra a sessão de foco atual e inicia uma pausa."
+          }
+        }
+      }
+    },
+    "Every": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cada"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A cada"
+          }
+        }
+      }
+    },
+    "Every 20 minutes, look at something about 6 meters (20 feet) away for 20 seconds. Evidence is mixed, but it's an easy habit that many people find relieving.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cada 20 minutos, mira algo a unos 6 metros durante 20 segundos. La evidencia es mixta, pero es un hábito sencillo que a mucha gente le alivia."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A cada 20 minutos, olhe para algo a cerca de 6 metros por 20 segundos. As evidências são mistas, mas é um hábito simples que alivia muita gente."
+          }
+        }
+      }
+    },
+    "Export…": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exportar…"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exportar…"
+          }
+        }
+      }
+    },
+    "Extend one arm, palm up, and gently pull your fingers back. Hold for 15 seconds, then switch.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Extiende un brazo con la palma hacia arriba y tira suavemente de los dedos hacia atrás. Mantén 15 segundos y cambia."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estenda um braço com a palma para cima e puxe os dedos suavemente para trás. Segure por 15 segundos e troque."
+          }
+        }
+      }
+    },
     "Extended (50/10)": {
       "localizations": {
         "es": {
@@ -479,6 +956,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Estendido (50/10)"
+          }
+        }
+      }
+    },
+    "Eyes": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ojos"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Olhos"
           }
         }
       }
@@ -499,6 +992,22 @@
         }
       }
     },
+    "Focus Streak": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Racha de concentración"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sequência de foco"
+          }
+        }
+      }
+    },
     "Focus session complete": {
       "localizations": {
         "es": {
@@ -511,6 +1020,54 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sessão de foco concluída"
+          }
+        }
+      }
+    },
+    "Focus session started.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sesión de concentración iniciada."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sessão de foco iniciada."
+          }
+        }
+      }
+    },
+    "Focused %@ · Stood %@ · Drank %@": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Concentración: %@ · De pie: %@ · Agua: %@"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foco: %@ · Em pé: %@ · Água: %@"
+          }
+        }
+      }
+    },
+    "Fold into Pomodoro breaks": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Integrar en los descansos del Pomodoro"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Incluir nas pausas do Pomodoro"
           }
         }
       }
@@ -563,6 +1120,22 @@
         }
       }
     },
+    "Get Today's Stats": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obtener estadísticas de hoy"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obter estatísticas de hoje"
+          }
+        }
+      }
+    },
     "Glass size": {
       "localizations": {
         "es": {
@@ -575,6 +1148,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tamanho do copo"
+          }
+        }
+      }
+    },
+    "Goal": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Objetivo"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meta"
+          }
+        }
+      }
+    },
+    "Hamstring stretch": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estiramiento de isquiotibiales"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alongamento posterior da coxa"
           }
         }
       }
@@ -675,6 +1280,38 @@
         }
       }
     },
+    "Hide": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ocultar"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ocultar"
+          }
+        }
+      }
+    },
+    "History": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Historial"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Histórico"
+          }
+        }
+      }
+    },
     "Hold Unchair's posture and water reminders while this Focus is on.": {
       "localizations": {
         "es": {
@@ -771,6 +1408,22 @@
         }
       }
     },
+    "Interlace your fingers in front of you, round your upper back, and push your hands away for 20 seconds.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entrelaza los dedos delante de ti, redondea la parte alta de la espalda y empuja las manos hacia delante durante 20 segundos."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entrelace os dedos à sua frente, arredonde a parte superior das costas e empurre as mãos para a frente por 20 segundos."
+          }
+        }
+      }
+    },
     "Interruptions": {
       "localizations": {
         "es": {
@@ -799,6 +1452,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Abrir ao iniciar sessão"
+          }
+        }
+      }
+    },
+    "Log Water": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Registrar agua"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Registrar água"
+          }
+        }
+      }
+    },
+    "Logs a glass of water.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Registra un vaso de agua."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Registra um copo de água."
           }
         }
       }
@@ -851,6 +1536,38 @@
         }
       }
     },
+    "Look at something about 6 meters (20 feet) away for 20 seconds.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mira algo a unos 6 metros durante 20 segundos."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Olhe para algo a cerca de 6 metros por 20 segundos."
+          }
+        }
+      }
+    },
+    "Neck tilt": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inclinación de cuello"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inclinação do pescoço"
+          }
+        }
+      }
+    },
     "Nice work. Take a seat and keep going.": {
       "localizations": {
         "es": {
@@ -863,6 +1580,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bom trabalho. Sente-se e continue."
+          }
+        }
+      }
+    },
+    "None": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ninguno"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nenhum"
           }
         }
       }
@@ -895,6 +1628,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Notificações"
+          }
+        }
+      }
+    },
+    "Off": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Desactivado"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Desativado"
           }
         }
       }
@@ -995,6 +1744,22 @@
         }
       }
     },
+    "Pause reminders for ${duration}": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pausar recordatorios durante ${duration}"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pausar lembretes por ${duration}"
+          }
+        }
+      }
+    },
     "Paused": {
       "localizations": {
         "es": {
@@ -1043,6 +1808,54 @@
         }
       }
     },
+    "Pauses posture, water, and eye reminders for a while.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pausa los recordatorios de postura, agua y ojos por un tiempo."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pausa os lembretes de postura, água e olhos por um tempo."
+          }
+        }
+      }
+    },
+    "Play": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reproducir"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reproduzir"
+          }
+        }
+      }
+    },
+    "Pomodoro Breaks": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Descansos del Pomodoro"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pausas do Pomodoro"
+          }
+        }
+      }
+    },
     "Posture": {
       "localizations": {
         "es": {
@@ -1055,6 +1868,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Postura"
+          }
+        }
+      }
+    },
+    "Posture Check": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Revisión de postura"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checagem de postura"
+          }
+        }
+      }
+    },
+    "Posture check": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Revisa tu postura"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checagem de postura"
           }
         }
       }
@@ -1107,6 +1952,22 @@
         }
       }
     },
+    "Range": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Periodo"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Período"
+          }
+        }
+      }
+    },
     "Ready to Focus": {
       "localizations": {
         "es": {
@@ -1135,6 +1996,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pronto para focar de novo?"
+          }
+        }
+      }
+    },
+    "Relax your shoulders, sit back, and keep your screen at eye level.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Relaja los hombros, apoya la espalda y mantén la pantalla a la altura de los ojos."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Relaxe os ombros, encoste as costas e mantenha a tela na altura dos olhos."
           }
         }
       }
@@ -1171,6 +2048,22 @@
         }
       }
     },
+    "Remind me to check my posture": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recordarme revisar mi postura"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lembrar de checar minha postura"
+          }
+        }
+      }
+    },
     "Remind me to drink water": {
       "localizations": {
         "es": {
@@ -1183,6 +2076,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lembrar de beber água"
+          }
+        }
+      }
+    },
+    "Remind me to rest my eyes (20-20-20)": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recordarme descansar la vista (20-20-20)"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lembrar de descansar os olhos (20-20-20)"
           }
         }
       }
@@ -1235,6 +2144,22 @@
         }
       }
     },
+    "Reminders paused.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recordatorios en pausa."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lembretes pausados."
+          }
+        }
+      }
+    },
     "Remove a Glass": {
       "localizations": {
         "es": {
@@ -1267,6 +2192,38 @@
         }
       }
     },
+    "Rest your eyes": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Descansa la vista"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Descanse os olhos"
+          }
+        }
+      }
+    },
+    "Rest your eyes on something far away.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Descansa la vista mirando algo lejano."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Descanse os olhos olhando para algo distante."
+          }
+        }
+      }
+    },
     "Resume": {
       "localizations": {
         "es": {
@@ -1279,6 +2236,54 @@
           "stringUnit": {
             "state": "translated",
             "value": "Retomar"
+          }
+        }
+      }
+    },
+    "Returns today's focus time, standing time, and water.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Devuelve el tiempo de concentración, el tiempo de pie y el agua de hoy."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Retorna o tempo de foco, o tempo em pé e a água de hoje."
+          }
+        }
+      }
+    },
+    "Roll your shoulders backward ten times, then forward ten times.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gira los hombros hacia atrás diez veces y luego hacia delante diez veces."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gire os ombros para trás dez vezes e depois para a frente dez vezes."
+          }
+        }
+      }
+    },
+    "Seated twist": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Torsión sentado"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Torção sentado"
           }
         }
       }
@@ -1343,6 +2348,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pausa curta"
+          }
+        }
+      }
+    },
+    "Shoulder rolls": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Giros de hombros"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rotação de ombros"
           }
         }
       }
@@ -1427,6 +2448,22 @@
         }
       }
     },
+    "Sit tall and turn your upper body to one side. Hold for 15 seconds on each side.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siéntate erguido y gira el torso hacia un lado. Mantén 15 segundos por lado."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sente-se ereto e gire o tronco para um lado. Segure por 15 segundos de cada lado."
+          }
+        }
+      }
+    },
     "Sitting": {
       "localizations": {
         "es": {
@@ -1475,6 +2512,22 @@
         }
       }
     },
+    "Slowly tilt your head toward each shoulder. Hold for 15 seconds on each side.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inclina despacio la cabeza hacia cada hombro. Mantén 15 segundos por lado."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Incline a cabeça devagar em direção a cada ombro. Segure por 15 segundos de cada lado."
+          }
+        }
+      }
+    },
     "Snooze 10 Minutes": {
       "localizations": {
         "es": {
@@ -1491,6 +2544,38 @@
         }
       }
     },
+    "Soft Bell": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Campana suave"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sino suave"
+          }
+        }
+      }
+    },
+    "Sound": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonido"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Som"
+          }
+        }
+      }
+    },
     "Stand Up": {
       "localizations": {
         "es": {
@@ -1503,6 +2588,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Levantar"
+          }
+        }
+      }
+    },
+    "Stand and slowly rise onto your toes, then lower. Repeat 15 times.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "De pie, sube despacio sobre las puntas de los pies y baja. Repite 15 veces."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Em pé, suba devagar na ponta dos pés e desça. Repita 15 vezes."
           }
         }
       }
@@ -1551,6 +2652,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Levante-se em %@"
+          }
+        }
+      }
+    },
+    "Stand, put one heel forward, and hinge at the hips. Hold for 20 seconds on each leg.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "De pie, adelanta un talón e inclínate desde la cadera. Mantén 20 segundos por pierna."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Em pé, coloque um calcanhar à frente e incline o quadril. Segure por 20 segundos em cada perna."
           }
         }
       }
@@ -1651,6 +2768,54 @@
         }
       }
     },
+    "Start or pause focus from anywhere": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Iniciar o pausar la concentración desde cualquier lugar"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Iniciar ou pausar o foco de qualquer lugar"
+          }
+        }
+      }
+    },
+    "Starts a focus session, or resumes the paused one.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inicia una sesión de concentración o reanuda la pausada."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inicia uma sessão de foco ou retoma a pausada."
+          }
+        }
+      }
+    },
+    "Statistics": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estadísticas"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estatísticas"
+          }
+        }
+      }
+    },
     "Status": {
       "localizations": {
         "es": {
@@ -1663,6 +2828,70 @@
           "stringUnit": {
             "state": "translated",
             "value": "Estado"
+          }
+        }
+      }
+    },
+    "Stood %@ · Drank %@": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "De pie: %@ · Agua: %@"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Em pé: %@ · Água: %@"
+          }
+        }
+      }
+    },
+    "Suggest a stretch during breaks": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sugerir un estiramiento en los descansos"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sugerir um alongamento nas pausas"
+          }
+        }
+      }
+    },
+    "Summarize my day": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resumir mi día"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resumir meu dia"
+          }
+        }
+      }
+    },
+    "System Default": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Predeterminado del sistema"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Padrão do sistema"
           }
         }
       }
@@ -1715,6 +2944,22 @@
         }
       }
     },
+    "Time to %@": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hora de %@"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hora de %@"
+          }
+        }
+      }
+    },
     "Time to drink water": {
       "localizations": {
         "es": {
@@ -1747,22 +2992,6 @@
         }
       }
     },
-    "Time to sit down and drink water": {
-      "localizations": {
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hora de sentarte y beber agua"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hora de sentar e beber água"
-          }
-        }
-      }
-    },
     "Time to stand up": {
       "localizations": {
         "es": {
@@ -1779,22 +3008,6 @@
         }
       }
     },
-    "Time to stand up and drink water": {
-      "localizations": {
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hora de ponerte de pie y beber agua"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hora de levantar e beber água"
-          }
-        }
-      }
-    },
     "To hold reminders during a Focus, open a Focus in System Settings, choose Add Filter, and pick Unchair.": {
       "localizations": {
         "es": {
@@ -1807,6 +3020,54 @@
           "stringUnit": {
             "state": "translated",
             "value": "Para colocar os lembretes em espera durante um Foco, abra um Foco nos Ajustes do Sistema, escolha Adicionar Filtro e selecione Unchair."
+          }
+        }
+      }
+    },
+    "Today": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hoy"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hoje"
+          }
+        }
+      }
+    },
+    "Today's Stats": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estadísticas de hoy"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estatísticas de hoje"
+          }
+        }
+      }
+    },
+    "Try this: %@.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prueba esto: %@."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Experimente: %@."
           }
         }
       }
@@ -1829,6 +3090,22 @@
     },
     "Unchair": {
       "shouldTranslate": false
+    },
+    "Unchair isn't ready yet. Try again in a moment.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unchair aún no está listo. Inténtalo de nuevo en un momento."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Unchair ainda não está pronto. Tente novamente em instantes."
+          }
+        }
+      }
     },
     "Unchair notices when you stop using the computer, it goes to sleep, or the screen locks. Time away counts as a break: your sitting time starts over when you're back.": {
       "localizations": {
@@ -1926,6 +3203,38 @@
         }
       }
     },
+    "Upper back stretch": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estiramiento de espalda alta"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alongamento da parte superior das costas"
+          }
+        }
+      }
+    },
+    "Value": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Valor"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Valor"
+          }
+        }
+      }
+    },
     "Version": {
       "localizations": {
         "es": {
@@ -1974,6 +3283,22 @@
         }
       }
     },
+    "Water Goal Streak": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Racha del objetivo de agua"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sequência da meta de água"
+          }
+        }
+      }
+    },
     "When a focus session is running, Unchair holds the reminder until your next break so it doesn't interrupt you.": {
       "localizations": {
         "es": {
@@ -2006,6 +3331,54 @@
         }
       }
     },
+    "Wrist stretch": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estiramiento de muñeca"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alongamento de punho"
+          }
+        }
+      }
+    },
+    "Your day with Unchair": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tu día con Unchair"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seu dia com o Unchair"
+          }
+        }
+      }
+    },
+    "Your history stays on this Mac.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tu historial se queda en esta Mac."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seu histórico fica neste Mac."
+          }
+        }
+      }
+    },
     "Your long break has started. You've earned it.": {
       "localizations": {
         "es": {
@@ -2034,6 +3407,102 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sua pausa curta começou."
+          }
+        }
+      }
+    },
+    "check your posture": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "revisar tu postura"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "checar a postura"
+          }
+        }
+      }
+    },
+    "drink water": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "beber agua"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "beber água"
+          }
+        }
+      }
+    },
+    "of %@": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "de %@"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "de %@"
+          }
+        }
+      }
+    },
+    "rest your eyes": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "descansar la vista"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "descansar os olhos"
+          }
+        }
+      }
+    },
+    "sit down": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "sentarte"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "sentar"
+          }
+        }
+      }
+    },
+    "stand up": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ponerte de pie"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "levantar"
           }
         }
       }

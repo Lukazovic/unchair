@@ -1,0 +1,166 @@
+{
+  "sourceLanguage": "en",
+  "version": "1.0",
+  "strings": {
+    "Get my ${applicationName} stats": {
+      "localizations": {
+        "es": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Ver mis estadísticas de ${applicationName}"
+            ]
+          }
+        },
+        "pt-BR": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Ver minhas estatísticas do ${applicationName}"
+            ]
+          }
+        }
+      }
+    },
+    "How is my day in ${applicationName}": {
+      "localizations": {
+        "es": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Cómo va mi día en ${applicationName}"
+            ]
+          }
+        },
+        "pt-BR": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Como está meu dia no ${applicationName}"
+            ]
+          }
+        }
+      }
+    },
+    "I drank water ${applicationName}": {
+      "localizations": {
+        "es": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Bebí agua ${applicationName}"
+            ]
+          }
+        },
+        "pt-BR": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Bebi água ${applicationName}"
+            ]
+          }
+        }
+      }
+    },
+    "Log water in ${applicationName}": {
+      "localizations": {
+        "es": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Registrar agua en ${applicationName}"
+            ]
+          }
+        },
+        "pt-BR": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Registrar água no ${applicationName}"
+            ]
+          }
+        }
+      }
+    },
+    "Pause ${applicationName} reminders": {
+      "localizations": {
+        "es": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Pausar recordatorios de ${applicationName}"
+            ]
+          }
+        },
+        "pt-BR": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Pausar lembretes do ${applicationName}"
+            ]
+          }
+        }
+      }
+    },
+    "Start a ${applicationName} focus session": {
+      "localizations": {
+        "es": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Iniciar una sesión de concentración de ${applicationName}"
+            ]
+          }
+        },
+        "pt-BR": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Iniciar uma sessão de foco do ${applicationName}"
+            ]
+          }
+        }
+      }
+    },
+    "Start a break in ${applicationName}": {
+      "localizations": {
+        "es": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Iniciar un descanso en ${applicationName}"
+            ]
+          }
+        },
+        "pt-BR": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Iniciar uma pausa no ${applicationName}"
+            ]
+          }
+        }
+      }
+    },
+    "Start focus in ${applicationName}": {
+      "localizations": {
+        "es": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Iniciar concentración en ${applicationName}"
+            ]
+          }
+        },
+        "pt-BR": {
+          "stringSet": {
+            "state": "translated",
+            "values": [
+              "Iniciar foco no ${applicationName}"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
