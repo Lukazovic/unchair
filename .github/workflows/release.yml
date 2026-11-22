@@ -23,9 +23,9 @@ jobs:
         with:
           xcode-version: latest-stable
 
+      # The build number is the commit count (see make-dmg.sh), the same as
+      # local builds, so Sparkle always sees newer commits as newer builds.
       - name: Build DMG
-        env:
-          BUILD_NUMBER: ${{ github.run_number }}
         run: |
           version="${GITHUB_REF_NAME#v}"
           echo "VERSION=$version" >> "$GITHUB_ENV"

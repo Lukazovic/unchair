@@ -9,6 +9,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 version="${1:-$(xcodebuild -project Unchair.xcodeproj -target Unchair -showBuildSettings 2>/dev/null | awk -F' = ' '/ MARKETING_VERSION /{print $2}')}"
+# Sparkle compares build numbers, so they must only grow: the commit count on main does.
 build_number="${BUILD_NUMBER:-$(git rev-list --count HEAD)}"
 build_dir="build"
 derived_data="$build_dir/DerivedData"
