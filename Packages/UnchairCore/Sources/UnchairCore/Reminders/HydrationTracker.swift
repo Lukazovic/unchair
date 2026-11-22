@@ -100,9 +100,13 @@ public struct HydrationTracker: Equatable, Sendable {
     }
 
     /// Reminds the user when the interval has passed, then schedules the next one.
-    public mutating func tick(now: Date) -> HydrationEvent? {
+    ///
+    /// - Parameter dueBy: Treat a reminder due at or before this date as due
+    ///   now. Used to deliver reminders that are close together at once.
+    ///   Defaults to `now`.
+    public mutating func tick(now: Date, dueBy: Date? = nil) -> HydrationEvent? {
         rollOverIfNeeded(now: now)
-        guard let nextReminderAt, now >= nextReminderAt else { return nil }
+        guard let nextReminderAt, max(now, dueBy ?? now) >= nextReminderAt else { return nil }
         self.nextReminderAt = now.addingTimeInterval(settings.reminderInterval)
         return .reminder(intake: log.intake, goal: settings.dailyGoal)
     }

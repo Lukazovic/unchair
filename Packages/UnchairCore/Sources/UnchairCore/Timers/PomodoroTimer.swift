@@ -107,7 +107,8 @@ public struct PomodoroTimer: Equatable, Sendable {
 
     public mutating func pause(now: Date) {
         guard case let .running(phase, endsAt, duration) = state else { return }
-        state = .paused(phase, remaining: max(0, endsAt.timeIntervalSince(now)), duration: duration)
+        let remaining = min(duration, max(0, endsAt.timeIntervalSince(now)))
+        state = .paused(phase, remaining: remaining, duration: duration)
     }
 
     public mutating func resume(now: Date) {
@@ -156,6 +157,14 @@ public struct PomodoroTimer: Equatable, Sendable {
         default:
             return false
         }
+    }
+
+    /// Abandons a running or paused focus session without counting it, leaving
+    /// a fresh focus session waiting to be started. The cycle is kept.
+    public mutating func discardFocus() {
+        guard phase == .focus else { return }
+        currentPhaseCounts = true
+        state = .awaiting(.focus)
     }
 
     /// Stops the timer and clears the cycle.

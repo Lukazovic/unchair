@@ -100,13 +100,17 @@ public struct PostureReminder: Equatable, Sendable {
 
     /// Suggests a switch when it's due.
     ///
-    /// - Parameter isFocusing: Whether a focus session is running. With
-    ///   ``PostureSettings/syncWithPomodoro`` on, the suggestion waits until
-    ///   this is `false`.
-    public mutating func tick(now: Date, isFocusing: Bool) -> PostureEvent? {
+    /// - Parameters:
+    ///   - isFocusing: Whether a focus session is running. With
+    ///     ``PostureSettings/syncWithPomodoro`` on, the suggestion waits until
+    ///     this is `false`.
+    ///   - dueBy: Treat a switch due at or before this date as due now. Used to
+    ///     deliver reminders that are close together at once. Defaults to `now`.
+    public mutating func tick(now: Date, isFocusing: Bool, dueBy: Date? = nil) -> PostureEvent? {
         let shouldHold = isFocusing && settings.syncWithPomodoro
+        let dueBy = max(now, dueBy ?? now)
         switch state {
-        case let .counting(until) where now >= until:
+        case let .counting(until) where dueBy >= until:
             if shouldHold {
                 state = .waitingForBreak
                 return nil
