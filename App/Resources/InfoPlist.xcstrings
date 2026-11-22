@@ -1,0 +1,39 @@
+{
+  "sourceLanguage": "en",
+  "version": "1.0",
+  "strings": {
+    "NSCameraUsageDescription": {
+      "comment": "Camera permission prompt",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unchair checks whether your camera is in use so it can hold reminders during calls. It never records or shows video."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unchair comprueba si tu cámara está en uso para poner los recordatorios en espera durante las llamadas. Nunca graba ni muestra video."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Unchair verifica se a sua câmera está em uso para colocar os lembretes em espera durante chamadas. Ele nunca grava nem mostra vídeo."
+          }
+        }
+      }
+    },
+    "CFBundleDisplayName": {
+      "shouldTranslate": false
+    },
+    "CFBundleName": {
+      "shouldTranslate": false
+    },
+    "NSHumanReadableCopyright": {
+      "shouldTranslate": false
+    }
+  }
+}
