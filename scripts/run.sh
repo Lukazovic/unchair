@@ -23,15 +23,18 @@ done
 
 derived_data="build/DerivedData"
 echo "Building…"
-xcodebuild build \
+log=$(mktemp)
+if ! xcodebuild build \
     -project Unchair.xcodeproj \
     -scheme Unchair \
     -configuration Debug \
-    -derivedDataPath "$derived_data" \
-    -quiet 2>&1 | grep -E "error:" || true
+    -derivedDataPath "$derived_data" >"$log" 2>&1; then
+    grep -E "error:" "$log" || tail -20 "$log"
+    echo "Build failed." >&2
+    exit 1
+fi
 
 app="$derived_data/Build/Products/Debug/Unchair.app"
-[[ -x "$app/Contents/MacOS/Unchair" ]] || { echo "Build failed." >&2; exit 1; }
 
 if pgrep -x Unchair >/dev/null; then
     echo "Quitting the running copy of Unchair…"
