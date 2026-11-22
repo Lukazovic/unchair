@@ -172,65 +172,9 @@ final class NotificationService: NSObject, UNUserNotificationCenterDelegate {
             : kinds == [.postureCheck] ? Category.gentle
             : Category.reminders
 
-        if kinds.count == 1, let kind = kinds.first {
-            fillSingleReminder(content, kind: kind, postureTarget: postureTarget, extras: extras)
-            return
-        }
-
-        let actions = kinds.map { kind -> String in
-            switch kind {
-            case .posture:
-                if postureTarget == .sitting {
-                    return String(localized: "sit down")
-                }
-                return String(localized: "stand up")
-            case .hydration: return String(localized: "drink water")
-            case .eyes: return String(localized: "rest your eyes")
-            case .postureCheck: return String(localized: "check your posture")
-            }
-        }
-        let list = ListFormatter.localizedString(byJoining: actions)
-        content.title = String(localized: "Time to \(list)")
-        if kinds.contains(.hydration) {
-            content.body = waterProgress(extras.water)
-        } else if kinds.contains(.eyes) {
-            content.body = eyeInstructions
-        }
-    }
-
-    private func fillSingleReminder(
-        _ content: UNMutableNotificationContent,
-        kind: ReminderKind,
-        postureTarget: Posture?,
-        extras: NotificationExtras
-    ) {
-        switch kind {
-        case .posture:
-            if postureTarget == .sitting {
-                content.title = String(localized: "Time to sit down")
-                content.body = String(localized: "Nice work. Take a seat and keep going.")
-            } else {
-                content.title = String(localized: "Time to stand up")
-                content.body = String(localized: "Raise your desk and work standing for a while.")
-            }
-        case .hydration:
-            content.title = String(localized: "Time to drink water")
-            content.body = waterProgress(extras.water)
-        case .eyes:
-            content.title = String(localized: "Rest your eyes")
-            content.body = eyeInstructions
-        case .postureCheck:
-            content.title = String(localized: "Posture check")
-            content.body = String(localized: "Relax your shoulders, sit back, and keep your screen at eye level.")
-        }
-    }
-
-    private var eyeInstructions: String {
-        String(localized: "Look at something about 6 meters (20 feet) away for 20 seconds.")
-    }
-
-    private func waterProgress(_ water: (intake: Int, goal: Int)) -> String {
-        String(localized: "\(Format.volume(water.intake)) of \(Format.volume(water.goal)) today.")
+        let message = ReminderMessage(kinds: kinds, postureTarget: postureTarget, water: extras.water)
+        content.title = message.title
+        content.body = message.body
     }
 
     private func fill(
