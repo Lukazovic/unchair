@@ -104,18 +104,24 @@ Goal: something you can use every day yourself.
 
 **Done when:** you run Unchair for a full workday without needing to touch the code.
 
-### Phase 2 — Smart interruptions
+### Phase 2 — Smart interruptions ✅ *(pending: a day full of calls)*
 
 Goal: the app knows when *not* to bother you. This is the main differentiator.
 
-- [ ] **Reminder scheduler** with coalescing: reminders due within a window are merged into one notification
-- [ ] **Global snooze / quiet mode** (“Pause reminders for 30 min / 1 h / until tomorrow”)
-- [ ] **Idle detection:** pause timers after N minutes without input (`CGEventSource.secondsSinceLastEventType`), resume or reset on return; treat being away as a natural break
-- [ ] **Sleep/wake and screen lock handling** (`NSWorkspace` notifications)
-- [ ] **Meeting detection:** defer reminders while microphone/camera is in use (CoreAudio “is running somewhere” property) — *verify sandbox compatibility*
-- [ ] **Fullscreen / presentation detection:** defer reminders when the frontmost app is fullscreen — *verify what is possible without Screen Recording permission*
-- [ ] **Focus filter** (`SetFocusFilterIntent`): users choose what Unchair does per Focus mode
-- [ ] **Working hours:** reminders only on chosen days and hours
+- [x] **Reminder scheduler** with coalescing: reminders due within a window are merged into one notification
+- [x] **Global snooze / quiet mode** (“Pause reminders for 30 min / 1 h / until tomorrow”)
+- [x] **Idle detection:** pause timers after N minutes without input (`CGEventSource.secondsSinceLastEventType`), resume or reset on return; treat being away as a natural break
+- [x] **Sleep/wake and screen lock handling** (`NSWorkspace` notifications)
+- [x] **Meeting detection:** defer reminders while microphone/camera is in use (per-process CoreAudio input state on macOS 14.2+, device fallback; CoreMediaIO for the camera) — *works in the sandbox; the camera needs the camera entitlement, which doesn't capture anything*
+- [x] **Fullscreen / presentation detection:** defer reminders when the frontmost app is fullscreen — *uses window bounds and owner only, which need no Screen Recording permission*
+- [x] **Focus filter** (`SetFocusFilterIntent`): users choose what Unchair does per Focus mode
+- [x] **Working hours:** reminders only on chosen days and hours
+
+**Known limitations / follow-ups**
+
+- [ ] Watching a video without touching the keyboard counts as being away. Detect display-sleep assertions (`IOPMCopyAssertionsByProcess`) to treat media playback as presence.
+- [ ] Full screen detection is only verified to build; test it with Keynote, browsers, and video players.
+- [ ] Optionally re-remind once if a suggestion is ignored for a long time.
 
 **Done when:** a day full of calls produces zero badly timed reminders.
 
