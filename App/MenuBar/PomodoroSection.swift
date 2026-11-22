@@ -28,6 +28,10 @@ struct PomodoroSection: View {
                 .tint(pomodoro.phase?.isBreak == true ? .green : .accentColor)
 
             controls
+
+            if let stretch = model.currentStretch {
+                StretchCard(stretch: stretch)
+            }
         }
     }
 
