@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unchair</title>
+  <meta name="description" content="A native macOS menu bar companion for focus, standing breaks, water, and eye rest.">
+  <link rel="icon" href="icon.png">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    window.STRINGS = {
+      en: {
+        title: "Unchair — healthy rhythm at your desk",
+        tagline: "A gentle Mac companion for long days at the computer.",
+        download: "Download the free beta",
+        requirements: "For macOS 14 Sonoma or later. English, Español, Português.",
+        featuresTitle: "What it does",
+        f1t: "Focus sessions", f1: "A Pomodoro timer in your menu bar, with presets from 25 to 90 minutes.",
+        f2t: "Sit and stand", f2: "Reminders to alternate, timed with your breaks so they never break your focus.",
+        f3t: "Water and eyes", f3: "A daily water goal and optional 20-20-20 eye breaks.",
+        f4t: "Never during calls", f4: "Reminders wait while you're in a call, presenting, away, or in a Focus.",
+        f5t: "Your day at a glance", f5: "Statistics, widgets, Shortcuts, and a daily summary.",
+        f6t: "Private", f6: "Everything stays on your Mac. No accounts, no tracking.",
+        installTitle: "Installing the beta",
+        installIntro: "The beta isn't notarized by Apple yet, so macOS asks you to confirm it once:",
+        i1: "Open the DMG and drag Unchair to Applications.",
+        i2: "Open Unchair. macOS says it can't verify the developer. Click <strong>Done</strong>.",
+        i3: "Open <strong>System Settings → Privacy &amp; Security</strong>, scroll down, and click <strong>Open Anyway</strong> next to Unchair.",
+        i4: "Confirm with your password. From then on, Unchair opens normally and updates itself.",
+        privacy: "Privacy Policy", feedback: "Send feedback", source: "Source code"
+      },
+      es: {
+        title: "Unchair — un ritmo saludable en tu escritorio",
+        tagline: "Un compañero amable para largas jornadas frente a la Mac.",
+        download: "Descargar la beta gratuita",
+        requirements: "Para macOS 14 Sonoma o posterior. English, Español, Português.",
+        featuresTitle: "Qué hace",
+        f1t: "Sesiones de concentración", f1: "Un temporizador Pomodoro en la barra de menús, de 25 a 90 minutos.",
+        f2t: "Sentado y de pie", f2: "Recordatorios para alternar, sincronizados con tus descansos para no cortar tu concentración.",
+        f3t: "Agua y vista", f3: "Un objetivo diario de agua y descansos visuales 20-20-20 opcionales.",
+        f4t: "Nunca durante llamadas", f4: "Los recordatorios esperan si estás en una llamada, presentando, ausente o en un modo de concentración.",
+        f5t: "Tu día de un vistazo", f5: "Estadísticas, widgets, Atajos y un resumen diario.",
+        f6t: "Privado", f6: "Todo se queda en tu Mac. Sin cuentas ni rastreo.",
+        installTitle: "Instalar la beta",
+        installIntro: "La beta aún no está notarizada por Apple, así que macOS te pide confirmarla una vez:",
+        i1: "Abre el DMG y arrastra Unchair a Aplicaciones.",
+        i2: "Abre Unchair. macOS dirá que no puede verificar al desarrollador. Haz clic en <strong>OK</strong>.",
+        i3: "Abre <strong>Ajustes del Sistema → Privacidad y seguridad</strong>, desplázate y haz clic en <strong>Abrir de todos modos</strong> junto a Unchair.",
+        i4: "Confirma con tu contraseña. A partir de ahí, Unchair se abre con normalidad y se actualiza solo.",
+        privacy: "Política de privacidad", feedback: "Enviar comentarios", source: "Código fuente"
+      },
+      pt: {
+        title: "Unchair — um ritmo saudável na sua mesa",
+        tagline: "Um companheiro gentil para longos dias no computador.",
+        download: "Baixar o beta gratuito",
+        requirements: "Para macOS 14 Sonoma ou posterior. English, Español, Português.",
+        featuresTitle: "O que ele faz",
+        f1t: "Sessões de foco", f1: "Um timer Pomodoro na barra de menus, de 25 a 90 minutos.",
+        f2t: "Sentar e levantar", f2: "Lembretes para alternar, sincronizados com as pausas para não quebrar seu foco.",
+        f3t: "Água e olhos", f3: "Uma meta diária de água e pausas 20-20-20 opcionais para os olhos.",
+        f4t: "Nunca durante chamadas", f4: "Os lembretes esperam enquanto você está em chamada, apresentando, ausente ou em Foco.",
+        f5t: "Seu dia num relance", f5: "Estatísticas, widgets, Atalhos e um resumo diário.",
+        f6t: "Privado", f6: "Tudo fica no seu Mac. Sem contas, sem rastreamento.",
+        installTitle: "Instalando o beta",
+        installIntro: "O beta ainda não é notarizado pela Apple, então o macOS pede uma confirmação uma vez:",
+        i1: "Abra o DMG e arraste o Unchair para Aplicativos.",
+        i2: "Abra o Unchair. O macOS diz que não pode verificar o desenvolvedor. Clique em <strong>OK</strong>.",
+        i3: "Abra <strong>Ajustes do Sistema → Privacidade e Segurança</strong>, role para baixo e clique em <strong>Abrir Mesmo Assim</strong> ao lado do Unchair.",
+        i4: "Confirme com sua senha. A partir daí, o Unchair abre normalmente e se atualiza sozinho.",
+        privacy: "Política de privacidade", feedback: "Enviar feedback", source: "Código-fonte"
+      }
+    };
+  </script>
+  <script src="i18n.js"></script>
+</head>
+<body>
+  <main>
+    <nav aria-label="Language">
+      <button data-lang="en">English</button>
+      <button data-lang="es">Español</button>
+      <button data-lang="pt">Português</button>
+    </nav>
+
+    <section class="hero">
+      <img src="icon.png" alt="">
+      <h1>Unchair</h1>
+      <p class="tagline" data-i18n="tagline">A gentle Mac companion for long days at the computer.</p>
+      <a class="button" href="https://github.com/Lukazovic/unchair/releases/latest" data-i18n="download">Download the free beta</a>
+      <p class="small" data-i18n="requirements">For macOS 14 Sonoma or later.</p>
+    </section>
+
+    <h2 data-i18n="featuresTitle">What it does</h2>
+    <div class="features">
+      <div class="feature"><strong data-i18n="f1t"></strong><p data-i18n="f1"></p></div>
+      <div class="feature"><strong data-i18n="f2t"></strong><p data-i18n="f2"></p></div>
+      <div class="feature"><strong data-i18n="f3t"></strong><p data-i18n="f3"></p></div>
+      <div class="feature"><strong data-i18n="f4t"></strong><p data-i18n="f4"></p></div>
+      <div class="feature"><strong data-i18n="f5t"></strong><p data-i18n="f5"></p></div>
+      <div class="feature"><strong data-i18n="f6t"></strong><p data-i18n="f6"></p></div>
+    </div>
+
+    <h2 data-i18n="installTitle">Installing the beta</h2>
+    <p data-i18n="installIntro"></p>
+    <ol>
+      <li data-i18n="i1"></li>
+      <li data-i18n="i2"></li>
+      <li data-i18n="i3"></li>
+      <li data-i18n="i4"></li>
+    </ol>
+
+    <footer>
+      <a href="privacy.html" data-i18n="privacy">Privacy Policy</a>
+      <a href="https://github.com/Lukazovic/unchair/issues/new?template=feedback.yml" data-i18n="feedback">Send feedback</a>
+      <a href="https://github.com/Lukazovic/unchair" data-i18n="source">Source code</a>
+    </footer>
+  </main>
+</body>
+</html>
