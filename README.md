@@ -83,3 +83,7 @@ Unchair ships in **English** (source), **Spanish** (`es`), and **Brazilian Portu
 1. Keep `swiftformat --lint .`, `swiftlint --strict`, and the tests passing (CI checks all three).
 2. Put logic in `UnchairCore` with tests. Keep the app target thin.
 3. Use short, one-line commit messages in the imperative mood.
+
+## License
+
+Unchair is available under the [MIT License](LICENSE).
