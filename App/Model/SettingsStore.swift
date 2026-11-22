@@ -8,6 +8,8 @@ struct SettingsStore {
         static let hydrationLog = "hydrationLog.v1"
         static let showsTimerInMenuBar = "showsTimerInMenuBar"
         static let quietUntil = "quietUntil"
+        static let notificationSound = "notificationSound"
+        static let globalShortcut = "globalShortcut"
     }
 
     private let defaults: UserDefaults
@@ -32,6 +34,16 @@ struct SettingsStore {
     var quietUntil: Date? {
         get { defaults.object(forKey: Key.quietUntil) as? Date }
         nonmutating set { defaults.set(newValue, forKey: Key.quietUntil) }
+    }
+
+    var notificationSound: NotificationSoundOption {
+        get { defaults.string(forKey: Key.notificationSound).flatMap(NotificationSoundOption.init) ?? .chime }
+        nonmutating set { defaults.set(newValue.rawValue, forKey: Key.notificationSound) }
+    }
+
+    var globalShortcut: GlobalShortcut {
+        get { defaults.string(forKey: Key.globalShortcut).flatMap(GlobalShortcut.init) ?? .controlOptionCommandP }
+        nonmutating set { defaults.set(newValue.rawValue, forKey: Key.globalShortcut) }
     }
 
     var showsTimerInMenuBar: Bool {

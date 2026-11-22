@@ -1,17 +1,21 @@
+import AppKit
 import Foundation
 import Observation
 import UnchairCore
 
 /// The app's single source of truth. Owns the ``UnchairEngine``, feeds it
-/// system signals, wakes it up at its next deadline, and turns its events into
-/// notifications.
+/// system signals, wakes it up at its next deadline, records history, and
+/// turns events into notifications.
 @Observable
 final class AppModel {
-    enum QuietDuration: CaseIterable {
+    enum QuietDuration: String, CaseIterable {
         case thirtyMinutes
         case oneHour
         case untilTomorrow
     }
+
+    /// The running app's model, for App Intents.
+    private(set) static var shared: AppModel?
 
     private(set) var engine: UnchairEngine
 
@@ -28,6 +32,20 @@ final class AppModel {
         didSet { store.showsTimerInMenuBar = showsTimerInMenuBar }
     }
 
+    var notificationSound: NotificationSoundOption {
+        didSet {
+            store.notificationSound = notificationSound
+            notifications.sound = notificationSound
+        }
+    }
+
+    var globalShortcut: GlobalShortcut {
+        didSet {
+            store.globalShortcut = globalShortcut
+            registerGlobalShortcut()
+        }
+    }
+
     /// The time the UI renders against. Refreshed every second while the
     /// Pomodoro runs, and less often otherwise.
     private(set) var now: Date
@@ -36,14 +54,32 @@ final class AppModel {
         engine.holdReason(at: now)
     }
 
-    @ObservationIgnored private let clock: any WallClock
+    /// The stretch to suggest during the current or upcoming break.
+    var currentStretch: Stretch? {
+        guard settings.breaks.suggestsStretches else { return nil }
+        let pomodoro = engine.pomodoro
+        let isBreak = switch pomodoro.state {
+        case let .running(phase, _, _), let .paused(phase, _, _), let .awaiting(phase): phase.isBreak
+        case .idle: false
+        }
+        return isBreak ? Stretch.suggestion(forBreak: pomodoro.completedFocusSessions) : nil
+    }
+
+    @ObservationIgnored let history: HistoryStore
+    @ObservationIgnored let clock: any WallClock
     @ObservationIgnored private let store: SettingsStore
     @ObservationIgnored private let notifications: NotificationService
     @ObservationIgnored private let presence = PresenceMonitor()
     @ObservationIgnored private let contextMonitor = ContextMonitor()
     @ObservationIgnored private let focusFilter = FocusFilterBridge.shared
+    @ObservationIgnored private let overlay = BreakOverlayController()
+    @ObservationIgnored private let hotKey = GlobalHotKey()
+    @ObservationIgnored private let widgets = WidgetPublisher()
     @ObservationIgnored private var deadlineTask: Task<Void, Never>?
     @ObservationIgnored private var displayTask: Task<Void, Never>?
+    @ObservationIgnored private var lastPresence: PresenceState?
+    /// The break whose overlay the user hid, identified by its end date.
+    @ObservationIgnored private var hiddenOverlayBreakEnd: Date?
 
     static let snoozeInterval: TimeInterval = 10 * 60
     static let focusExtension: TimeInterval = 5 * 60
@@ -51,10 +87,12 @@ final class AppModel {
     init(
         clock: any WallClock = SystemClock(),
         store: SettingsStore = SettingsStore(),
+        history: HistoryStore = HistoryStore(),
         notifications: NotificationService = NotificationService()
     ) {
         self.clock = clock
         self.store = store
+        self.history = history
         self.notifications = notifications
 
         let now = clock.now
@@ -62,6 +100,8 @@ final class AppModel {
         self.now = now
         self.settings = settings
         showsTimerInMenuBar = store.showsTimerInMenuBar
+        notificationSound = store.notificationSound
+        globalShortcut = store.globalShortcut
         engine = UnchairEngine(
             settings: settings,
             hydrationLog: store.hydrationLog,
@@ -69,11 +109,23 @@ final class AppModel {
             now: now
         )
 
-        notifications.onAction = { [weak self] action in
-            self?.perform(action)
+        Self.shared = self
+        notifications.sound = notificationSound
+        notifications.onAction = { [weak self] action, kinds in
+            self?.perform(action, kinds: kinds)
         }
         notifications.activate()
         startMonitoring()
+        registerGlobalShortcut()
+        NotificationCenter.default.addObserver(
+            forName: NSApplication.willTerminateNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            MainActor.assumeIsolated {
+                self?.recordPresence(.away)
+            }
+        }
         stateDidChange()
     }
 
@@ -107,32 +159,37 @@ final class AppModel {
         notifications.removeDelivered(.pomodoro)
     }
 
-    // MARK: - Posture
+    // MARK: - Reminders
 
     func confirmPostureSwitch() {
+        record(.posture, .completed)
         handle(engine.confirmPostureSwitch(now: clock.now))
-        notifications.removeDelivered(.posture, .reminders)
+        notifications.removeDelivered(.reminders)
     }
-
-    func snoozePosture() {
-        handle(engine.snoozePosture(by: Self.snoozeInterval, now: clock.now))
-        notifications.removeDelivered(.posture, .reminders)
-    }
-
-    // MARK: - Hydration
 
     func logWater() {
+        let before = engine.hydration.intake(at: clock.now)
         handle(engine.logWater(now: clock.now))
-        notifications.removeDelivered(.hydration, .reminders)
+        history.recordWater(engine.hydration.intake(at: clock.now) - before, at: clock.now)
+        notifications.removeDelivered(.reminders)
     }
 
     func removeWater() {
+        let before = engine.hydration.intake(at: clock.now)
         handle(engine.removeWater(now: clock.now))
+        history.recordWater(engine.hydration.intake(at: clock.now) - before, at: clock.now)
     }
 
-    func snoozeHydration() {
-        handle(engine.snoozeHydration(by: Self.snoozeInterval, now: clock.now))
-        notifications.removeDelivered(.hydration, .reminders)
+    func completeEyeBreak() {
+        record(.eyes, .completed)
+        handle(engine.completeEyeBreak(now: clock.now))
+        notifications.removeDelivered(.reminders)
+    }
+
+    func completePostureCheck() {
+        record(.postureCheck, .completed)
+        handle(engine.completePostureCheck(now: clock.now))
+        notifications.removeDelivered(.reminders)
     }
 
     // MARK: - Quiet mode
@@ -184,6 +241,12 @@ final class AppModel {
         }
     }
 
+    private func registerGlobalShortcut() {
+        hotKey.register(globalShortcut) { [weak self] in
+            self?.toggleFocus()
+        }
+    }
+
     private func updateContext() {
         let snapshot = contextMonitor.snapshot
         let context = ReminderContext(
@@ -195,42 +258,123 @@ final class AppModel {
         handle(engine.update(context, now: clock.now))
     }
 
-    private func perform(_ action: NotificationAction) {
+    private func perform(_ action: NotificationAction, kinds: Set<ReminderKind>) {
         switch action {
         case .startBreak, .startFocus: startPomodoro()
         case .skipBreak: skipPomodoroPhase()
         case .extendFocus: extendFocus()
-        case .confirmPosture: confirmPostureSwitch()
-        case .snoozePosture: snoozePosture()
         case .logWater: logWater()
-        case .snoozeWater: snoozeHydration()
         case .completeReminders:
-            handle(engine.confirmPostureSwitch(now: clock.now) + engine.logWater(now: clock.now))
+            if kinds.contains(.posture) {
+                confirmPostureSwitch()
+            }
+            if kinds.contains(.hydration) {
+                logWater()
+            }
+            if kinds.contains(.eyes) {
+                completeEyeBreak()
+            }
+            if kinds.contains(.postureCheck) {
+                completePostureCheck()
+            }
         case .snoozeReminders:
-            let now = clock.now
-            handle(
-                engine.snoozePosture(by: Self.snoozeInterval, now: now)
-                    + engine.snoozeHydration(by: Self.snoozeInterval, now: now)
-            )
+            snooze(kinds)
         }
+    }
+
+    private func snooze(_ kinds: Set<ReminderKind>) {
+        let now = clock.now
+        var events: [UnchairEvent] = []
+        for kind in kinds {
+            record(kind, .snoozed)
+            switch kind {
+            case .posture: events += engine.snoozePosture(by: Self.snoozeInterval, now: now)
+            case .hydration: events += engine.snoozeHydration(by: Self.snoozeInterval, now: now)
+            case .eyes: events += engine.snoozeEyeBreak(by: Self.snoozeInterval, now: now)
+            case .postureCheck: events += engine.completePostureCheck(now: now)
+            }
+        }
+        handle(events)
     }
 
     private func handle(_ events: [UnchairEvent]) {
         let now = clock.now
+        recordHistory(for: events, at: now)
+
         let isQuiet = switch engine.holdReason(at: now) {
         case .quietMode, .focusMode, .meeting, .fullscreen: true
         case .away, .outsideWorkingHours, nil: false
         }
-        notifications.post(events, quietly: isQuiet)
+        var extras = NotificationExtras(
+            water: (engine.hydration.intake(at: now), engine.settings.hydration.dailyGoal),
+            stretch: currentStretch,
+            mentionsEyes: settings.eyes.isEnabled && settings.eyes.mergeWithPomodoro
+        )
+        if events.contains(.dayEnded) {
+            extras.summary = todaySummary()
+        }
+        notifications.post(events, extras: extras, quietly: isQuiet)
         stateDidChange()
+    }
+
+    private func recordHistory(for events: [UnchairEvent], at now: Date) {
+        for event in events {
+            switch event {
+            case .pomodoro(.phaseCompleted(.focus, _, _)):
+                let duration = engine.pomodoro.lastCompletedPhaseDuration ?? settings.pomodoro.focusDuration
+                history.recordFocusSession(FocusSession(end: now, duration: duration))
+            case .pomodoro, .dayEnded:
+                break
+            case .posture: record(.posture, .delivered)
+            case .hydration: record(.hydration, .delivered)
+            case .eyeBreak: record(.eyes, .delivered)
+            case .postureCheck: record(.postureCheck, .delivered)
+            }
+        }
+    }
+
+    private func record(_ kind: ReminderKind, _ outcome: ReminderOutcome) {
+        history.recordReminder(kind, outcome, at: clock.now)
+    }
+
+    private func recordPresence(_ state: PresenceState?) {
+        guard let state, state != lastPresence else { return }
+        lastPresence = state
+        history.recordPresence(state, at: clock.now)
+    }
+
+    private var currentPresence: PresenceState? {
+        if engine.awaySince != nil {
+            return .away
+        }
+        guard engine.posture.state != .stopped else { return nil }
+        return engine.posture.posture == .standing ? .standing : .sitting
     }
 
     private func stateDidChange() {
         now = clock.now
         store.hydrationLog = engine.hydration.log
         store.quietUntil = engine.quietUntil
+        recordPresence(currentPresence)
+        updateOverlay()
+        widgets.publish(WidgetSnapshot(engine: engine, today: todayStats(), now: now))
         scheduleNextDeadline()
         restartDisplayUpdates()
+    }
+
+    private func updateOverlay() {
+        guard settings.breaks.showsOverlay,
+              case let .running(phase, endsAt, _) = engine.pomodoro.state,
+              phase.isBreak,
+              hiddenOverlayBreakEnd != endsAt
+        else {
+            overlay.hide()
+            return
+        }
+        overlay.show(model: self) { [weak self] in
+            self?.hiddenOverlayBreakEnd = endsAt
+            self?.overlay.hide()
+        }
     }
 
     /// Sleeps until the engine's next deadline, then ticks it.
