@@ -12,6 +12,7 @@ struct MenuBarContentView: View {
             if model.settings.posture.isEnabled || model.settings.hydration.isEnabled {
                 Divider()
                 VStack(alignment: .leading, spacing: 12) {
+                    RemindersHeader(model: model)
                     if model.settings.posture.isEnabled {
                         PostureRow(model: model)
                     }
