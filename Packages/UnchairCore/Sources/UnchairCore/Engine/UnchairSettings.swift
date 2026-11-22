@@ -6,21 +6,33 @@ public struct UnchairSettings: Codable, Equatable, Sendable {
     public var posture: PostureSettings
     public var hydration: HydrationSettings
     public var interruptions: InterruptionSettings
+    public var eyes: EyeBreakSettings
+    public var postureCheck: PostureCheckSettings
+    public var breaks: BreakSettings
+    public var summary: DailySummarySettings
 
     public init(
         pomodoro: PomodoroSettings = PomodoroSettings(),
         posture: PostureSettings = PostureSettings(),
         hydration: HydrationSettings = HydrationSettings(),
-        interruptions: InterruptionSettings = InterruptionSettings()
+        interruptions: InterruptionSettings = InterruptionSettings(),
+        eyes: EyeBreakSettings = EyeBreakSettings(),
+        postureCheck: PostureCheckSettings = PostureCheckSettings(),
+        breaks: BreakSettings = BreakSettings(),
+        summary: DailySummarySettings = DailySummarySettings()
     ) {
         self.pomodoro = pomodoro
         self.posture = posture
         self.hydration = hydration
         self.interruptions = interruptions
+        self.eyes = eyes
+        self.postureCheck = postureCheck
+        self.breaks = breaks
+        self.summary = summary
     }
 
     private enum CodingKeys: String, CodingKey {
-        case pomodoro, posture, hydration, interruptions
+        case pomodoro, posture, hydration, interruptions, eyes, postureCheck, breaks, summary
     }
 
     /// Missing sections fall back to defaults, so adding settings never discards saved ones.
@@ -31,5 +43,10 @@ public struct UnchairSettings: Codable, Equatable, Sendable {
         hydration = try container.decodeIfPresent(HydrationSettings.self, forKey: .hydration) ?? HydrationSettings()
         interruptions = try container.decodeIfPresent(InterruptionSettings.self, forKey: .interruptions)
             ?? InterruptionSettings()
+        eyes = try container.decodeIfPresent(EyeBreakSettings.self, forKey: .eyes) ?? EyeBreakSettings()
+        postureCheck = try container.decodeIfPresent(PostureCheckSettings.self, forKey: .postureCheck)
+            ?? PostureCheckSettings()
+        breaks = try container.decodeIfPresent(BreakSettings.self, forKey: .breaks) ?? BreakSettings()
+        summary = try container.decodeIfPresent(DailySummarySettings.self, forKey: .summary) ?? DailySummarySettings()
     }
 }
