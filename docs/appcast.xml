@@ -3,6 +3,15 @@
     <channel>
         <title>Unchair</title>
         <item>
+            <title>0.2.1</title>
+            <pubDate>Sun, 22 Nov 2026 23:20:20 +0000</pubDate>
+            <link>https://lukazovic.github.io/unchair/</link>
+            <sparkle:version>94</sparkle:version>
+            <sparkle:shortVersionString>0.2.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/Lukazovic/unchair/releases/download/v0.2.1/Unchair-0.2.1.dmg" length="5446401" type="application/octet-stream" sparkle:edSignature="37LczQJTNZllIHa70J+zrlPhIzk2yD+A8OXlVq8zDtlPZJcvmcCfUhboF5b9Yn1kkAnnWS/FQkYhr5ZdgR5aDQ=="/>
+        </item>
+        <item>
             <title>0.2.0</title>
             <pubDate>Sun, 22 Nov 2026 22:53:36 +0000</pubDate>
             <link>https://lukazovic.github.io/unchair/</link>
@@ -19,15 +28,6 @@
             <sparkle:shortVersionString>0.1.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <enclosure url="https://github.com/Lukazovic/unchair/releases/download/v0.1.0/Unchair-0.1.0.dmg" length="5211576" type="application/octet-stream" sparkle:edSignature="zo3h1LQcZTD1883IqF4ab/685vsEmlxifunvNDsv6MQ9uRZoFT5N91xCROn7cUpVa7/0QiLssuOcON/GdBr5Bg=="/>
-        </item>
-        <item>
-            <title>0.1.0</title>
-            <pubDate>Sun, 22 Nov 2026 10:59:29 +0000</pubDate>
-            <link>https://lukazovic.github.io/unchair/</link>
-            <sparkle:version>1</sparkle:version>
-            <sparkle:shortVersionString>0.1.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/Lukazovic/unchair/releases/download/v0.1.0/Unchair-0.1.0.dmg" length="5211472" type="application/octet-stream" sparkle:edSignature="6Py0np5Z7bFQbTOZz8BqGwI5SVZa6g47E7H12FH1tJ7xoQWjhEvhFNokn1uuuloDrRkGbb58J56CpYCL0gLLDQ=="/>
         </item>
     </channel>
 </rss>
