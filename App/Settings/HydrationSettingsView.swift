@@ -18,7 +18,7 @@ struct HydrationSettingsView: View {
                 )
                 VolumeStepper("Daily goal", value: $model.settings.hydration.dailyGoal, range: 500 ... 5000, step: 250)
                 VolumeStepper("Glass size", value: $model.settings.hydration.glassSize, range: 100 ... 1000, step: 50)
-                AlertStylePicker(style: model.alertStyle(for: .hydration))
+                AlertStylePicker(style: model.alertStyle(for: .hydration)) { model.previewAlert(for: .hydration) }
             } footer: {
                 Text(Copy.hydrationFooter)
             }

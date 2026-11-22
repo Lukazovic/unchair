@@ -22,6 +22,8 @@ enum NotificationKind: String {
     case pomodoro
     case reminders
     case summary
+    /// A sample shown from Settings. Its actions do nothing.
+    case preview
 }
 
 /// Extra information for notification text that the engine events don't carry.
@@ -44,6 +46,7 @@ final class NotificationService: NSObject, UNUserNotificationCenterDelegate {
 
     private let center = UNUserNotificationCenter.current()
     private nonisolated static let kindsKey = "reminderKinds"
+    private nonisolated static let previewKey = "isPreview"
 
     private enum Category {
         static let focusEndedAwaiting = "focus-ended.awaiting"
@@ -117,6 +120,22 @@ final class NotificationService: NSObject, UNUserNotificationCenterDelegate {
         add(content, kind: .reminders)
     }
 
+    /// Posts a sample reminder notification, as the real one would look.
+    func postPreview(of kind: ReminderKind, postureTarget: Posture?, extras: NotificationExtras) {
+        let content = makeContent(quietly: kind == .postureCheck)
+        fillReminders(content, kinds: [kind], postureTarget: postureTarget, extras: extras)
+        content.userInfo = [Self.previewKey: true]
+        add(content, kind: .preview)
+    }
+
+    /// Posts a sample end-of-focus notification.
+    func postBreakPreview(extras: NotificationExtras) {
+        let content = makeContent(quietly: false)
+        fill(content, phase: .focus, next: .shortBreak, autoStarted: false, extras: extras)
+        content.userInfo = [Self.previewKey: true]
+        add(content, kind: .preview)
+    }
+
     func removeDelivered(_ kinds: NotificationKind...) {
         center.removeDeliveredNotifications(withIdentifiers: kinds.map(\.rawValue))
     }
@@ -138,7 +157,10 @@ final class NotificationService: NSObject, UNUserNotificationCenterDelegate {
         _: UNUserNotificationCenter,
         didReceive response: UNNotificationResponse
     ) async {
-        guard let action = NotificationAction(rawValue: response.actionIdentifier) else { return }
+        let userInfo = response.notification.request.content.userInfo
+        guard let action = NotificationAction(rawValue: response.actionIdentifier),
+              userInfo[Self.previewKey] as? Bool != true
+        else { return }
         let rawKinds = response.notification.request.content.userInfo[Self.kindsKey] as? [String] ?? []
         let kinds = Set(rawKinds.compactMap(ReminderKind.init))
         await MainActor.run {

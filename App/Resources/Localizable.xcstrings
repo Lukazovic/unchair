@@ -3088,6 +3088,22 @@
         }
       }
     },
+    "Show a sample of this alert": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostrar un ejemplo de este aviso"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostrar um exemplo deste aviso"
+          }
+        }
+      }
+    },
     "Show timer in menu bar": {
       "localizations": {
         "es": {
@@ -3692,6 +3708,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Padrão do sistema"
+          }
+        }
+      }
+    },
+    "Test": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Probar"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Testar"
           }
         }
       }

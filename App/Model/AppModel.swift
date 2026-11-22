@@ -88,6 +88,7 @@ final class AppModel {
     @ObservationIgnored private let focusFilter = FocusFilterBridge.shared
     @ObservationIgnored let breakOverlay = FullScreenOverlay()
     @ObservationIgnored let reminderOverlay = FullScreenOverlay()
+    @ObservationIgnored let previewOverlay = FullScreenOverlay()
     @ObservationIgnored private let hotKey = GlobalHotKey()
     @ObservationIgnored private let widgets = WidgetPublisher()
     @ObservationIgnored private var deadlineTask: Task<Void, Never>?

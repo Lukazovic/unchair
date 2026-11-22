@@ -46,7 +46,7 @@ struct FocusSettingsView: View {
             }
 
             Section {
-                AlertStylePicker("Break alert", style: model.breakAlertStyle)
+                AlertStylePicker("Break alert", style: model.breakAlertStyle, onPreview: model.previewBreakAlert)
             } footer: {
                 Text(Copy.overlayFooter)
             }

@@ -99,20 +99,31 @@ struct TimeOfDayPicker: View {
     }
 }
 
-/// Chooses between a notification and a full-screen alert.
+/// Chooses between a notification and a full-screen alert, with a button
+/// that shows a sample of the chosen style.
 struct AlertStylePicker: View {
     let title: LocalizedStringKey
     @Binding var style: AlertStyle
+    let onPreview: () -> Void
 
-    init(_ title: LocalizedStringKey = "Alert", style: Binding<AlertStyle>) {
+    init(_ title: LocalizedStringKey = "Alert", style: Binding<AlertStyle>, onPreview: @escaping () -> Void) {
         self.title = title
         _style = style
+        self.onPreview = onPreview
     }
 
     var body: some View {
-        Picker(title, selection: $style) {
-            Text("Notification").tag(AlertStyle.notification)
-            Text("Full Screen").tag(AlertStyle.fullScreen)
+        LabeledContent(title) {
+            HStack {
+                Picker(title, selection: $style) {
+                    Text("Notification").tag(AlertStyle.notification)
+                    Text("Full Screen").tag(AlertStyle.fullScreen)
+                }
+                .labelsHidden()
+                .fixedSize()
+                Button("Test", action: onPreview)
+                    .help(Text("Show a sample of this alert"))
+            }
         }
     }
 }

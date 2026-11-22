@@ -10,7 +10,7 @@ struct BreaksSettingsView: View {
                 Group {
                     DurationStepper("Every", value: $model.settings.eyes.interval, minutes: 10 ... 60, step: 5)
                     Toggle("Fold into Pomodoro breaks", isOn: $model.settings.eyes.mergeWithPomodoro)
-                    AlertStylePicker(style: model.alertStyle(for: .eyes))
+                    AlertStylePicker(style: model.alertStyle(for: .eyes)) { model.previewAlert(for: .eyes) }
                 }
                 .disabled(!model.settings.eyes.isEnabled)
             } header: {

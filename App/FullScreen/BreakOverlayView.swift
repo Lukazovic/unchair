@@ -98,3 +98,44 @@ struct StretchCard: View {
         .accessibilityElement(children: .combine)
     }
 }
+
+/// A sample of the full-screen break, shown from Settings.
+struct BreakPreviewView: View {
+    let duration: TimeInterval
+    let stretch: Stretch?
+    let mentionsEyes: Bool
+    let onHide: () -> Void
+
+    var body: some View {
+        ZStack {
+            Rectangle()
+                .fill(.ultraThickMaterial)
+                .ignoresSafeArea()
+
+            VStack(spacing: 28) {
+                Text(PomodoroPhase.shortBreak.title)
+                    .font(.largeTitle.weight(.semibold))
+                Text(Format.countdown(duration))
+                    .font(.system(size: 96, weight: .light, design: .rounded))
+                    .monospacedDigit()
+                if let stretch {
+                    StretchCard(stretch: stretch)
+                        .frame(maxWidth: 420)
+                }
+                if mentionsEyes {
+                    Label("Rest your eyes on something far away.", systemImage: "eye")
+                        .foregroundStyle(.secondary)
+                }
+                HStack(spacing: 12) {
+                    Button("Skip Break", action: onHide)
+                        .secondaryActionStyle()
+                    Button("Hide", action: onHide)
+                        .keyboardShortcut(.cancelAction)
+                        .prominentActionStyle()
+                }
+                .controlSize(.large)
+            }
+            .padding(40)
+        }
+    }
+}
