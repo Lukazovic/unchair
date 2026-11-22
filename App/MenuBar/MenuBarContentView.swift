@@ -11,7 +11,7 @@ struct MenuBarContentView: View {
         VStack(alignment: .leading, spacing: 14) {
             PomodoroSection(model: model)
 
-            if model.settings.posture.isEnabled || model.settings.hydration.isEnabled {
+            if hasReminders {
                 Divider()
                 VStack(alignment: .leading, spacing: 12) {
                     RemindersHeader(model: model)
@@ -20,6 +20,12 @@ struct MenuBarContentView: View {
                     }
                     if model.settings.hydration.isEnabled {
                         HydrationRow(model: model)
+                    }
+                    if model.settings.eyes.isEnabled {
+                        EyeBreakRow(model: model)
+                    }
+                    if model.settings.postureCheck.isEnabled {
+                        PostureCheckRow(model: model)
                     }
                 }
             }
@@ -47,6 +53,14 @@ struct MenuBarContentView: View {
         }
         .padding(16)
         .frame(width: 300)
+    }
+}
+
+private extension MenuBarContentView {
+    var hasReminders: Bool {
+        let settings = model.settings
+        return settings.posture.isEnabled || settings.hydration.isEnabled
+            || settings.eyes.isEnabled || settings.postureCheck.isEnabled
     }
 }
 

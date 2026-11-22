@@ -91,3 +91,81 @@ struct HydrationRow: View {
         }
     }
 }
+
+/// A reminder row with an icon, a title, a status line, and a "Done" button.
+private struct SimpleReminderRow: View {
+    let symbol: String
+    let tint: Color
+    let title: LocalizedStringKey
+    let status: String
+    let isDone: Bool
+    let action: () -> Void
+
+    var body: some View {
+        HStack(spacing: 10) {
+            Image(systemName: symbol)
+                .font(.title3)
+                .foregroundStyle(tint)
+                .frame(width: 24)
+                .accessibilityHidden(true)
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title)
+                Text(status)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+
+            Spacer()
+
+            Button("Done", action: action)
+                .controlSize(.small)
+                .disabled(isDone)
+        }
+    }
+}
+
+struct EyeBreakRow: View {
+    let model: AppModel
+
+    var body: some View {
+        let engine = model.engine
+        let status = if engine.eyesMergedIntoPomodoro {
+            String(localized: "Part of your Pomodoro breaks")
+        } else if let next = engine.eyes.nextReminderAt {
+            String(localized: "Next in \(Format.minutes(next.timeIntervalSince(model.now)))")
+        } else {
+            ""
+        }
+
+        SimpleReminderRow(
+            symbol: "eye",
+            tint: .indigo,
+            title: "Eyes",
+            status: status,
+            isDone: engine.eyesMergedIntoPomodoro,
+            action: model.completeEyeBreak
+        )
+    }
+}
+
+struct PostureCheckRow: View {
+    let model: AppModel
+
+    var body: some View {
+        let status = if let next = model.engine.postureCheck.nextReminderAt {
+            String(localized: "Next in \(Format.minutes(next.timeIntervalSince(model.now)))")
+        } else {
+            ""
+        }
+
+        SimpleReminderRow(
+            symbol: "figure.seated.side.right",
+            tint: .mint,
+            title: "Posture check",
+            status: status,
+            isDone: false,
+            action: model.completePostureCheck
+        )
+    }
+}
