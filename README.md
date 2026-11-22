@@ -24,7 +24,9 @@ open Unchair.xcodeproj
 
 Select the **Unchair** scheme and press **⌘R**. Unchair runs as a menu bar app (no Dock icon): look for the figure icon in the menu bar.
 
-The project signs to run locally by default. To run with your own Apple Developer account, set your team in **Signing & Capabilities**.
+The project signs to run locally by default. To run with your own Apple Developer account, set your team in **Signing & Capabilities**. With a team set, the App Group is enabled automatically and widgets show live data (see [Config/README.md](Config/README.md)).
+
+To explore the app with a month of in-memory sample history (Debug builds only, never touches your data), add `-UnchairSampleData` to the scheme's launch arguments.
 
 ## Project structure
 
@@ -32,7 +34,16 @@ The project signs to run locally by default. To run with your own Apple Develope
 App/                      macOS app target (SwiftUI)
 ├── MenuBar/              Menu bar extra UI
 ├── Settings/             Settings window
-└── Resources/            Assets and Localizable.xcstrings
+├── Statistics/           Statistics window (Swift Charts)
+├── BreakOverlay/         Optional full-screen break overlay
+├── History/              SwiftData history and export
+├── Notifications/        Actionable notifications
+├── SystemSignals/        Idle, sleep, lock, meetings, full screen
+├── Intents/              Focus filter and Shortcuts actions
+├── System/               Launch at login, global shortcut, widget publishing
+└── Resources/            Assets, sounds, and String Catalogs
+Widgets/                  WidgetKit extension
+Config/                   Entitlements and widget Info.plist
 Packages/UnchairCore/     Platform-independent logic (Foundation only)
 Unchair.xcodeproj/
 ```

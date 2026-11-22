@@ -125,23 +125,31 @@ Goal: the app knows when *not* to bother you. This is the main differentiator.
 
 **Done when:** a day full of calls produces zero badly timed reminders.
 
-### Phase 3 — More wellbeing
+### Phase 3 — More wellbeing ✅
 
-- [ ] **Eye breaks (20-20-20)**, off by default, with an option to merge into Pomodoro breaks
-- [ ] **Stretch suggestions** during long breaks (small curated set, localized, with SF Symbols or simple illustrations)
-- [ ] **Posture check** — gentle, widely spaced reminder
-- [ ] **End-of-day wrap-up:** notification at the end of working hours with a summary (focus sessions, standing time, water)
-- [ ] **Optional full-screen break overlay** for users who want to be forced to stop (skippable, accessible)
-- [ ] Custom notification sounds (subtle, system-like)
+- [x] **Eye breaks (20-20-20)**, off by default, with an option to merge into Pomodoro breaks
+- [x] **Stretch suggestions** during long breaks (small curated set, localized, with SF Symbols or simple illustrations)
+- [x] **Posture check** — gentle, widely spaced reminder
+- [x] **End-of-day wrap-up:** notification at the end of working hours with a summary (focus sessions, standing time, water)
+- [x] **Optional full-screen break overlay** for users who want to be forced to stop (skippable, accessible)
+- [x] Custom notification sounds (subtle, system-like)
 
-### Phase 4 — Insights & system integration
+### Phase 4 — Insights & system integration ✅ *(widgets need a developer team for live data)*
 
-- [ ] **History** with SwiftData: focus sessions, posture switches, water intake, skipped/snoozed reminders
-- [ ] **Stats view** with Swift Charts: daily/weekly focus time, standing time, hydration goal progress, streaks
-- [ ] **Widgets** (WidgetKit): current timer, today's progress (desktop and Notification Center)
-- [ ] **App Intents / Shortcuts:** *Start focus*, *Start break*, *Log water*, *Pause reminders*, *Get today's stats*
-- [ ] **Keyboard shortcut** to start/pause from anywhere
-- [ ] Data export (CSV/JSON)
+- [x] **History** with SwiftData: focus sessions, posture switches, water intake, skipped/snoozed reminders
+- [x] **Stats view** with Swift Charts: daily/weekly focus time, standing time, hydration goal progress, streaks
+- [x] **Widgets** (WidgetKit): current timer, today's progress (desktop and Notification Center) — *live data needs the App Group, which needs a developer team; see `Config/README.md`*
+- [x] **App Intents / Shortcuts:** *Start focus*, *Start break*, *Log water*, *Pause reminders*, *Get today's stats*
+- [x] **Keyboard shortcut** to start/pause from anywhere (Carbon hot key, no Accessibility permission; ⌃⌥⌘P by default)
+- [x] Data export (CSV/JSON)
+
+**Follow-ups from Phases 3–4**
+
+- [ ] Interactive widget buttons (start/pause, log water) through App Intents
+- [ ] A custom shortcut recorder instead of a fixed list of combinations
+- [ ] Eye break and posture check rows in the menu bar panel
+- [ ] Test widgets end to end once signed with a developer team
+
 
 ### Phase 5 — Launch (v1.0)
 
