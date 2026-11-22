@@ -8,17 +8,54 @@
 
 /* Begin PBXBuildFile section */
 		AA0000000000000000000101 /* UnchairCore in Frameworks */ = {isa = PBXBuildFile; productRef = AA0000000000000000000301 /* UnchairCore */; };
+		BB0000000000000000000001 /* UnchairWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000010 /* UnchairWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BB0000000000000000000002 /* UnchairCore in Frameworks */ = {isa = PBXBuildFile; productRef = BB0000000000000000000030 /* UnchairCore */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BB0000000000000000000051 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA0000000000000000000901 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BB0000000000000000000050;
+			remoteInfo = UnchairWidgets;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BB0000000000000000000040 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BB0000000000000000000001 /* UnchairWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		AA0000000000000000000201 /* Unchair.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unchair.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0000000000000000000202 /* UnchairCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = UnchairCore; path = Packages/UnchairCore; sourceTree = "<group>"; };
+		BB0000000000000000000010 /* UnchairWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = UnchairWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		AA0000000000000000000401 /* App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = App;
+			sourceTree = "<group>";
+		};
+		BB0000000000000000000020 /* Widgets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		BB0000000000000000000021 /* Config */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +69,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BB0000000000000000000042 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB0000000000000000000002 /* UnchairCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -39,6 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				AA0000000000000000000401 /* App */,
+				BB0000000000000000000020 /* Widgets */,
+				BB0000000000000000000021 /* Config */,
 				AA0000000000000000000603 /* Packages */,
 				AA0000000000000000000602 /* Products */,
 			);
@@ -48,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				AA0000000000000000000201 /* Unchair.app */,
+				BB0000000000000000000010 /* UnchairWidgets.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,10 +118,12 @@
 				AA0000000000000000000801 /* Sources */,
 				AA0000000000000000000501 /* Frameworks */,
 				AA0000000000000000000802 /* Resources */,
+				BB0000000000000000000040 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BB0000000000000000000052 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				AA0000000000000000000401 /* App */,
@@ -86,6 +136,29 @@
 			productReference = AA0000000000000000000201 /* Unchair.app */;
 			productType = "com.apple.product-type.application";
 		};
+		BB0000000000000000000050 /* UnchairWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB0000000000000000000061 /* Build configuration list for PBXNativeTarget "UnchairWidgets" */;
+			buildPhases = (
+				BB0000000000000000000041 /* Sources */,
+				BB0000000000000000000042 /* Frameworks */,
+				BB0000000000000000000043 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				BB0000000000000000000020 /* Widgets */,
+			);
+			name = UnchairWidgets;
+			packageProductDependencies = (
+				BB0000000000000000000030 /* UnchairCore */,
+			);
+			productName = UnchairWidgets;
+			productReference = BB0000000000000000000010 /* UnchairWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -97,6 +170,9 @@
 				LastUpgradeCheck = 2720;
 				TargetAttributes = {
 					AA0000000000000000000701 = {
+						CreatedOnToolsVersion = 27.2;
+					};
+					BB0000000000000000000050 = {
 						CreatedOnToolsVersion = 27.2;
 					};
 				};
@@ -121,12 +197,20 @@
 			projectRoot = "";
 			targets = (
 				AA0000000000000000000701 /* Unchair */,
+				BB0000000000000000000050 /* UnchairWidgets */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		AA0000000000000000000802 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB0000000000000000000043 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -143,7 +227,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BB0000000000000000000041 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BB0000000000000000000052 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BB0000000000000000000050 /* UnchairWidgets */;
+			targetProxy = BB0000000000000000000051 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		AA0000000000000000000A01 /* Debug */ = {
@@ -269,6 +368,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "$(UNCHAIR_ENTITLEMENTS_$(DEVELOPMENT_TEAM:default=NOTEAM):default=Config/Unchair.entitlements)";
+				UNCHAIR_ENTITLEMENTS_NOTEAM = "Config/Unchair-NoTeam.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -304,6 +405,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "$(UNCHAIR_ENTITLEMENTS_$(DEVELOPMENT_TEAM:default=NOTEAM):default=Config/Unchair.entitlements)";
+				UNCHAIR_ENTITLEMENTS_NOTEAM = "Config/Unchair-NoTeam.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -334,6 +437,64 @@
 			};
 			name = Release;
 		};
+		BB0000000000000000000062 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "$(UNCHAIR_ENTITLEMENTS_$(DEVELOPMENT_TEAM:default=NOTEAM):default=Config/UnchairWidgets.entitlements)";
+				UNCHAIR_ENTITLEMENTS_NOTEAM = "Config/UnchairWidgets-NoTeam.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/UnchairWidgets-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Unchair;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lukazovic.Unchair.Widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		BB0000000000000000000063 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "$(UNCHAIR_ENTITLEMENTS_$(DEVELOPMENT_TEAM:default=NOTEAM):default=Config/UnchairWidgets.entitlements)";
+				UNCHAIR_ENTITLEMENTS_NOTEAM = "Config/UnchairWidgets-NoTeam.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/UnchairWidgets-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Unchair;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lukazovic.Unchair.Widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -355,6 +516,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		BB0000000000000000000061 /* Build configuration list for PBXNativeTarget "UnchairWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB0000000000000000000062 /* Debug */,
+				BB0000000000000000000063 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
@@ -366,6 +536,10 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		AA0000000000000000000301 /* UnchairCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UnchairCore;
+		};
+		BB0000000000000000000030 /* UnchairCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = UnchairCore;
 		};

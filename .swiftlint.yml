@@ -3,6 +3,7 @@
 
 included:
   - App
+  - Widgets
   - Packages/UnchairCore/Sources
   - Packages/UnchairCore/Tests
 
