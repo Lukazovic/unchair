@@ -49,13 +49,13 @@ Unchair/
 │       ├── Timers/           # Pomodoro, Flowtime state machines
 │       ├── Reminders/        # Sit/stand, water, eyes, stretch, posture
 │       ├── Scheduler/        # Coalescing, quiet rules, snooze
-│       ├── Clock/            # Injectable clock for deterministic tests
+│       ├── Clock/            # WallClock, SystemClock, TestClock
 │       └── Stats/            # Aggregation models
 ├── Widgets/                  # WidgetKit extension
 └── Intents/                  # App Intents (can live in the app target)
 ```
 
-**Key design rule:** `UnchairCore` takes an injectable `Clock` and a `SystemState` input (idle, in-meeting, fullscreen, Focus active) and outputs *events* (“show water reminder”, “start break”). The app layer turns events into notifications and UI. This keeps the core fully unit-testable and portable.
+**Key design rule:** `UnchairCore` takes an injectable `WallClock` and a `SystemState` input (idle, in-meeting, fullscreen, Focus active) and outputs *events* (“show water reminder”, “start break”). The app layer turns events into notifications and UI. This keeps the core fully unit-testable and portable.
 
 ## Evidence-based defaults
 
@@ -73,18 +73,18 @@ Unchair/
 
 ## Phases
 
-### Phase 0 — Foundations *(start here)*
+### Phase 0 — Foundations ✅
 
 Goal: a skeleton that builds, tests, and localizes from day one.
 
-- [ ] Create Xcode project `Unchair` (macOS app, SwiftUI lifecycle, menu bar–only via `LSUIElement`)
-- [ ] Create local Swift package `UnchairCore` and link it to the app
-- [ ] Injectable `Clock` protocol + test clock
-- [ ] `Localizable.xcstrings` with `en`, `es`, `pt-BR` added (English as source; all UI strings via `String(localized:)` / `LocalizedStringKey`)
-- [ ] App icon placeholder, bundle ID, signing set up
-- [ ] SwiftLint/SwiftFormat config
-- [ ] GitHub Actions: build + run `UnchairCore` tests
-- [ ] `README.md` with build instructions
+- [x] Create Xcode project `Unchair` (macOS app, SwiftUI lifecycle, menu bar–only via `LSUIElement`)
+- [x] Create local Swift package `UnchairCore` and link it to the app
+- [x] Injectable `WallClock` protocol + `TestClock`
+- [x] `Localizable.xcstrings` with `en`, `es`, `pt-BR` added (English as source; all UI strings via `String(localized:)` / `LocalizedStringKey`)
+- [x] App icon placeholder, bundle ID, signing set up
+- [x] SwiftLint/SwiftFormat config
+- [x] GitHub Actions: build + run `UnchairCore` tests
+- [x] `README.md` with build instructions
 
 **Done when:** an empty menu bar item appears, the core package has a passing test, and CI is green.
 
