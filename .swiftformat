@@ -1,0 +1,17 @@
+# SwiftFormat configuration — https://github.com/nicklockwood/SwiftFormat
+
+--swiftversion 6.0
+--exclude **/.build,**/DerivedData,build
+
+# Layout
+--indent 4
+--maxwidth 120
+--wraparguments before-first
+--wrapparameters before-first
+--wrapcollections before-first
+
+# Style
+--self remove
+--importgrouping testable-last
+--stripunusedargs closure-only
+--header ignore

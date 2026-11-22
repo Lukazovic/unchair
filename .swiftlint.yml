@@ -1,0 +1,47 @@
+# SwiftLint configuration — https://github.com/realm/SwiftLint
+# Formatting is handled by SwiftFormat; SwiftLint focuses on code quality.
+
+included:
+  - App
+  - Packages/UnchairCore/Sources
+  - Packages/UnchairCore/Tests
+
+excluded:
+  - "**/.build"
+
+disabled_rules:
+  - trailing_comma        # SwiftFormat owns trailing commas
+  - opening_brace         # conflicts with SwiftFormat's wrapping
+  - todo                  # TODOs are fine during early development
+
+opt_in_rules:
+  - closure_spacing
+  - contains_over_first_not_nil
+  - empty_count
+  - first_where
+  - force_unwrapping
+  - implicit_return
+  - modifier_order
+  - redundant_nil_coalescing
+  - sorted_imports
+  - toggle_bool
+  - unneeded_parentheses_in_closure_argument
+  - vertical_whitespace_closing_braces
+
+line_length:
+  warning: 120
+  error: 160
+  ignores_urls: true
+  ignores_comments: true
+
+identifier_name:
+  excluded:
+    - id
+
+type_body_length:
+  warning: 300
+  error: 500
+
+file_length:
+  warning: 500
+  error: 800

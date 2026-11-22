@@ -19,9 +19,9 @@ public protocol WallClock: Sendable {
     func sleep(until deadline: Date) async throws
 }
 
-extension WallClock {
+public extension WallClock {
     /// Suspends the current task for `duration` seconds from ``now``.
-    public func sleep(for duration: TimeInterval) async throws {
+    func sleep(for duration: TimeInterval) async throws {
         try await sleep(until: now.addingTimeInterval(duration))
     }
 }

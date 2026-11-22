@@ -6,7 +6,7 @@ import Testing
 struct TestClockTests {
     @Test("starts at the given date")
     func startsAtGivenDate() {
-        let start = Date(timeIntervalSince1970: 1_000)
+        let start = Date(timeIntervalSince1970: 1000)
         let clock = TestClock(now: start)
 
         #expect(clock.now == start)
