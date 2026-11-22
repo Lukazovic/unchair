@@ -44,10 +44,29 @@ struct MenuBarContentView: View {
                     NSApplication.shared.activate()
                 }
                 Spacer()
-                Button("Quit Unchair") {
-                    NSApplication.shared.terminate(nil)
+                Menu {
+                    if model.updates.isAvailable {
+                        Button("Check for Updates…", action: model.updates.checkForUpdates)
+                        Divider()
+                    }
+                    Button("Send Feedback…") { NSWorkspace.shared.open(Links.feedback) }
+                    Button("Report a Problem…") { NSWorkspace.shared.open(Links.reportProblem) }
+                    Divider()
+                    Button("Unchair Website") { NSWorkspace.shared.open(Links.website) }
+                    Button("Privacy Policy") { NSWorkspace.shared.open(Links.privacyPolicy) }
+                    Divider()
+                    Button("Quit Unchair") {
+                        NSApplication.shared.terminate(nil)
+                    }
+                    .keyboardShortcut("q")
+                } label: {
+                    Label("More", systemImage: "ellipsis.circle")
+                        .labelStyle(.iconOnly)
                 }
-                .keyboardShortcut("q")
+                .menuStyle(.borderlessButton)
+                .menuIndicator(.hidden)
+                .fixedSize()
+                .help(Text("More"))
             }
             .buttonStyle(.borderless)
         }
