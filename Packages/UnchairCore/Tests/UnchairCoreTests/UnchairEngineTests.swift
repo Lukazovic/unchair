@@ -25,7 +25,7 @@ struct UnchairEngineTests {
 
         #expect(engine.posture.nextDeadline == minutes(45))
         #expect(engine.hydration.nextReminderAt == minutes(60))
-        #expect(engine.nextDeadline == minutes(45))
+        #expect(engine.nextDeadline(after: start) == minutes(45))
     }
 
     @Test("disabled reminders don't start")
@@ -37,7 +37,7 @@ struct UnchairEngineTests {
 
         let engine = makeEngine(settings)
 
-        #expect(engine.nextDeadline == nil)
+        #expect(engine.nextDeadline(after: start) == nil)
     }
 
     @Test("next deadline includes the running Pomodoro")
@@ -46,7 +46,7 @@ struct UnchairEngineTests {
 
         _ = engine.startPomodoro(now: start)
 
-        #expect(engine.nextDeadline == minutes(25))
+        #expect(engine.nextDeadline(after: start) == minutes(25))
     }
 
     @Test("posture switch waits for the end of the focus session")
@@ -99,7 +99,7 @@ struct UnchairEngineTests {
         settings.posture.isEnabled = false
         settings.hydration.isEnabled = false
         _ = engine.apply(settings, now: minutes(10))
-        #expect(engine.nextDeadline == nil)
+        #expect(engine.nextDeadline(after: start) == nil)
 
         settings.posture.isEnabled = true
         _ = engine.apply(settings, now: minutes(20))
