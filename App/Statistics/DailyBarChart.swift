@@ -10,6 +10,8 @@ struct DailyBarChart: View {
     let color: Color
     let value: (DayStats) -> Double
     let format: (Double) -> String
+    /// Shorter labels for the value axis. Defaults to `format`.
+    var axisFormat: ((Double) -> String)?
     var goal: Double?
 
     @State private var selectedDate: Date?
@@ -67,7 +69,7 @@ struct DailyBarChart: View {
                         .foregroundStyle(.quaternary)
                     AxisValueLabel {
                         if let number = axisValue.as(Double.self) {
-                            Text(format(number))
+                            Text((axisFormat ?? format)(number))
                         }
                     }
                 }

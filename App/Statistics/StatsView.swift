@@ -65,21 +65,23 @@ struct StatsView: View {
                 }
                 .pickerStyle(.segmented)
                 .labelsHidden()
-                .frame(maxWidth: 240)
+                .fixedSize()
 
                 DailyBarChart(
                     title: "Focus",
                     days: days,
                     color: .accentColor,
                     value: { $0.focusTime },
-                    format: Format.total
+                    format: Format.total,
+                    axisFormat: Format.compactTotal
                 )
                 DailyBarChart(
                     title: "Standing",
                     days: days,
                     color: .orange,
                     value: { $0.standingTime },
-                    format: Format.total
+                    format: Format.total,
+                    axisFormat: Format.compactTotal
                 )
                 DailyBarChart(
                     title: "Water",
@@ -114,11 +116,11 @@ private struct StatTile: View {
             Text(value)
                 .font(.title.weight(.semibold))
                 .monospacedDigit()
-            if let detail {
-                Text(detail)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            }
+            // Always reserve the detail line so tiles in a row line up.
+            Text(detail ?? " ")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .accessibilityHidden(detail == nil)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(14)

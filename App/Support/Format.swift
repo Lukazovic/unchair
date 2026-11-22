@@ -22,6 +22,13 @@ enum Format {
         return Duration.seconds(minutes * 60).formatted(.units(allowed: allowed, width: .abbreviated))
     }
 
+    /// A compact total for chart axes, such as "45m" or "2h 30m".
+    static func compactTotal(_ seconds: TimeInterval) -> String {
+        let minutes = max(0, Int(seconds / 60))
+        let allowed: Set<Duration.UnitsFormatStyle.Unit> = minutes >= 60 ? [.hours, .minutes] : [.minutes]
+        return Duration.seconds(minutes * 60).formatted(.units(allowed: allowed, width: .narrow))
+    }
+
     /// A volume such as "250 mL".
     static func volume(_ milliliters: Int) -> String {
         Measurement(value: Double(milliliters), unit: UnitVolume.milliliters)
