@@ -1,0 +1,33 @@
+name: Report a problem
+description: Something isn't working as expected.
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Start a focus session
+        2. ...
+  - type: input
+    id: version
+    attributes:
+      label: Unchair version
+      description: Filled in automatically when you use More → Report a Problem.
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version
+  - type: textarea
+    id: crash
+    attributes:
+      label: Crash report (if Unchair quit unexpectedly)
+      description: Open Console → Crash Reports, select the latest Unchair report, and paste it here.
+      render: text
