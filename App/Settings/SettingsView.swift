@@ -1,25 +1,23 @@
 import SwiftUI
 
 struct SettingsView: View {
-    var body: some View {
-        Form {
-            Section {
-                LabeledContent("Version", value: Bundle.main.marketingVersion)
-            } header: {
-                Text("General")
-            }
-        }
-        .formStyle(.grouped)
-        .frame(width: 420, height: 200)
-    }
-}
+    let model: AppModel
 
-private extension Bundle {
-    var marketingVersion: String {
-        object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "–"
+    var body: some View {
+        TabView {
+            GeneralSettingsView(model: model)
+                .tabItem { Label("General", systemImage: "gearshape") }
+            FocusSettingsView(model: model)
+                .tabItem { Label("Focus", systemImage: "timer") }
+            PostureSettingsView(model: model)
+                .tabItem { Label("Posture", systemImage: "figure.stand") }
+            HydrationSettingsView(model: model)
+                .tabItem { Label("Hydration", systemImage: "drop") }
+        }
+        .frame(width: 480)
     }
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(model: AppModel())
 }
