@@ -20,6 +20,7 @@ struct PostureRow: View {
                 Text(status)
                     .font(.caption)
                     .foregroundStyle(reminder.state == .suggested ? .orange : .secondary)
+                    .fixedSize(horizontal: false, vertical: true)
             }
 
             Spacer()
