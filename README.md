@@ -58,6 +58,8 @@ Unchair.xcodeproj/
 
 | Task | Command |
 |---|---|
+| Build and open the app | `scripts/run.sh` (see `--help` for sample data, full-screen demo, language) |
+| Run every CI check | `scripts/check.sh` |
 | Run core tests | `swift test --package-path Packages/UnchairCore` |
 | Run all tests via Xcode | `xcodebuild test -project Unchair.xcodeproj -scheme Unchair` |
 | Build the app | `xcodebuild build -project Unchair.xcodeproj -scheme Unchair` |
