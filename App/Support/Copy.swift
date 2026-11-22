@@ -12,6 +12,12 @@ enum Copy {
     static let postureSyncFooter: LocalizedStringResource = "When a focus session is running, Unchair holds the reminder until your next break so it doesn't interrupt you."
 
     static let hydrationFooter: LocalizedStringResource = "A common reference is about 2 to 2.5 liters of water a day, including water from food. Adjust it to your body, activity, and climate."
+
+    static let interruptionsFooter: LocalizedStringResource = "Held reminders are delivered as soon as the call ends or you leave full screen. Pomodoro notifications still arrive, silently."
+
+    static let awayFooter: LocalizedStringResource = "Unchair notices when you stop using the computer, it goes to sleep, or the screen locks. Time away counts as a break: your sitting time starts over when you're back."
+
+    static let focusFilterFooter: LocalizedStringResource = "To hold reminders during a Focus, open a Focus in System Settings, choose Add Filter, and pick Unchair."
 }
 
 // swiftlint:enable line_length
