@@ -2,6 +2,22 @@ import Foundation
 
 /// What widgets show, written by the app and read by the widget extension.
 public struct WidgetSnapshot: Codable, Equatable, Sendable {
+    /// App Group shared by the app and the widget extension.
+    public static let appGroupIdentifier = "group.com.lukazovic.Unchair"
+    private static let defaultsKey = "widgetSnapshot.v1"
+
+    /// The last snapshot the app saved, or `nil` if there is none.
+    public static func load(from defaults: UserDefaults? = UserDefaults(suiteName: appGroupIdentifier)) -> Self? {
+        guard let data = defaults?.data(forKey: defaultsKey) else { return nil }
+        let decoder = JSONDecoder()
+        return try? decoder.decode(Self.self, from: data)
+    }
+
+    public func save(to defaults: UserDefaults? = UserDefaults(suiteName: appGroupIdentifier)) {
+        guard let data = try? JSONEncoder().encode(self) else { return }
+        defaults?.set(data, forKey: Self.defaultsKey)
+    }
+
     public enum TimerState: Codable, Equatable, Sendable {
         case idle
         case running(PomodoroPhase, endsAt: Date)
