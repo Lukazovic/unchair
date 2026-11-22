@@ -3024,18 +3024,18 @@
         }
       }
     },
-    "Settings…": {
+    "Settings": {
       "localizations": {
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ajustes…"
+            "value": "Ajustes"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ajustes…"
+            "value": "Ajustes"
           }
         }
       }

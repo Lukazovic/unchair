@@ -36,43 +36,22 @@ struct MenuBarContentView: View {
 
             Divider()
 
-            HStack {
+            HStack(spacing: 8) {
                 SettingsLink {
-                    Text("Settings…")
+                    Label("Settings", systemImage: "gearshape")
                 }
                 .simultaneousGesture(TapGesture().onEnded {
                     NSApplication.shared.activate()
                 })
-                Button("Statistics") {
+                Button {
                     openWindow(id: "statistics")
                     NSApplication.shared.activate()
-                }
-                Spacer()
-                Menu {
-                    if model.updates.isAvailable {
-                        Button("Check for Updates…", action: model.updates.checkForUpdates)
-                        Divider()
-                    }
-                    Button("Send Feedback…") { NSWorkspace.shared.open(Links.feedback) }
-                    Button("Report a Problem…") { NSWorkspace.shared.open(Links.reportProblem) }
-                    Divider()
-                    Button("Unchair Website") { NSWorkspace.shared.open(Links.website) }
-                    Button("Privacy Policy") { NSWorkspace.shared.open(Links.privacyPolicy) }
-                    Divider()
-                    Button("Quit Unchair") {
-                        NSApplication.shared.terminate(nil)
-                    }
-                    .keyboardShortcut("q")
                 } label: {
-                    Label("More", systemImage: "ellipsis.circle")
-                        .labelStyle(.iconOnly)
+                    Label("Statistics", systemImage: "chart.bar.xaxis")
                 }
-                .menuStyle(.borderlessButton)
-                .menuIndicator(.hidden)
-                .fixedSize()
-                .help(Text("More"))
+                moreMenu
             }
-            .buttonStyle(.borderless)
+            .buttonStyle(PanelButtonStyle())
         }
         .padding(16)
         .frame(width: 300)
@@ -83,6 +62,35 @@ struct MenuBarContentView: View {
 }
 
 private extension MenuBarContentView {
+    var moreMenu: some View {
+        Menu {
+            if model.updates.isAvailable {
+                Button("Check for Updates…", action: model.updates.checkForUpdates)
+                Divider()
+            }
+            Button("Send Feedback…") { NSWorkspace.shared.open(Links.feedback) }
+            Button("Report a Problem…") { NSWorkspace.shared.open(Links.reportProblem) }
+            Divider()
+            Button("Unchair Website") { NSWorkspace.shared.open(Links.website) }
+            Button("Privacy Policy") { NSWorkspace.shared.open(Links.privacyPolicy) }
+            Divider()
+            Button("Quit Unchair") {
+                NSApplication.shared.terminate(nil)
+            }
+            .keyboardShortcut("q")
+        } label: {
+            Label("More", systemImage: "ellipsis")
+                .labelStyle(.iconOnly)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .contentShape(Rectangle())
+        }
+        .menuStyle(.borderlessButton)
+        .menuIndicator(.hidden)
+        .panelTile()
+        .frame(width: 38)
+        .help(Text("More"))
+    }
+
     var hasReminders: Bool {
         let settings = model.settings
         return settings.posture.isEnabled || settings.hydration.isEnabled
