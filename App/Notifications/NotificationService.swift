@@ -61,7 +61,12 @@ final class NotificationService: NSObject, UNUserNotificationCenterDelegate {
         center.delegate = self
         center.setNotificationCategories(makeCategories())
         Task {
-            _ = try? await center.requestAuthorization(options: [.alert, .sound])
+            do {
+                let granted = try await center.requestAuthorization(options: [.alert, .sound])
+                Log.signals.info("Notification permission granted: \(granted, privacy: .public)")
+            } catch {
+                Log.signals.error("Notification permission request failed: \(error, privacy: .public)")
+            }
         }
     }
 
