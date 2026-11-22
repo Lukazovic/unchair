@@ -26,6 +26,8 @@ Select the **Unchair** scheme and press **⌘R**. Unchair runs as a menu bar app
 
 The project signs to run locally by default. To run with your own Apple Developer account, set your team in **Signing & Capabilities**. With a team set, the App Group is enabled automatically and widgets show live data (see [Config/README.md](Config/README.md)).
 
+Run Unchair from Xcode or from `/Applications`. macOS refuses notification permission for apps launched from temporary folders.
+
 To explore the app with a month of in-memory sample history (Debug builds only, never touches your data), add `-UnchairSampleData` to the scheme's launch arguments.
 
 ## Project structure

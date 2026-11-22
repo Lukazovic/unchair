@@ -145,11 +145,9 @@ Goal: the app knows when *not* to bother you. This is the main differentiator.
 
 **Follow-ups from Phases 3–4**
 
-- [ ] Interactive widget buttons (start/pause, log water) through App Intents
-- [ ] A custom shortcut recorder instead of a fixed list of combinations
-- [ ] Eye break and posture check rows in the menu bar panel
-- [ ] Test widgets end to end once signed with a developer team
-
+- [x] A custom shortcut recorder instead of a fixed list of combinations
+- [x] Eye break and posture check rows in the menu bar panel
+- Interactive widget buttons and end-to-end widget testing moved to *Needs an Apple Developer account* below
 
 ### Phase 5 — Launch (v1.0)
 
@@ -170,6 +168,16 @@ Goal: the app knows when *not* to bother you. This is the main differentiator.
 - [ ] Optional sync between devices (iCloud on Apple platforms first)
 
 ---
+
+## Needs an Apple Developer account *(do last)*
+
+These depend on signing with a team (US$ 99/year). Until then, Unchair is shared as a free, ad-hoc signed beta.
+
+- [ ] Set `DEVELOPMENT_TEAM` (the App Group turns on automatically, see `Config/README.md`)
+- [ ] Test widgets end to end with live data
+- [ ] Interactive widget buttons (start/pause, log water) through App Intents, signaling the app through the App Group
+- [ ] Developer ID signing and notarization for public downloads
+- [ ] Optional: App Store build (without Sparkle)
 
 ## What to build first (concrete order)
 
