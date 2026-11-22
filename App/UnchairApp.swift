@@ -20,6 +20,12 @@ struct UnchairApp: App {
             SettingsView(model: model)
         }
 
+        Window("Welcome to Unchair", id: "onboarding") {
+            OnboardingView(model: model)
+        }
+        .windowResizability(.contentSize)
+        .windowStyle(.hiddenTitleBar)
+
         Window("Statistics", id: "statistics") {
             StatsView(model: model)
         }

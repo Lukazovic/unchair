@@ -24,6 +24,8 @@ enum Copy {
     static let overlayFooter: LocalizedStringResource = "Covers your screens with the break timer so you actually step away. You can always skip it or press Escape."
 
     static let summaryFooter: LocalizedStringResource = "A quiet notification with today's focus time, standing time, and water. With working hours on, it arrives when your workday ends."
+
+    static let onboardingNotifications: LocalizedStringResource = "Unchair uses notifications to tell you when to take a break, stand up, or drink water. You can reply right from them: Done, Snooze, or Start Break."
 }
 
 // swiftlint:enable line_length

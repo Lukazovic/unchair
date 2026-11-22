@@ -9,6 +9,7 @@ struct SettingsStore {
         static let showsTimerInMenuBar = "showsTimerInMenuBar"
         static let quietUntil = "quietUntil"
         static let notificationSound = "notificationSound"
+        static let hasCompletedOnboarding = "hasCompletedOnboarding"
         static let legacyGlobalShortcut = "globalShortcut"
         static let globalShortcut = "globalShortcut.v2"
     }
@@ -57,6 +58,11 @@ struct SettingsStore {
             // `null` is stored for "off", so it isn't mistaken for "never set".
             defaults.set(try? encoder.encode(newValue), forKey: Key.globalShortcut)
         }
+    }
+
+    var hasCompletedOnboarding: Bool {
+        get { defaults.bool(forKey: Key.hasCompletedOnboarding) }
+        nonmutating set { defaults.set(newValue, forKey: Key.hasCompletedOnboarding) }
     }
 
     var showsTimerInMenuBar: Bool {

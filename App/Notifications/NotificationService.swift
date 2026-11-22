@@ -56,17 +56,22 @@ final class NotificationService: NSObject, UNUserNotificationCenterDelegate {
         static let summary = "summary"
     }
 
-    /// Sets the delegate, registers categories, and asks for permission.
+    /// Sets the delegate and registers categories.
     func activate() {
         center.delegate = self
         center.setNotificationCategories(makeCategories())
-        Task {
-            do {
-                let granted = try await center.requestAuthorization(options: [.alert, .sound])
-                Log.signals.info("Notification permission granted: \(granted, privacy: .public)")
-            } catch {
-                Log.signals.error("Notification permission request failed: \(error, privacy: .public)")
-            }
+    }
+
+    /// Asks for permission. Shows the system prompt only the first time.
+    @discardableResult
+    func requestAuthorization() async -> Bool {
+        do {
+            let granted = try await center.requestAuthorization(options: [.alert, .sound])
+            Log.signals.info("Notification permission granted: \(granted, privacy: .public)")
+            return granted
+        } catch {
+            Log.signals.error("Notification permission request failed: \(error, privacy: .public)")
+            return false
         }
     }
 

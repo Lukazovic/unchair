@@ -47,6 +47,8 @@ final class AppModel {
         }
     }
 
+    private(set) var hasCompletedOnboarding: Bool
+
     /// Set when the global shortcut couldn't be registered.
     private(set) var globalShortcutError: String?
 
@@ -104,6 +106,7 @@ final class AppModel {
         self.now = now
         self.settings = settings
         showsTimerInMenuBar = store.showsTimerInMenuBar
+        hasCompletedOnboarding = store.hasCompletedOnboarding
         notificationSound = store.notificationSound
         globalShortcut = store.globalShortcut
         engine = UnchairEngine(
@@ -119,6 +122,9 @@ final class AppModel {
             self?.perform(action, kinds: kinds)
         }
         notifications.activate()
+        if hasCompletedOnboarding {
+            Task { await notifications.requestAuthorization() }
+        }
         startMonitoring()
         registerGlobalShortcut()
         NotificationCenter.default.addObserver(
@@ -131,6 +137,20 @@ final class AppModel {
             }
         }
         stateDidChange()
+    }
+
+    // MARK: - Onboarding
+
+    func requestNotificationPermission() async -> Bool {
+        await notifications.requestAuthorization()
+    }
+
+    func completeOnboarding(profile: UsageProfile) {
+        var newSettings = settings
+        profile.apply(to: &newSettings)
+        settings = newSettings
+        store.hasCompletedOnboarding = true
+        hasCompletedOnboarding = true
     }
 
     // MARK: - Pomodoro
