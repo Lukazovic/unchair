@@ -37,6 +37,7 @@ line_length:
 identifier_name:
   excluded:
     - id
+    - to
 
 type_body_length:
   warning: 300
