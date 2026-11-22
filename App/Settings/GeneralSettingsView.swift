@@ -10,6 +10,7 @@ struct GeneralSettingsView: View {
     @State private var notificationStatus: UNAuthorizationStatus?
     @State private var exportDocument: HistoryDocument?
     @State private var exportError: String?
+    @State private var confirmsDeletingHistory = false
 
     var body: some View {
         Form {
@@ -78,7 +79,10 @@ struct GeneralSettingsView: View {
 
             Section {
                 LabeledContent("History") {
-                    Button("Export…", action: export)
+                    HStack {
+                        Button("Export…", action: export)
+                        Button("Delete…", role: .destructive) { confirmsDeletingHistory = true }
+                    }
                 }
                 if let exportError {
                     Text(exportError)
@@ -86,6 +90,9 @@ struct GeneralSettingsView: View {
                         .foregroundStyle(.red)
                 }
                 LabeledContent("Version", value: Bundle.main.marketingVersion)
+                if model.updates.isAvailable {
+                    Toggle("Check for updates automatically", isOn: automaticUpdates)
+                }
             } footer: {
                 Text("Your history stays on this Mac.")
             }
@@ -106,8 +113,24 @@ struct GeneralSettingsView: View {
                 exportError = error.localizedDescription
             }
         }
+        .confirmationDialog(
+            "Delete all history?",
+            isPresented: $confirmsDeletingHistory
+        ) {
+            Button("Delete History", role: .destructive) { model.history.deleteAll() }
+        } message: {
+            Text(Copy.deleteHistoryMessage)
+        }
         .task {
             notificationStatus = await UNUserNotificationCenter.current().notificationSettings().authorizationStatus
+        }
+    }
+
+    private var automaticUpdates: Binding<Bool> {
+        Binding {
+            model.updates.automaticallyChecksForUpdates
+        } set: {
+            model.updates.automaticallyChecksForUpdates = $0
         }
     }
 

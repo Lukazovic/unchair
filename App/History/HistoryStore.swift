@@ -85,6 +85,16 @@ final class HistoryStore {
         )
     }
 
+    /// Permanently removes all recorded history.
+    func deleteAll() {
+        guard let context else { return }
+        try? context.delete(model: FocusSessionRecord.self)
+        try? context.delete(model: PresenceRecord.self)
+        try? context.delete(model: WaterRecord.self)
+        try? context.delete(model: ReminderRecord.self)
+        try? context.save()
+    }
+
     func save() {
         try? context?.save()
     }

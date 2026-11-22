@@ -26,6 +26,8 @@ enum Copy {
     static let summaryFooter: LocalizedStringResource = "A quiet notification with today's focus time, standing time, and water. With working hours on, it arrives when your workday ends."
 
     static let onboardingNotifications: LocalizedStringResource = "Unchair uses notifications to tell you when to take a break, stand up, or drink water. You can reply right from them: Done, Snooze, or Start Break."
+
+    static let deleteHistoryMessage: LocalizedStringResource = "Your focus sessions, sitting and standing time, water, and reminder history will be removed from this Mac. This can't be undone."
 }
 
 // swiftlint:enable line_length
