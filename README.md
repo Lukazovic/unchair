@@ -24,11 +24,28 @@ open Unchair.xcodeproj
 
 Select the **Unchair** scheme and press **⌘R**. Unchair runs as a menu bar app (no Dock icon): look for the figure icon in the menu bar.
 
+### From the terminal
+
+```sh
+scripts/run.sh      # build a Debug copy and open it
+scripts/check.sh    # run everything CI runs: format, lint, tests, build
+```
+
+`scripts/run.sh` quits any other running copy of Unchair first (from Xcode or `/Applications`), since they share settings and the global shortcut. Reopen `/Applications/Unchair.app` when you're done testing. Options, which can be combined:
+
+| Option | What it does |
+|---|---|
+| `--sample` | A month of in-memory sample history in Statistics (your data is untouched) |
+| `--fullscreen` | Shows a full-screen reminder right after launch |
+| `--lang es` | Runs in a language: `en`, `es`, or `pt-BR` |
+
+### Notes
+
 The project signs to run locally by default. To run with your own Apple Developer account, set your team in **Signing & Capabilities**. With a team set, the App Group is enabled automatically and widgets show live data (see [Config/README.md](Config/README.md)).
 
 Run Unchair from Xcode or from `/Applications`. macOS refuses notification permission for apps launched from temporary folders.
 
-To explore the app with a month of in-memory sample history (Debug builds only, never touches your data), add `-UnchairSampleData` to the scheme's launch arguments. To see a full-screen reminder right away, add `-UnchairDemoFullScreen`.
+In Xcode, the same options are launch arguments (Debug builds only): add `-UnchairSampleData` or `-UnchairDemoFullScreen` under **Edit Scheme → Run → Arguments**, and pick a language under **Options → App Language**.
 
 ## Project structure
 
@@ -58,7 +75,7 @@ Unchair.xcodeproj/
 
 | Task | Command |
 |---|---|
-| Build and open the app | `scripts/run.sh` (see `--help` for sample data, full-screen demo, language) |
+| Build and open the app | `scripts/run.sh` |
 | Run every CI check | `scripts/check.sh` |
 | Run core tests | `swift test --package-path Packages/UnchairCore` |
 | Run all tests via Xcode | `xcodebuild test -project Unchair.xcodeproj -scheme Unchair` |
