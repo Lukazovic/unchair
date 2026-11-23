@@ -18,15 +18,22 @@ extension AppModel {
         }
     }
 
+    /// Shows at most one alert: a break includes any pending reminders.
     func updateOverlay() {
         let isHeld = switch engine.holdReason(at: clock.now) {
         case .quietMode, .focusMode, .meeting, .fullscreen: true
         case .away, .outsideWorkingHours, nil: false
         }
-        guard settings.breaks.showsOverlay, let key = currentBreak, key != hiddenBreakOverlay, !isHeld else {
+        if settings.breaks.showsOverlay, let key = currentBreak, key != hiddenBreakOverlay, !isHeld {
+            reminderOverlay.hide()
+            showBreakOverlay()
+        } else {
             breakOverlay.hide()
-            return
+            showReminderOverlay()
         }
+    }
+
+    private func showBreakOverlay() {
         guard !breakOverlay.isVisible else { return }
         breakOverlay.show { [weak self] in
             self?.hideBreakOverlay()
@@ -37,9 +44,30 @@ extension AppModel {
         }
     }
 
+    private func showReminderOverlay() {
+        guard let alert = fullScreenReminder, !reminderOverlay.isVisible else { return }
+        reminderOverlay.show { [weak self] in
+            self?.respondToFullScreen(.snoozeReminders)
+        } content: {
+            ReminderOverlayView(
+                alert: alert,
+                onDone: { [weak self] in self?.respondToFullScreen(.completeReminders) },
+                onSnooze: { [weak self] in self?.respondToFullScreen(.snoozeReminders) }
+            )
+        }
+    }
+
+    /// Hiding or skipping a break also snoozes the reminders shown with it, so
+    /// they don't immediately cover the screen on their own.
     private func hideBreakOverlay() {
         hiddenBreakOverlay = currentBreak
         breakOverlay.hide()
+        respondToFullScreen(.snoozeReminders)
+    }
+
+    func skipBreakFromOverlay() {
+        respondToFullScreen(.snoozeReminders)
+        skipPomodoroPhase()
     }
 
     func postureTarget(in events: [UnchairEvent]) -> Posture? {
@@ -65,18 +93,10 @@ extension AppModel {
         )
         fullScreenReminder = alert
         reminderOverlay.hide()
-        reminderOverlay.show { [weak self] in
-            self?.respondToFullScreen(.snoozeReminders)
-        } content: {
-            ReminderOverlayView(
-                alert: alert,
-                onDone: { [weak self] in self?.respondToFullScreen(.completeReminders) },
-                onSnooze: { [weak self] in self?.respondToFullScreen(.snoozeReminders) }
-            )
-        }
+        updateOverlay()
     }
 
-    private func respondToFullScreen(_ action: NotificationAction) {
+    func respondToFullScreen(_ action: NotificationAction) {
         guard let alert = fullScreenReminder else { return }
         fullScreenReminder = nil
         reminderOverlay.hide()

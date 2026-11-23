@@ -14,12 +14,19 @@ struct BreakOverlayView: View {
         return false
     }
 
+    private var title: LocalizedStringKey {
+        if case let .awaiting(phase) = model.engine.pomodoro.state {
+            return phase.title
+        }
+        return model.engine.pomodoro.phase?.title ?? "Break"
+    }
+
     var body: some View {
         let pomodoro = model.engine.pomodoro
 
         OverlayContainer {
             VStack(spacing: 28) {
-                Text(pomodoro.phase?.title ?? "Break")
+                Text(title)
                     .font(.largeTitle.weight(.semibold))
 
                 if isAwaiting {
@@ -45,8 +52,17 @@ struct BreakOverlayView: View {
                         .foregroundStyle(.secondary)
                 }
 
+                if let alert = model.fullScreenReminder {
+                    BreakReminderCard(
+                        message: alert.message,
+                        onDone: { model.respondToFullScreen(.completeReminders) },
+                        onSnooze: { model.respondToFullScreen(.snoozeReminders) }
+                    )
+                    .frame(maxWidth: 420)
+                }
+
                 HStack(spacing: 12) {
-                    Button("Skip Break", action: model.skipPomodoroPhase)
+                    Button("Skip Break", action: model.skipBreakFromOverlay)
                         .secondaryActionStyle()
                     if isAwaiting {
                         Button("Hide", action: onHide)
@@ -64,6 +80,33 @@ struct BreakOverlayView: View {
                 .controlSize(.large)
             }
         }
+    }
+}
+
+/// Reminders that came due together with the break.
+private struct BreakReminderCard: View {
+    let message: ReminderMessage
+    let onDone: () -> Void
+    let onSnooze: () -> Void
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(message.title)
+                .font(.headline)
+            if !message.body.isEmpty {
+                Text(message.body)
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            HStack {
+                Button("Done", action: onDone)
+                Button("Snooze 10 Minutes", action: onSnooze)
+            }
+        }
+        .padding(12)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(.quaternary.opacity(0.5), in: RoundedRectangle(cornerRadius: 10))
     }
 }
 
