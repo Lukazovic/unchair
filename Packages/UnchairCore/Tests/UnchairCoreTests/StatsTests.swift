@@ -41,6 +41,22 @@ struct StatsTests {
         #expect(stats.water == 500)
     }
 
+    @Test("the daily average skips today and days without activity")
+    func dailyAverage() {
+        let days = [
+            DayStats(day: hours(0), water: 1000),
+            DayStats(day: hours(24)),
+            DayStats(day: hours(48), water: 2000),
+            DayStats(day: hours(72), water: 100), // today
+        ]
+
+        let average = days.dailyAverage { Double($0.water) }
+        let none = [DayStats]().dailyAverage { Double($0.water) }
+
+        #expect(average == 1500)
+        #expect(none == nil)
+    }
+
     @Test("presence time is split by state and clipped to the day")
     func presenceTime() {
         let history = History(presenceChanges: [

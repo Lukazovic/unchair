@@ -89,6 +89,14 @@ public extension History {
 }
 
 public extension [DayStats] {
+    /// The average of `value` over finished days with activity, or `nil` if
+    /// there are none. Today, the last day, isn't over yet.
+    func dailyAverage(of value: (DayStats) -> Double) -> Double? {
+        let finished = dropLast().filter(\.hasActivity)
+        guard !finished.isEmpty else { return nil }
+        return finished.map(value).reduce(0, +) / Double(finished.count)
+    }
+
     /// Consecutive days, ending today, that meet `goal`. Today only breaks the
     /// streak once it's over, so an unfinished day counts from yesterday.
     func streak(where goal: (DayStats) -> Bool) -> Int {

@@ -84,8 +84,7 @@ struct DailyBarChart: View {
             let date = selectedDay.day.formatted(.dateTime.weekday(.abbreviated).day().month(.abbreviated))
             return "\(date): \(format(value(selectedDay)))"
         }
-        guard !days.isEmpty else { return "" }
-        let average = days.map(value).reduce(0, +) / Double(days.count)
+        guard let average = days.dailyAverage(of: value) else { return "" }
         return String(localized: "Daily average: \(format(average))")
     }
 }
