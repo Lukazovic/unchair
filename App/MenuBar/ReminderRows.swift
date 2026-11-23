@@ -14,6 +14,7 @@ struct PostureRow: View {
                 .font(.title3)
                 .foregroundStyle(.tint)
                 .frame(width: 24)
+                .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(reminder.posture.title)
@@ -60,6 +61,7 @@ struct HydrationRow: View {
                 .font(.title3)
                 .foregroundStyle(.cyan)
                 .frame(width: 24)
+                .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 4) {
                 HStack {
