@@ -18,8 +18,8 @@ struct PostureRow: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(reminder.posture.title)
                 Text(status)
-                    .font(.caption)
-                    .foregroundStyle(reminder.state == .suggested ? .orange : .secondary)
+                    .font(.caption.weight(reminder.state == .suggested ? .semibold : .regular))
+                    .foregroundStyle(reminder.state == .suggested ? .primary : .secondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
 

@@ -19,6 +19,7 @@ extension View {
 private struct PanelTile: ViewModifier {
     let isPressed: Bool
 
+    @Environment(\.colorSchemeContrast) private var contrast
     @State private var isHovered = false
 
     func body(content: Content) -> some View {
@@ -28,6 +29,12 @@ private struct PanelTile: ViewModifier {
             .frame(maxWidth: .infinity, minHeight: 30)
             .padding(.horizontal, 8)
             .background(fill, in: RoundedRectangle(cornerRadius: 8, style: .continuous))
+            .overlay {
+                if contrast == .increased {
+                    RoundedRectangle(cornerRadius: 8, style: .continuous)
+                        .strokeBorder(.primary.opacity(0.6))
+                }
+            }
             .contentShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
             .onHover { isHovered = $0 }
             .animation(.easeOut(duration: 0.12), value: isHovered)
