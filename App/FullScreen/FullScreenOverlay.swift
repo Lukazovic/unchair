@@ -7,6 +7,10 @@ final class FullScreenOverlay {
     private var panels: [OverlayPanel] = []
     private var screenObserver: (any NSObjectProtocol)?
     private var rebuildPanels: (() -> Void)?
+    private var keyFocusTask: Task<Void, Never>?
+
+    /// How long the keyboard must be quiet before an alert takes it over.
+    private static let typingPause: TimeInterval = 1.5
 
     var isVisible: Bool {
         !panels.isEmpty
@@ -42,6 +46,7 @@ final class FullScreenOverlay {
     }
 
     private func closePanels() {
+        keyFocusTask?.cancel()
         for panel in panels {
             panel.orderOut(nil)
         }
@@ -72,9 +77,26 @@ final class FullScreenOverlay {
             panel.orderFrontRegardless()
             panels.append(panel)
         }
-        // Non-activating panels take keyboard focus (Escape, Return) without
-        // needing the app to be active, which macOS may refuse for background apps.
-        panels.first?.makeKey()
+        takeKeyFocusAfterTyping()
+    }
+
+    /// Non-activating panels take keyboard focus (Escape, Return) without
+    /// needing the app to be active, which macOS may refuse for background apps.
+    /// Waits for a pause in typing, so a Return meant for another app never
+    /// answers the alert.
+    private func takeKeyFocusAfterTyping() {
+        keyFocusTask = Task { [weak self] in
+            let shownAt = Date.now
+            repeat {
+                try? await Task.sleep(for: .milliseconds(250))
+                guard !Task.isCancelled else { return }
+            } while Self.secondsSinceLastKey < Self.typingPause || Date.now.timeIntervalSince(shownAt) < 1
+            self?.panels.first?.makeKey()
+        }
+    }
+
+    private static var secondsSinceLastKey: TimeInterval {
+        CGEventSource.secondsSinceLastEventType(.combinedSessionState, eventType: .keyDown)
     }
 }
 
