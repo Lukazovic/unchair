@@ -350,7 +350,7 @@ final class AppModel {
             case .posture: events += engine.snoozePosture(by: Self.snoozeInterval, now: now)
             case .hydration: events += engine.snoozeHydration(by: Self.snoozeInterval, now: now)
             case .eyes: events += engine.snoozeEyeBreak(by: Self.snoozeInterval, now: now)
-            case .postureCheck: events += engine.completePostureCheck(now: now)
+            case .postureCheck: events += engine.snoozePostureCheck(by: Self.snoozeInterval, now: now)
             }
         }
         handle(events)

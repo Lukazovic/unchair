@@ -58,6 +58,17 @@ struct IntervalReminderTests {
 
 @Suite("Eye breaks and posture checks")
 struct EyeBreakTests {
+    @Test("snoozing a posture check brings it back after the snooze")
+    func snoozePostureCheck() {
+        var settings = quietSettings()
+        settings.postureCheck.isEnabled = true
+        var engine = UnchairEngine(settings: settings, calendar: utc, now: monday10am)
+
+        _ = engine.snoozePostureCheck(by: 10 * 60, now: at(1))
+
+        #expect(engine.postureCheck.nextReminderAt == at(11))
+    }
+
     @Test("eye breaks are off by default")
     func offByDefault() {
         let engine = UnchairEngine(calendar: utc, now: monday10am)

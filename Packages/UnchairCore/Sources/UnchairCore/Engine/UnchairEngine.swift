@@ -481,4 +481,9 @@ public extension UnchairEngine {
         postureCheck.acknowledge(now: now)
         return tickReminders(now: now)
     }
+
+    mutating func snoozePostureCheck(by interval: TimeInterval, now: Date) -> [UnchairEvent] {
+        postureCheck.snooze(by: interval, now: now)
+        return tickReminders(now: now)
+    }
 }
