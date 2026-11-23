@@ -480,18 +480,18 @@
         }
       }
     },
-    "Alert": {
+    "Alerts": {
       "localizations": {
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aviso"
+            "value": "Avisos"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aviso"
+            "value": "Avisos"
           }
         }
       }
@@ -700,22 +700,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pausa"
-          }
-        }
-      }
-    },
-    "Break alert": {
-      "localizations": {
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aviso de descanso"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aviso de pausa"
           }
         }
       }
@@ -1536,18 +1520,18 @@
         }
       }
     },
-    "Full screen covers your screens with the break timer so you actually step away. You can always skip it or press Escape.": {
+    "Full screen covers your screens until you respond. You can always press Escape, and it stays out of calls, full-screen apps, and quiet time.": {
       "localizations": {
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pantalla completa cubre tus pantallas con el temporizador del descanso para que realmente te alejes. Siempre puedes omitirlo o pulsar Escape."
+            "value": "Pantalla completa cubre tus pantallas hasta que respondas. Siempre puedes pulsar Escape, y no aparece en llamadas, apps a pantalla completa ni momentos de silencio."
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tela cheia cobre suas telas com o timer da pausa para você realmente se afastar. Você sempre pode pular ou apertar Esc."
+            "value": "A tela cheia cobre suas telas até você responder. Você sempre pode apertar Esc, e ela não aparece em chamadas, apps em tela cheia nem em momentos de silêncio."
           }
         }
       }
@@ -2577,6 +2561,22 @@
       }
     },
     "Pomodoro Breaks": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Descansos del Pomodoro"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pausas do Pomodoro"
+          }
+        }
+      }
+    },
+    "Pomodoro breaks": {
       "localizations": {
         "es": {
           "stringUnit": {
@@ -3804,6 +3804,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Estudante"
+          }
+        }
+      }
+    },
+    "Style": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estilo"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estilo"
           }
         }
       }

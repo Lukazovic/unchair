@@ -106,7 +106,7 @@ struct AlertStylePicker: View {
     @Binding var style: AlertStyle
     let onPreview: () -> Void
 
-    init(_ title: LocalizedStringKey = "Alert", style: Binding<AlertStyle>, onPreview: @escaping () -> Void) {
+    init(_ title: LocalizedStringKey, style: Binding<AlertStyle>, onPreview: @escaping () -> Void) {
         self.title = title
         _style = style
         self.onPreview = onPreview

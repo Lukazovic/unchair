@@ -47,38 +47,6 @@ struct GeneralSettingsView: View {
                 }
             }
 
-            Section("Notifications") {
-                LabeledContent("Status") {
-                    Text(notificationStatusText)
-                }
-                LabeledContent("Sound") {
-                    HStack {
-                        Picker("Sound", selection: $model.notificationSound) {
-                            ForEach(NotificationSoundOption.allCases) { option in
-                                Text(option.title).tag(option)
-                            }
-                        }
-                        .labelsHidden()
-                        .fixedSize()
-                        Button {
-                            model.notificationSound.preview()
-                        } label: {
-                            Label("Play", systemImage: "play.fill")
-                                .labelStyle(.iconOnly)
-                        }
-                        .help(Text("Play"))
-                        .disabled(model.notificationSound == .none)
-                    }
-                }
-                if model.notificationStatus == .notDetermined {
-                    Button("Allow Notifications…") {
-                        Task { await model.requestNotificationPermission() }
-                    }
-                } else {
-                    Button("Open Notification Settings…", action: NotificationSettings.open)
-                }
-            }
-
             Section {
                 Toggle("Summarize my day", isOn: $model.settings.summary.isEnabled)
                 if !model.settings.interruptions.workingHours.isEnabled {
@@ -135,9 +103,6 @@ struct GeneralSettingsView: View {
         } message: {
             Text(Copy.deleteHistoryMessage)
         }
-        .task {
-            await model.refreshNotificationStatus()
-        }
     }
 
     private var automaticUpdates: Binding<Bool> {
@@ -145,16 +110,6 @@ struct GeneralSettingsView: View {
             model.updates.automaticallyChecksForUpdates
         } set: {
             model.updates.automaticallyChecksForUpdates = $0
-        }
-    }
-
-    private var notificationStatusText: LocalizedStringKey {
-        switch model.notificationStatus {
-        case .authorized, .provisional, .ephemeral: "Allowed"
-        case .denied: "Turned off"
-        case .notDetermined: "Not set up"
-        case nil: "…"
-        @unknown default: "Unknown"
         }
     }
 

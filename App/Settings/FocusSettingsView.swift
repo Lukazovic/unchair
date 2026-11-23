@@ -44,12 +44,6 @@ struct FocusSettingsView: View {
                 Toggle("Start breaks automatically", isOn: $model.settings.pomodoro.autoStartBreaks)
                 Toggle("Start focus sessions automatically", isOn: $model.settings.pomodoro.autoStartFocus)
             }
-
-            Section {
-                AlertStylePicker("Break alert", style: model.breakAlertStyle, onPreview: model.previewBreakAlert)
-            } footer: {
-                Text(Copy.overlayFooter)
-            }
         }
         .formStyle(.grouped)
         .fitsScreenHeight()

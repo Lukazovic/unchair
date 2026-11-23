@@ -21,7 +21,7 @@ enum Copy {
 
     static let eyesFooter: LocalizedStringResource = "Every 20 minutes, look at something about 6 meters (20 feet) away for 20 seconds. Evidence is mixed, but it's an easy habit that many people find relieving."
 
-    static let overlayFooter: LocalizedStringResource = "Full screen covers your screens with the break timer so you actually step away. You can always skip it or press Escape."
+    static let alertsFooter: LocalizedStringResource = "Full screen covers your screens until you respond. You can always press Escape, and it stays out of calls, full-screen apps, and quiet time."
 
     static let summaryFooter: LocalizedStringResource = "A quiet notification with today's focus time, standing time, and water. With working hours on, it arrives when your workday ends."
 
