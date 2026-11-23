@@ -54,7 +54,11 @@ final class FullScreenOverlay {
     }
 
     private func makePanels(_ view: AnyView, onCancel: @escaping () -> Void) {
+        // The alert appears where the user is; other displays are just covered.
+        let mouse = NSEvent.mouseLocation
+        let active = NSScreen.screens.first { NSMouseInRect(mouse, $0.frame, false) } ?? NSScreen.main
         for screen in NSScreen.screens {
+            let isActive = screen == active
             let panel = OverlayPanel(
                 contentRect: screen.frame,
                 styleMask: [.borderless, .nonactivatingPanel, .fullSizeContentView],
@@ -69,7 +73,8 @@ final class FullScreenOverlay {
             // Alerts fire while another app is active; panels hide on deactivate by default.
             panel.hidesOnDeactivate = false
             panel.onCancel = onCancel
-            let hostingView = NSHostingView(rootView: view)
+            panel.takesKeyFocus = isActive
+            let hostingView = NSHostingView(rootView: isActive ? view : AnyView(OverlayContainer { EmptyView() }))
             // The display sets the size, never the content.
             hostingView.sizingOptions = []
             panel.contentView = hostingView
@@ -91,7 +96,7 @@ final class FullScreenOverlay {
                 try? await Task.sleep(for: .milliseconds(250))
                 guard !Task.isCancelled else { return }
             } while Self.secondsSinceLastKey < Self.typingPause || Date.now.timeIntervalSince(shownAt) < 1
-            self?.panels.first?.makeKey()
+            self?.panels.first(where: \.takesKeyFocus)?.makeKey()
         }
     }
 
@@ -103,9 +108,10 @@ final class FullScreenOverlay {
 /// A borderless panel that can take keyboard focus so Escape and Tab work.
 private final class OverlayPanel: NSPanel {
     var onCancel: (() -> Void)?
+    var takesKeyFocus = true
 
     override var canBecomeKey: Bool {
-        true
+        takesKeyFocus
     }
 
     /// Keeps the panel over the menu bar and notch, where AppKit may push it down.
