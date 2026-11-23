@@ -28,7 +28,11 @@ extension AppModel {
                 ReminderOverlayView(
                     alert: alert,
                     onDone: { [weak self] in self?.previewOverlay.hide() },
-                    onSnooze: { [weak self] in self?.previewOverlay.hide() }
+                    onSnooze: { [weak self] in self?.previewOverlay.hide() },
+                    onEyesRested: { [weak self] in
+                        self?.notificationSound.preview()
+                        self?.previewOverlay.hide()
+                    }
                 )
             }
         }

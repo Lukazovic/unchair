@@ -7,6 +7,8 @@ struct ReminderOverlayView: View {
     let alert: FullScreenReminder
     let onDone: () -> Void
     let onSnooze: () -> Void
+    /// Called when the eye countdown ends.
+    let onEyesRested: () -> Void
 
     var body: some View {
         OverlayContainer {
@@ -30,6 +32,10 @@ struct ReminderOverlayView: View {
                         .foregroundStyle(.secondary)
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
+                }
+
+                if alert.kinds.contains(.eyes) {
+                    EyeCountdown(onFinish: onEyesRested)
                 }
 
                 HStack(spacing: 12) {

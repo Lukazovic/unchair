@@ -63,7 +63,8 @@ extension AppModel {
             ReminderOverlayView(
                 alert: alert,
                 onDone: { [weak self] in self?.respondToFullScreen(.completeReminders) },
-                onSnooze: { [weak self] in self?.respondToFullScreen(.snoozeReminders) }
+                onSnooze: { [weak self] in self?.respondToFullScreen(.snoozeReminders) },
+                onEyesRested: { [weak self] in self?.eyesRested() }
             )
         }
     }
@@ -74,6 +75,14 @@ extension AppModel {
         hiddenBreakOverlay = currentBreak
         breakOverlay.hide()
         respondToFullScreen(.snoozeReminders)
+    }
+
+    /// The user is looking away, so a sound says the 20 seconds are over.
+    private func eyesRested() {
+        notificationSound.preview()
+        if fullScreenReminder?.kinds == [.eyes] {
+            respondToFullScreen(.completeReminders)
+        }
     }
 
     func skipBreakFromOverlay() {
