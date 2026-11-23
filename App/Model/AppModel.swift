@@ -57,6 +57,9 @@ final class AppModel {
     /// Whether Unchair may post notifications. `nil` until first checked.
     internal(set) var notificationStatus: UNAuthorizationStatus?
 
+    /// Set when a sample notification couldn't be shown.
+    var showsNotificationsBlockedAlert = false
+
     /// The reminders currently covering the screen.
     internal(set) var fullScreenReminder: FullScreenReminder?
 

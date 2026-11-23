@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    let model: AppModel
+    @Bindable var model: AppModel
 
     var body: some View {
         TabView {
@@ -19,6 +19,12 @@ struct SettingsView: View {
                 .tabItem { Label("Interruptions", systemImage: "bell.badge") }
         }
         .frame(width: 520)
+        .alert("Notifications are off", isPresented: $model.showsNotificationsBlockedAlert) {
+            Button("Open Notification Settings…", action: NotificationSettings.open)
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("Allow notifications for Unchair to see this sample, or choose Full Screen.")
+        }
     }
 }
 

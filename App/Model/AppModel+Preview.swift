@@ -9,7 +9,7 @@ extension AppModel {
         switch settings.alerts.style(for: kind) {
         case .notification:
             Task {
-                await ensureNotificationPermission()
+                guard await ensureNotificationPermission() else { return }
                 notifications.postPreview(
                     of: kind,
                     postureTarget: .standing,
@@ -50,7 +50,7 @@ extension AppModel {
             }
         } else {
             Task {
-                await ensureNotificationPermission()
+                guard await ensureNotificationPermission() else { return }
                 notifications.postBreakPreview(extras: NotificationExtras(
                     stretch: stretch,
                     mentionsEyes: settings.eyes.isEnabled && settings.eyes.mergeWithPomodoro
@@ -70,11 +70,15 @@ extension AppModel {
         #endif
     }
 
-    /// Asks for permission if the user was never asked, so the sample can appear.
-    private func ensureNotificationPermission() async {
+    /// Asks for permission if the user was never asked, and explains when
+    /// notifications are turned off, so Test never silently does nothing.
+    private func ensureNotificationPermission() async -> Bool {
         await refreshNotificationStatus()
         if notificationStatus == .notDetermined {
             await requestNotificationPermission()
         }
+        let isBlocked = notificationStatus == .denied || notificationStatus == .notDetermined
+        showsNotificationsBlockedAlert = isBlocked
+        return !isBlocked
     }
 }

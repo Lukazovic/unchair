@@ -544,6 +544,22 @@
         }
       }
     },
+    "Allow notifications for Unchair to see this sample, or choose Full Screen.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permite las notificaciones de Unchair para ver este ejemplo o elige Pantalla completa."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permita as notificações do Unchair para ver este exemplo ou escolha Tela cheia."
+          }
+        }
+      }
+    },
     "Allowed": {
       "localizations": {
         "es": {
@@ -764,6 +780,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Elevação de panturrilha"
+          }
+        }
+      }
+    },
+    "Cancel": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelar"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelar"
           }
         }
       }
