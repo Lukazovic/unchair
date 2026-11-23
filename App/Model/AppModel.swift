@@ -395,9 +395,14 @@ final class AppModel {
         let fullScreenKinds = isQuiet ? [] : events.compactMap(ReminderKind.init)
             .filter { settings.alerts.style(for: $0) == .fullScreen }
         let notified = events.filter { event in
-            ReminderKind(event).map { !fullScreenKinds.contains($0) } ?? true
+            !isShownAsFullScreenBreak(event)
+                && (ReminderKind(event).map { !fullScreenKinds.contains($0) } ?? true)
         }
         notifications.post(notified, extras: extras, quietly: isQuiet)
+        if events.contains(where: isShownAsFullScreenBreak) {
+            // The overlay replaces the notification, so it brings the sound.
+            notificationSound.preview()
+        }
         presentFullScreen(fullScreenKinds, postureTarget: postureTarget(in: events))
         stateDidChange()
     }

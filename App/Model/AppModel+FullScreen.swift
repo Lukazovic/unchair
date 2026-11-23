@@ -26,6 +26,12 @@ extension AppModel {
         }
     }
 
+    /// Whether the end of a focus session is announced by the break overlay.
+    func isShownAsFullScreenBreak(_ event: UnchairEvent) -> Bool {
+        guard case .pomodoro(.phaseCompleted(.focus, _, _)) = event else { return false }
+        return settings.breaks.showsOverlay && !interruptionsAreHeld
+    }
+
     /// Shows at most one alert: a break includes any pending reminders.
     func updateOverlay() {
         let isHeld = interruptionsAreHeld
