@@ -1344,6 +1344,22 @@
         }
       }
     },
+    "Finish a focus session, log some water, or switch posture, and your days will show up here.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Termina una sesión de concentración, registra agua o cambia de postura y tus días aparecerán aquí."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conclua uma sessão de foco, registre água ou mude de postura e seus dias aparecerão aqui."
+          }
+        }
+      }
+    },
     "Focus": {
       "localizations": {
         "es": {
@@ -2188,6 +2204,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bom trabalho. Sente-se e continue."
+          }
+        }
+      }
+    },
+    "No Statistics Yet": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aún no hay estadísticas"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ainda não há estatísticas"
           }
         }
       }

@@ -15,6 +15,11 @@ public struct DayStats: Equatable, Sendable, Identifiable {
         day
     }
 
+    /// Whether anything was recorded on this day.
+    public var hasActivity: Bool {
+        focusSessions > 0 || water > 0 || standingTime > 0 || sittingTime > 0
+    }
+
     public init(
         day: Date,
         focusTime: TimeInterval = 0,

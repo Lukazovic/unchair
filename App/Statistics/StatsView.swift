@@ -24,6 +24,24 @@ struct StatsView: View {
     @State private var range: Range = .week
     @State private var days: [DayStats] = []
     @State private var streakDays: [DayStats] = []
+    @State private var hasLoaded = false
+
+    /// Changes whenever the numbers may have: new records, or another minute.
+    private struct RefreshKey: Equatable {
+        let range: Range
+        let minute: Int
+        let water: Int
+        let sessions: Int
+    }
+
+    private var refreshKey: RefreshKey {
+        RefreshKey(
+            range: range,
+            minute: Int(model.now.timeIntervalSinceReferenceDate / 60),
+            water: model.engine.hydration.intake(at: model.now),
+            sessions: model.engine.pomodoro.completedFocusSessions
+        )
+    }
 
     var body: some View {
         let today = days.last ?? DayStats(day: Calendar.current.startOfDay(for: model.now))
@@ -95,9 +113,21 @@ struct StatsView: View {
             .padding(24)
         }
         .frame(minWidth: 520, minHeight: 560)
-        .task(id: range) {
+        .overlay {
+            if hasLoaded, !streakDays.contains(where: \.hasActivity) {
+                ContentUnavailableView {
+                    Label("No Statistics Yet", systemImage: "chart.bar.xaxis")
+                } description: {
+                    Text("Finish a focus session, log some water, or switch posture, and your days will show up here.")
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(.background)
+            }
+        }
+        .task(id: refreshKey) {
             days = model.recentStats(days: range.rawValue)
             streakDays = model.recentStats(days: 365)
+            hasLoaded = true
         }
     }
 }
