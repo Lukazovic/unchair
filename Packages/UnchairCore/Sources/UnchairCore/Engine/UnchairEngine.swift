@@ -436,6 +436,14 @@ public extension UnchairEngine {
         return tickReminders(now: now)
     }
 
+    /// Puts back an earlier timer, to undo a skip or reset. Current settings
+    /// stay in place.
+    mutating func restorePomodoro(_ timer: PomodoroTimer, now: Date) -> [UnchairEvent] {
+        pomodoro = timer
+        pomodoro.settings = settings.pomodoro
+        return tickReminders(now: now)
+    }
+
     // MARK: - Posture
 
     mutating func confirmPostureSwitch(now: Date) -> [UnchairEvent] {

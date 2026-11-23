@@ -34,6 +34,18 @@ struct PomodoroSection: View {
 
             controls
 
+            if let undo = model.pomodoroUndo {
+                HStack {
+                    Text(undo.action == .reset ? "Cycle reset" : "Focus skipped")
+                        .foregroundStyle(.secondary)
+                    Spacer()
+                    Button("Undo", action: model.undoPomodoroAction)
+                        .keyboardShortcut("z")
+                }
+                .font(.callout)
+                .controlSize(.small)
+            }
+
             if let stretch = model.currentStretch {
                 StretchCard(stretch: stretch)
             }

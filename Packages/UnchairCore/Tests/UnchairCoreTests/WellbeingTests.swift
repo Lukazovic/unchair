@@ -24,6 +24,35 @@ private func quietSettings() -> UnchairSettings {
     return settings
 }
 
+@Suite("Undoing Pomodoro actions")
+struct PomodoroUndoTests {
+    @Test("restoring after a skip continues the focus session")
+    func restoresSkippedFocus() {
+        var engine = UnchairEngine(settings: quietSettings(), calendar: utc, now: monday10am)
+        _ = engine.startPomodoro(now: monday10am)
+        let before = engine.pomodoro
+
+        _ = engine.skipPomodoroPhase(now: at(10))
+        _ = engine.restorePomodoro(before, now: at(10))
+
+        #expect(engine.pomodoro.phase == .focus)
+        #expect(engine.pomodoro.nextDeadline == at(25))
+    }
+
+    @Test("restoring keeps settings changed in the meantime")
+    func keepsSettings() {
+        var engine = UnchairEngine(settings: quietSettings(), calendar: utc, now: monday10am)
+        let before = engine.pomodoro
+        var settings = quietSettings()
+        settings.pomodoro.shortBreakDuration = 7 * 60
+        _ = engine.apply(settings, now: at(1))
+
+        _ = engine.restorePomodoro(before, now: at(2))
+
+        #expect(engine.pomodoro.settings.shortBreakDuration == TimeInterval(420))
+    }
+}
+
 @Suite("IntervalReminder")
 struct IntervalReminderTests {
     @Test("fires at the interval and reschedules")

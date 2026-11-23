@@ -19,7 +19,7 @@ final class AppModel {
     /// The running app's model, for App Intents.
     private(set) static var shared: AppModel?
 
-    private(set) var engine: UnchairEngine
+    internal(set) var engine: UnchairEngine
 
     var settings: UnchairSettings {
         didSet {
@@ -60,6 +60,9 @@ final class AppModel {
     /// Set when a sample notification couldn't be shown.
     var showsNotificationsBlockedAlert = false
 
+    /// The last skip or reset, while it can be undone.
+    var pomodoroUndo: PomodoroUndo?
+
     /// The reminders currently covering the screen.
     internal(set) var fullScreenReminder: FullScreenReminder?
 
@@ -99,6 +102,7 @@ final class AppModel {
     @ObservationIgnored private let hotKey = GlobalHotKey()
     @ObservationIgnored private let widgets = WidgetPublisher()
     @ObservationIgnored private var deadlineTask: Task<Void, Never>?
+    @ObservationIgnored var undoTask: Task<Void, Never>?
     @ObservationIgnored private var displayTask: Task<Void, Never>?
     @ObservationIgnored private var lastPresence: PresenceState?
     /// The break whose overlay the user hid.
@@ -178,20 +182,29 @@ final class AppModel {
     // MARK: - Pomodoro
 
     func startPomodoro() {
+        clearUndo()
         handle(engine.startPomodoro(now: clock.now))
         notifications.removeDelivered(.pomodoro)
     }
 
     func pausePomodoro() {
+        clearUndo()
         handle(engine.pausePomodoro(now: clock.now))
     }
 
     func resumePomodoro() {
+        clearUndo()
         handle(engine.resumePomodoro(now: clock.now))
     }
 
     func skipPomodoroPhase() {
+        let timer = engine.pomodoro
         handle(engine.skipPomodoroPhase(now: clock.now))
+        if timer.phase == .focus {
+            offerUndo(.skippedFocus, restoring: timer)
+        } else {
+            clearUndo()
+        }
         notifications.removeDelivered(.pomodoro)
     }
 
@@ -201,7 +214,9 @@ final class AppModel {
     }
 
     func resetPomodoro() {
+        let timer = engine.pomodoro
         handle(engine.resetPomodoro(now: clock.now))
+        offerUndo(.reset, restoring: timer)
         notifications.removeDelivered(.pomodoro)
     }
 
@@ -363,7 +378,7 @@ final class AppModel {
         handle(events)
     }
 
-    private func handle(_ events: [UnchairEvent]) {
+    func handle(_ events: [UnchairEvent]) {
         let now = clock.now
         recordHistory(for: events, at: now)
 

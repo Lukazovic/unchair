@@ -960,6 +960,22 @@
         }
       }
     },
+    "Cycle reset": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ciclo reiniciado"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ciclo reiniciado"
+          }
+        }
+      }
+    },
     "Daily Summary": {
       "localizations": {
         "es": {
@@ -1420,6 +1436,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sessões de foco"
+          }
+        }
+      }
+    },
+    "Focus skipped": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Concentración omitida"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foco pulado"
           }
         }
       }
@@ -4175,6 +4207,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "O Unchair usa notificações para avisar quando fazer uma pausa, levantar ou beber água. Você pode responder direto nelas: Feito, Adiar ou Iniciar pausa."
+          }
+        }
+      }
+    },
+    "Undo": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deshacer"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Desfazer"
           }
         }
       }
