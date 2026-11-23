@@ -112,7 +112,7 @@ struct GeneralSettingsView: View {
             }
         }
         .formStyle(.grouped)
-        .fixedSize(horizontal: false, vertical: true)
+        .fitsScreenHeight()
         .fileExporter(
             isPresented: Binding { exportDocument != nil } set: {
                 if !$0 {

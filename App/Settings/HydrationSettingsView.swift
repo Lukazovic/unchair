@@ -25,6 +25,6 @@ struct HydrationSettingsView: View {
             .disabled(!model.settings.hydration.isEnabled)
         }
         .formStyle(.grouped)
-        .fixedSize(horizontal: false, vertical: true)
+        .fitsScreenHeight()
     }
 }

@@ -52,7 +52,7 @@ struct FocusSettingsView: View {
             }
         }
         .formStyle(.grouped)
-        .fixedSize(horizontal: false, vertical: true)
+        .fitsScreenHeight()
     }
 
     private var preset: Binding<PomodoroPreset?> {

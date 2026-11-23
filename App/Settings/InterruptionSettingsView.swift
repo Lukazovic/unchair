@@ -62,7 +62,7 @@ struct InterruptionSettingsView: View {
             }
         }
         .formStyle(.grouped)
-        .fixedSize(horizontal: false, vertical: true)
+        .fitsScreenHeight()
         .onChange(of: model.settings.interruptions.workingHours.start) { _, start in
             if model.settings.interruptions.workingHours.end <= start {
                 model.settings.interruptions.workingHours.end = min(start + 60, 24 * 60 - 1)
