@@ -120,6 +120,16 @@ final class NotificationService: NSObject, UNUserNotificationCenterDelegate {
         add(content, kind: .reminders)
     }
 
+    /// Moves a full-screen reminder to Notification Center without interrupting.
+    func postQuietly(_ alert: FullScreenReminder) {
+        let content = makeContent(quietly: true)
+        content.userInfo = [Self.kindsKey: alert.kinds.map(\.rawValue)]
+        content.categoryIdentifier = category(for: alert.kinds)
+        content.title = alert.message.title
+        content.body = alert.message.body
+        add(content, kind: .reminders)
+    }
+
     /// Posts a sample reminder notification, as the real one would look.
     func postPreview(of kind: ReminderKind, postureTarget: Posture?, extras: NotificationExtras) {
         let content = makeContent(quietly: kind == .postureCheck)
@@ -184,16 +194,19 @@ final class NotificationService: NSObject, UNUserNotificationCenterDelegate {
         center.add(UNNotificationRequest(identifier: kind.rawValue, content: content, trigger: nil))
     }
 
+    private func category(for kinds: [ReminderKind]) -> String {
+        kinds == [.hydration] ? Category.water
+            : kinds == [.postureCheck] ? Category.gentle
+            : Category.reminders
+    }
+
     private func fillReminders(
         _ content: UNMutableNotificationContent,
         kinds: [ReminderKind],
         postureTarget: Posture?,
         extras: NotificationExtras
     ) {
-        content.categoryIdentifier = kinds == [.hydration] ? Category.water
-            : kinds == [.postureCheck] ? Category.gentle
-            : Category.reminders
-
+        content.categoryIdentifier = category(for: kinds)
         let message = ReminderMessage(kinds: kinds, postureTarget: postureTarget, water: extras.water)
         content.title = message.title
         content.body = message.body

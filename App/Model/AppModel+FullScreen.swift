@@ -18,11 +18,22 @@ extension AppModel {
         }
     }
 
-    /// Shows at most one alert: a break includes any pending reminders.
-    func updateOverlay() {
-        let isHeld = switch engine.holdReason(at: clock.now) {
+    /// Whether alerts must stay quiet: in a call, full screen, or quiet time.
+    var interruptionsAreHeld: Bool {
+        switch engine.holdReason(at: clock.now) {
         case .quietMode, .focusMode, .meeting, .fullscreen: true
         case .away, .outsideWorkingHours, nil: false
+        }
+    }
+
+    /// Shows at most one alert: a break includes any pending reminders.
+    func updateOverlay() {
+        let isHeld = interruptionsAreHeld
+        if isHeld, let alert = fullScreenReminder {
+            // A call or presentation started: get out of the way, quietly.
+            fullScreenReminder = nil
+            reminderOverlay.hide()
+            notifications.postQuietly(alert)
         }
         if settings.breaks.showsOverlay, let key = currentBreak, key != hiddenBreakOverlay, !isHeld {
             reminderOverlay.hide()

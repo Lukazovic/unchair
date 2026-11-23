@@ -360,10 +360,7 @@ final class AppModel {
         let now = clock.now
         recordHistory(for: events, at: now)
 
-        let isQuiet = switch engine.holdReason(at: now) {
-        case .quietMode, .focusMode, .meeting, .fullscreen: true
-        case .away, .outsideWorkingHours, nil: false
-        }
+        let isQuiet = interruptionsAreHeld
         var extras = NotificationExtras(
             water: (engine.hydration.intake(at: now), engine.settings.hydration.dailyGoal),
             stretch: currentStretch,
