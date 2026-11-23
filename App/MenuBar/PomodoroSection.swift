@@ -85,6 +85,7 @@ struct PomodoroSection: View {
                     Label("Start Focus", systemImage: "play.fill")
                         .frame(maxWidth: .infinity)
                 }
+                .keyboardShortcut("p")
                 .prominentActionStyle()
 
             case let .awaiting(next):
@@ -92,6 +93,7 @@ struct PomodoroSection: View {
                     Label(next.isBreak ? "Start Break" : "Start Focus", systemImage: "play.fill")
                         .frame(maxWidth: .infinity)
                 }
+                .keyboardShortcut("p")
                 .prominentActionStyle()
                 if next.isBreak {
                     skipButton
@@ -103,6 +105,7 @@ struct PomodoroSection: View {
                     Label("Pause", systemImage: "pause.fill")
                         .frame(maxWidth: .infinity)
                 }
+                .keyboardShortcut("p")
                 .secondaryActionStyle()
                 skipButton
                 resetButton
@@ -112,6 +115,7 @@ struct PomodoroSection: View {
                     Label("Resume", systemImage: "play.fill")
                         .frame(maxWidth: .infinity)
                 }
+                .keyboardShortcut("p")
                 .prominentActionStyle()
                 skipButton
                 resetButton

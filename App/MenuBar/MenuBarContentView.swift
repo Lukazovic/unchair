@@ -40,6 +40,8 @@ struct MenuBarContentView: View {
                 SettingsLink {
                     Label("Settings", systemImage: "gearshape")
                 }
+                .keyboardShortcut(",")
+                .help(Text(verbatim: "⌘,"))
                 .simultaneousGesture(TapGesture().onEnded {
                     NSApplication.shared.activate()
                 })
@@ -49,6 +51,8 @@ struct MenuBarContentView: View {
                 } label: {
                     Label("Statistics", systemImage: "chart.bar.xaxis")
                 }
+                .keyboardShortcut("1")
+                .help(Text(verbatim: "⌘1"))
                 moreMenu
             }
             .buttonStyle(PanelButtonStyle())
