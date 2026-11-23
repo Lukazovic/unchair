@@ -17,8 +17,8 @@ extension AppModel {
     /// A one-line summary of today, for the end-of-day notification and Shortcuts.
     func todaySummary() -> String {
         let today = todayStats()
-        let focus = Format.minutes(max(60, today.focusTime))
-        let standing = Format.minutes(max(60, today.standingTime))
+        let focus = Format.total(today.focusTime)
+        let standing = Format.total(today.standingTime)
         let water = Format.volume(engine.hydration.intake(at: clock.now))
         if today.focusSessions == 0 {
             return String(localized: "Stood \(standing) · Drank \(water)")
