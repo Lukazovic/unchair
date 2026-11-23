@@ -9,11 +9,7 @@ struct ReminderOverlayView: View {
     let onSnooze: () -> Void
 
     var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(.ultraThickMaterial)
-                .ignoresSafeArea()
-
+        OverlayContainer {
             VStack(spacing: 24) {
                 HStack(spacing: 20) {
                     ForEach(alert.kinds, id: \.self) { kind in
@@ -48,7 +44,6 @@ struct ReminderOverlayView: View {
                 .padding(.top, 8)
             }
             .frame(maxWidth: 560)
-            .padding(40)
         }
     }
 

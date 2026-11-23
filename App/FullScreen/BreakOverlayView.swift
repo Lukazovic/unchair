@@ -17,11 +17,7 @@ struct BreakOverlayView: View {
     var body: some View {
         let pomodoro = model.engine.pomodoro
 
-        ZStack {
-            Rectangle()
-                .fill(.ultraThickMaterial)
-                .ignoresSafeArea()
-
+        OverlayContainer {
             VStack(spacing: 28) {
                 Text(pomodoro.phase?.title ?? "Break")
                     .font(.largeTitle.weight(.semibold))
@@ -67,7 +63,6 @@ struct BreakOverlayView: View {
                 }
                 .controlSize(.large)
             }
-            .padding(40)
         }
     }
 }
@@ -107,11 +102,7 @@ struct BreakPreviewView: View {
     let onHide: () -> Void
 
     var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(.ultraThickMaterial)
-                .ignoresSafeArea()
-
+        OverlayContainer {
             VStack(spacing: 28) {
                 Text(PomodoroPhase.shortBreak.title)
                     .font(.largeTitle.weight(.semibold))
@@ -135,7 +126,6 @@ struct BreakPreviewView: View {
                 }
                 .controlSize(.large)
             }
-            .padding(40)
         }
     }
 }
