@@ -113,8 +113,11 @@ final class NotificationService: NSObject, UNUserNotificationCenterDelegate {
         }
 
         guard !reminders.isEmpty else { return }
-        // A lone posture check is gentle: no sound.
-        let content = makeContent(quietly: quietly || reminders == [.postureCheck])
+        let content = makeContent(quietly: quietly)
+        if reminders == [.postureCheck] {
+            // A lone posture check is gentle: a banner without sound.
+            content.sound = nil
+        }
         content.userInfo = [Self.kindsKey: reminders.map(\.rawValue)]
         fillReminders(content, kinds: reminders, postureTarget: postureTarget, extras: extras)
         add(content, kind: .reminders)
@@ -132,7 +135,10 @@ final class NotificationService: NSObject, UNUserNotificationCenterDelegate {
 
     /// Posts a sample reminder notification, as the real one would look.
     func postPreview(of kind: ReminderKind, postureTarget: Posture?, extras: NotificationExtras) {
-        let content = makeContent(quietly: kind == .postureCheck)
+        let content = makeContent(quietly: false)
+        if kind == .postureCheck {
+            content.sound = nil
+        }
         fillReminders(content, kinds: [kind], postureTarget: postureTarget, extras: extras)
         content.userInfo = [Self.previewKey: true]
         add(content, kind: .preview)
