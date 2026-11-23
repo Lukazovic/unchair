@@ -4435,6 +4435,22 @@
         }
       }
     },
+    "Your current settings stay as they are unless you pick one.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tu configuración actual se mantiene a menos que elijas uno."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seus ajustes atuais continuam como estão, a menos que você escolha um."
+          }
+        }
+      }
+    },
     "Your day with Unchair": {
       "localizations": {
         "es": {

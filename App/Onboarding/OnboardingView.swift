@@ -14,10 +14,17 @@ struct OnboardingView: View {
 
     let model: AppModel
 
+    init(model: AppModel) {
+        self.model = model
+        // Suggest a profile only while nothing has been customized.
+        _profile = State(initialValue: model.settings == UnchairSettings() ? .student : nil)
+    }
+
     @Environment(\.dismiss) private var dismiss
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var step: Step = .welcome
-    @State private var profile: UsageProfile = .student
+    /// `nil` keeps the user's settings.
+    @State private var profile: UsageProfile?
     @State private var notificationStatus: UNAuthorizationStatus = .notDetermined
     @State private var launchAtLogin = true
 
@@ -40,6 +47,10 @@ struct OnboardingView: View {
             HStack {
                 PageDots(count: Step.allCases.count, current: step.rawValue)
                 Spacer()
+                if step != .finish {
+                    Button("Skip", action: dismiss.callAsFunction)
+                        .secondaryActionStyle()
+                }
                 if step != .welcome {
                     Button("Back") { go(to: step.rawValue - 1) }
                         .secondaryActionStyle()
@@ -51,6 +62,7 @@ struct OnboardingView: View {
             .padding(16)
         }
         .frame(width: 520, height: 500)
+        .onDisappear(perform: model.skipOnboarding)
         .task {
             notificationStatus = await UNUserNotificationCenter.current().notificationSettings().authorizationStatus
         }
@@ -130,6 +142,13 @@ struct OnboardingView: View {
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
+
+            if profile == nil {
+                Text("Your current settings stay as they are unless you pick one.")
+                    .font(.callout)
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
 
             VStack(spacing: 10) {
                 ForEach(UsageProfile.allCases) { option in

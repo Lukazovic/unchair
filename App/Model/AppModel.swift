@@ -138,9 +138,6 @@ final class AppModel {
         }
         notifications.activate()
         Task {
-            if hasCompletedOnboarding {
-                await notifications.requestAuthorization()
-            }
             await refreshNotificationStatus()
         }
         startMonitoring()
@@ -160,10 +157,17 @@ final class AppModel {
 
     // MARK: - Onboarding
 
-    func completeOnboarding(profile: UsageProfile) {
+    /// - Parameter profile: The profile to apply, or `nil` to keep the current settings.
+    func completeOnboarding(profile: UsageProfile?) {
         var newSettings = settings
-        profile.apply(to: &newSettings)
+        profile?.apply(to: &newSettings)
         settings = newSettings
+        skipOnboarding()
+    }
+
+    /// Leaves settings untouched and doesn't show the walkthrough again.
+    func skipOnboarding() {
+        guard !hasCompletedOnboarding else { return }
         store.hasCompletedOnboarding = true
         hasCompletedOnboarding = true
     }
